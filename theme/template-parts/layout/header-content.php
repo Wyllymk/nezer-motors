@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) || exit;
                     <div class="flex items-center justify-between h-18 py-3">
 
                         <!-- Logo -->
-                        <a href="index.html" class="flex items-center gap-2 group">
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center gap-2 group">
                             <div class="w-9 h-9 rounded-lg flex items-center justify-center"
                                 style="background: linear-gradient(135deg, #d4a017, #f0c040);">
                                 <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
@@ -49,19 +49,19 @@ defined( 'ABSPATH' ) || exit;
 
                         <!-- Desktop Nav Links -->
                         <div class="hidden lg:flex items-center gap-1">
-                            <a href="index.html"
+                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"
                                 class="nav-link px-4 py-2 rounded-lg text-sm font-sub font-600 transition-all duration-200 hover:text-gold-500"
                                 :class="darkMode ? 'text-white/80' : 'text-gray-700'">Home</a>
-                            <a href="about.html"
+                            <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"
                                 class="nav-link px-4 py-2 rounded-lg text-sm font-sub font-600 transition-all duration-200 hover:text-gold-500"
                                 :class="darkMode ? 'text-white/80' : 'text-gray-700'">About</a>
-                            <a href="autocare.html"
+                            <a href="<?php echo esc_url( home_url( '/auto-care-express/' ) ); ?>"
                                 class="nav-link px-4 py-2 rounded-lg text-sm font-sub font-600 transition-all duration-200 hover:text-gold-500"
                                 :class="darkMode ? 'text-white/80' : 'text-gray-700'">AutoCare Express</a>
-                            <a href="quikfix.html"
+                            <a href="<?php echo esc_url( home_url( '/quik-fix/' ) ); ?>"
                                 class="nav-link px-4 py-2 rounded-lg text-sm font-sub font-600 transition-all duration-200 hover:text-gold-500"
                                 :class="darkMode ? 'text-white/80' : 'text-gray-700'">QuikFix</a>
-                            <a href="contact.html"
+                            <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
                                 class="nav-link px-4 py-2 rounded-lg text-sm font-sub font-600 transition-all duration-200 hover:text-gold-500"
                                 :class="darkMode ? 'text-white/80' : 'text-gray-700'">Contact</a>
                         </div>
@@ -104,7 +104,7 @@ defined( 'ABSPATH' ) || exit;
                             </div>
 
                             <!-- CTA button -->
-                            <a href="contact.html"
+                            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>"
                                 class="hidden lg:flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-sub font-600 transition-all duration-200 hover:scale-105"
                                 style="background: linear-gradient(135deg, #d4a017, #f0c040); color: #000;">
                                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -142,20 +142,20 @@ defined( 'ABSPATH' ) || exit;
                     :class="darkMode ? 'bg-dark-800/95 border-white/10' : 'bg-white/95 border-gray-200'"
                     style="backdrop-filter:blur(20px)">
                     <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col gap-1">
-                        <a href="index.html" @click="mobileOpen=false"
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" @click="mobileOpen=false"
                             class="font-sub font-600 text-base px-4 py-3 rounded-xl transition-colors hover:text-gold-500"
                             :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'">Home</a>
-                        <a href="about.html" @click="mobileOpen=false"
+                        <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>" @click="mobileOpen=false"
                             class="font-sub font-600 text-base px-4 py-3 rounded-xl transition-colors hover:text-gold-500"
                             :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'">About</a>
-                        <a href="autocare.html" @click="mobileOpen=false"
+                        <a href="<?php echo esc_url( home_url( '/auto-care-express/' ) ); ?>" @click="mobileOpen=false"
                             class="font-sub font-600 text-base px-4 py-3 rounded-xl transition-colors hover:text-gold-500"
                             :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'">AutoCare
                             Express</a>
-                        <a href="quikfix.html" @click="mobileOpen=false"
+                        <a href="<?php echo esc_url( home_url( '/quik-fix/' ) ); ?>" @click="mobileOpen=false"
                             class="font-sub font-600 text-base px-4 py-3 rounded-xl transition-colors hover:text-gold-500"
                             :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'">QuikFix</a>
-                        <a href="contact.html" @click="mobileOpen=false"
+                        <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" @click="mobileOpen=false"
                             class="font-sub font-600 text-base px-4 py-3 rounded-xl transition-colors hover:text-gold-500"
                             :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'">Contact</a>
                         <!-- Mobile theme toggle -->
@@ -176,7 +176,7 @@ defined( 'ABSPATH' ) || exit;
                                     class="px-3 py-1 rounded-full text-xs font-sub font-600 transition-all">Dark</button>
                             </div>
                         </div>
-                        <a href="contact.html"
+                        <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
                             class="mt-3 flex items-center justify-center gap-2 py-3 rounded-xl font-sub font-700 text-sm transition-all"
                             style="background: linear-gradient(135deg, #d4a017, #f0c040); color: #000;">
                             Get In Touch

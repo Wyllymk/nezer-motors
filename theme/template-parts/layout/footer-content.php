@@ -74,8 +74,8 @@ defined( 'ABSPATH' ) || exit;
             <!-- AutoCare Express -->
             <div>
                 <div class="flex items-center gap-2 mb-5">
-                    <img src="assets/images/autocare-logo.png" alt="AutoCare Express" class="h-8 w-auto"
-                        onerror="this.style.display='none'">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/autocare-logo.png"
+                        alt="AutoCare Express" class="h-8 w-auto" onerror="this.style.display='none'">
                     <span class="font-heading text-lg font-700 text-white">AutoCare Express</span>
                 </div>
                 <div class="space-y-3 mb-6">
@@ -114,8 +114,8 @@ defined( 'ABSPATH' ) || exit;
             <!-- QuikFix -->
             <div>
                 <div class="flex items-center gap-2 mb-5">
-                    <img src="assets/images/quikfix-logo.png" alt="QuikFix" class="h-8 w-auto brightness-200"
-                        onerror="this.style.display='none'">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/quikfix-logo.png" alt="QuikFix"
+                        class="h-8 w-auto brightness-200" onerror="this.style.display='none'">
                     <span class="font-heading text-lg font-700 text-white">QuikFix</span>
                 </div>
                 <div class="space-y-3 mb-6">
@@ -155,13 +155,13 @@ defined( 'ABSPATH' ) || exit;
 
         <!-- Bottom bar -->
         <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p class="font-body text-white/30 text-sm">© 2025 Nezer Motors. All rights reserved.</p>
+            <p class="font-body text-white/30 text-sm">© 2026 Nezer Motors. All rights reserved.</p>
             <div class="flex items-center gap-5">
-                <a href="about.html"
+                <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"
                     class="font-body text-white/30 text-sm hover:text-white/60 transition-colors">About</a>
-                <a href="contact.html"
+                <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
                     class="font-body text-white/30 text-sm hover:text-white/60 transition-colors">Contact</a>
-                <a href="sitemap.xml"
+                <a href="<?php echo esc_url( home_url( '/sitemap.xml' ) ); ?>"
                     class="font-body text-white/30 text-sm hover:text-white/60 transition-colors">Sitemap</a>
             </div>
         </div>

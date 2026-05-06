@@ -14,3 +14,11 @@ html {
 body {
 	@apply bg-background text-foreground font-sans;
 }
+
+button {
+	@apply cursor-pointer;
+}
+
+h1, h2, h3, h4 { 
+    @apply font-rajdhani-bold; 
+}

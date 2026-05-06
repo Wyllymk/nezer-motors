@@ -41,11 +41,8 @@ get_header();
 
         <!-- Large decorative car silhouette -->
         <div class="absolute right-0 bottom-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none">
-            <svg class="absolute bottom-0 right-0 w-3/4 md:w-1/2 opacity-5" viewBox="0 0 800 400" fill="white"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M750 280H50L80 200L150 120L300 100L500 90L650 120L720 200L750 280ZM130 280C130 302 148 320 170 320C192 320 210 302 210 280C210 258 192 240 170 240C148 240 130 258 130 280ZM590 280C590 302 608 320 630 320C652 320 670 302 670 280C670 258 652 240 630 240C608 240 590 258 590 280Z" />
-            </svg>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/car_upscaled.png" alt="Car"
+                class="opacity-10 blur-[3.5px] w-full h-full" onerror="this.style.display='none'">
         </div>
 
         <!-- Content -->
@@ -104,7 +101,7 @@ get_header();
                             Done Right.
                         </h1>
                         <p class="font-body text-base sm:text-lg text-white/70 mb-8 max-w-md leading-relaxed">
-                            QuikFix at Shell Kingongo offers precision wheel alignment, tyre fitting, balancing, oil
+                            QuikFix at Shell King'ong'o offers precision wheel alignment, tyre fitting, balancing, oil
                             changes, and full car servicing at the Nyeri-Nyahururu Junction.
                         </p>
                         <div class="flex flex-wrap gap-3">
@@ -196,7 +193,7 @@ get_header();
                                     </div>
                                     <div>
                                         <p class="font-sub font-700 text-white text-sm">AutoCare Express</p>
-                                        <p class="text-white/50 text-xs font-body">Nyeri — Opp King'Ong'o Prison</p>
+                                        <p class="text-white/50 text-xs font-body">Nyeri — Opp King'ong'o Prison</p>
                                     </div>
                                 </div>
 
@@ -283,7 +280,8 @@ get_header();
                                 <!-- Info row -->
                                 <div class="grid grid-cols-2 gap-3 mb-5">
                                     <div class="rounded-xl p-3" style="background:rgba(220,38,38,0.2)">
-                                        <p class="text-white/40 text-xs font-sub mb-1">Phone</p>
+                                        <p class="text-white/40 text-xs font-sub mb-1">
+                                            <?php esc_html_e( 'Phone', 'nezer-motors' ); ?></p>
                                         <a href="tel:+254710104644"
                                             class="text-white font-sub font-700 text-sm hover:text-red-300 transition-colors">0710
                                             104 644</a>
@@ -331,7 +329,6 @@ get_header();
         </div>
     </section>
 
-
     <!-- ============================================================
      STATS BAR
     ============================================================ -->
@@ -350,7 +347,6 @@ get_header();
             </div>
         </div>
     </section>
-
 
     <!-- ============================================================
      SERVICES OVERVIEW
@@ -407,7 +403,6 @@ get_header();
             </div>
         </div>
     </section>
-
 
     <!-- ============================================================
      OUR BRANDS
@@ -557,7 +552,6 @@ get_header();
         </div>
     </section>
 
-
     <!-- ============================================================
      PARTNERS STRIP
     ============================================================ -->
@@ -587,7 +581,6 @@ get_header();
             </div>
         </div>
     </section>
-
 
     <!-- ============================================================
      CTA BANNER

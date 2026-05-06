@@ -46,15 +46,26 @@
 	 * https://tailwindcss.com/docs/theme#default-theme-variable-reference
 	 */
 	--font-sans:
-		ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+		var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
 		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 	--font-mono:
 		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
 		"Liberation Mono", "Courier New", monospace;
-	--font-family-heading: "Rajdhani", sans-serif;
-	--font-family-sub: "Barlow", sans-serif;
-	--font-family-body: "DM Sans", sans-serif;
+	--font-heading: var(--font-rajdhani-bold);
+	--font-sub: var(--font-barlow-regular);
+	--font-body: var(--font-dm-sans);
+
+	--font-rajdhani-medium: "Rajdhani Medium", sans-serif;
+	--font-rajdhani-semibold: "Rajdhani SemiBold", sans-serif;
+	--font-rajdhani-bold: "Rajdhani Bold", sans-serif;
+	
+	--font-barlow-regular: "Barlow Regular", sans-serif;
+	--font-barlow-medium: "Barlow Medium", sans-serif;
+	--font-barlow-semibold: "Barlow SemiBold", sans-serif;
+	--font-barlow-bold: "Barlow Bold", sans-serif;
+	
+	--font-dm-sans: "DM Sans Variable", sans-serif;
 	/**
 	   * Add your theme below:
 	   */
