@@ -1,0 +1,99 @@
+/**
+ * Add your design tokens as Tailwind theme variables.
+ *
+ * https://tailwindcss.com/docs/theme
+ */
+/**
+ * Import Tailwind’s default theme.
+ */
+@import "tailwindcss/theme";
+
+/**
+ * Activate Dark theme capability.
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+/**
+ * Your theme variables are merged with Tailwind’s defaults, either extending
+ * the default theme with new variables or overriding the values of existing
+ * variables.
+ */
+@theme {
+	/**
+	 * These theme variables use CSS variables set by WordPress using values
+	 * from your `theme.json` file.
+	 *
+	 * If you are using the classic editor, you should use hardcoded color
+	 * values instead of the `var()` functions below.
+     */
+	--color-background: var(--wp--preset--color--background);
+	--color-foreground: var(--wp--preset--color--foreground);
+	--color-primary: var(--wp--preset--color--primary);
+	--color-secondary: var(--wp--preset--color--secondary);
+	--color-tertiary: var(--wp--preset--color--tertiary);
+	--container-content: var(--wp--style--global--content-size);
+	--container-wide: var(--wp--style--global--wide-size);
+
+	/**
+	 * These are the default `font-family` theme variables included with
+     * Tailwind. You can update them below by adding custom fonts at the
+	 * beginning of each value.
+	 *
+	 * Default theme variables can be found in their entirety at the links
+	 * below, on GitHub or in Tailwind’s documentation, respectively:
+	 *
+	 * https://github.com/tailwindlabs/tailwindcss/blob/main/packages/tailwindcss/theme.css
+	 * https://tailwindcss.com/docs/theme#default-theme-variable-reference
+	 */
+	--font-sans:
+		ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+	--font-mono:
+		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		"Liberation Mono", "Courier New", monospace;
+
+	/**
+	   * Add your theme below:
+	   */
+	/*Shadows*/
+	--drop-shadow-white-glow: 0 0 5px rgba(255, 255, 255, 1);
+	--drop-shadow-brass-nail: 0 0 5px rgba(219, 195, 118, 1);
+	--drop-shadow-mustard-gold: 0 0 5px rgba(112, 102, 36, 1);
+	--drop-shadow-custom: 8px 0px 24px 0px rgba(76, 128, 178, 0.1);
+	/* New cyber glow */
+	--drop-shadow-cyber-cyan: 0 0 15px rgba(1, 146, 134, 0.5);
+	--drop-shadow-cyber-blue: 0 0 15px rgba(0, 123, 255, 0.5);
+	--drop-shadow-cyber-coral: 0 0 15px rgba(255, 51, 102, 0.5);
+	--drop-shadow-cyber-pink: 0 0 15px rgba(255, 0, 122, 0.5);
+	--drop-shadow-cyber-teal: 0 0 15px rgba(13, 148, 136, 0.5);
+	--drop-shadow-cyber-purple: 0 0 15px rgba(147, 51, 234, 0.5);
+
+	/*Fonts*/
+	--font-sans: "Proxima Nova", system-ui, -apple-system, BlinkMacSystemFont,
+		"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+		"Noto Color Emoji";
+	--font-nico: "Nico", sans-serif;
+	--font-oswald: "Oswald", sans-serif;
+	--font-oswald: "Manrope", sans-serif;
+	--font-satisfy: "Satisfy", sans-serif;
+	/*Colors*/
+	--color-regal-blue: #140f49;
+	--color-nav-blue: #605c8d;
+	--color-linkedin: #0077b5;
+	--color-whatsapp: #25d366;
+
+	/* New techy colors for dark and light modes */
+	--color-cyber-dark: #1a1a2e; /* Deep midnight blue-gray for dark mode bg */
+	--color-cyber-cyan: oklab(
+		0.6 -0.117603 -0.00967695 / 1
+	); /* #00d4ff Electric cyan for accents */
+	--color-cyber-pink: #ff007a; /* Neon pink for highlights */
+	--color-cyber-light: #f5f7fa; /* Light cool gray for light mode bg */
+	--color-cyber-blue: #007bff; /* Vibrant blue for light mode accents */
+	--color-cyber-coral: #ff3366; /* Coral pink for light mode highlights */
+	--color-text-dark: #797979; /* Soft off-white for dark mode text */
+	--color-text-dark-muted: #a0aec0; /* Muted gray-blue for secondary text */
+	--color-text-light: #1a202c; /* Deep charcoal for light mode text */
+	--color-text-light-muted: #718096; /* Slate gray for secondary text */
+}
