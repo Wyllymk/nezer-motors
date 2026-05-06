@@ -120,3 +120,19 @@ html.light ::-webkit-scrollbar-track { background: #f1f5f9; }
 html.light ::-webkit-scrollbar-thumb { background: #d4a017; }
 
 /* FRONT PAGE ENDS */
+/* CONTACT PAGE */
+input,
+textarea,
+select {
+    font-family: "DM Sans", sans-serif;
+}
+.map-placeholder {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+}
+.map-grid {
+background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 30px 30px;
+}

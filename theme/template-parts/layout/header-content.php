@@ -6,8 +6,11 @@
  *
  * @package Nezer_Motors
  */
-// Exit if accessed directly
-defined( 'ABSPATH' ) || exit;
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 ?>
 
@@ -42,8 +45,9 @@ defined( 'ABSPATH' ) || exit;
                             </div>
                             <div>
                                 <span class="font-heading text-xl font-700 tracking-wide"
-                                    :class="darkMode ? 'text-white' : 'text-gray-900'">NEZER</span>
-                                <span class="font-heading text-xl font-700 tracking-wide text-gold-500"> MOTORS</span>
+                                    :class="darkMode ? 'text-white' : 'text-gray-900'"><?php esc_html_e( 'NEZER', 'nezer-motors' ); ?></span>
+                                <span class="font-heading text-xl font-700 tracking-wide text-gold-500">
+                                    <?php esc_html_e( 'MOTORS', 'nezer-motors' ); ?></span>
                             </div>
                         </a>
 
@@ -51,19 +55,19 @@ defined( 'ABSPATH' ) || exit;
                         <div class="hidden lg:flex items-center gap-1">
                             <a href="<?php echo esc_url( home_url( '/' ) ); ?>"
                                 class="nav-link px-4 py-2 rounded-lg text-sm font-sub font-600 transition-all duration-200 hover:text-gold-500"
-                                :class="darkMode ? 'text-white/80' : 'text-gray-700'">Home</a>
+                                :class="darkMode ? 'text-white/80' : 'text-gray-700'"><?php esc_html_e( 'Home', 'nezer-motors' ); ?></a>
                             <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"
                                 class="nav-link px-4 py-2 rounded-lg text-sm font-sub font-600 transition-all duration-200 hover:text-gold-500"
-                                :class="darkMode ? 'text-white/80' : 'text-gray-700'">About</a>
+                                :class="darkMode ? 'text-white/80' : 'text-gray-700'"><?php esc_html_e( 'About', 'nezer-motors' ); ?></a>
                             <a href="<?php echo esc_url( home_url( '/auto-care-express/' ) ); ?>"
                                 class="nav-link px-4 py-2 rounded-lg text-sm font-sub font-600 transition-all duration-200 hover:text-gold-500"
-                                :class="darkMode ? 'text-white/80' : 'text-gray-700'">AutoCare Express</a>
+                                :class="darkMode ? 'text-white/80' : 'text-gray-700'"><?php esc_html_e( 'AutoCare Express', 'nezer-motors' ); ?></a>
                             <a href="<?php echo esc_url( home_url( '/quik-fix/' ) ); ?>"
                                 class="nav-link px-4 py-2 rounded-lg text-sm font-sub font-600 transition-all duration-200 hover:text-gold-500"
-                                :class="darkMode ? 'text-white/80' : 'text-gray-700'">QuikFix</a>
+                                :class="darkMode ? 'text-white/80' : 'text-gray-700'"><?php esc_html_e( 'QuikFix', 'nezer-motors' ); ?></a>
                             <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
                                 class="nav-link px-4 py-2 rounded-lg text-sm font-sub font-600 transition-all duration-200 hover:text-gold-500"
-                                :class="darkMode ? 'text-white/80' : 'text-gray-700'">Contact</a>
+                                :class="darkMode ? 'text-white/80' : 'text-gray-700'"><?php esc_html_e( 'Contact', 'nezer-motors' ); ?></a>
                         </div>
 
                         <!-- Right controls -->
@@ -75,7 +79,7 @@ defined( 'ABSPATH' ) || exit;
                                 <button @click="setTheme('system')"
                                     :class="theme === 'system' ? 'bg-gold-500 text-black' : (darkMode ? 'text-white/60' : 'text-gray-500')"
                                     class="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200"
-                                    title="System">
+                                    title="<?php esc_attr_e( 'System', 'nezer-motors' ); ?>">
                                     <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                                         <path
                                             d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-9-2l-5-5 1.4-1.4L12 14.2l7.6-7.6L21 8l-9 9z" />
@@ -85,7 +89,7 @@ defined( 'ABSPATH' ) || exit;
                                 <button @click="setTheme('light')"
                                     :class="theme === 'light' ? 'bg-gold-500 text-black' : (darkMode ? 'text-white/60' : 'text-gray-500')"
                                     class="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200"
-                                    title="Light">
+                                    title="<?php esc_attr_e( 'Light', 'nezer-motors' ); ?>">
                                     <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                                         <path
                                             d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .38-.39.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.38.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06c.39-.38.39-1.03 0-1.41-.38-.39-1.03-.39-1.41 0zM7.05 18.36l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41-.39-.38-1.03-.38-1.41 0z" />
@@ -95,7 +99,7 @@ defined( 'ABSPATH' ) || exit;
                                 <button @click="setTheme('dark')"
                                     :class="theme === 'dark' ? 'bg-gold-500 text-black' : (darkMode ? 'text-white/60' : 'text-gray-500')"
                                     class="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200"
-                                    title="Dark">
+                                    title="<?php esc_attr_e( 'Dark', 'nezer-motors' ); ?>">
                                     <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                                         <path
                                             d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" />
@@ -104,20 +108,21 @@ defined( 'ABSPATH' ) || exit;
                             </div>
 
                             <!-- CTA button -->
-                            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>"
+                            <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
                                 class="hidden lg:flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-sub font-600 transition-all duration-200 hover:scale-105"
                                 style="background: linear-gradient(135deg, #d4a017, #f0c040); color: #000;">
                                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                                 </svg>
-                                Get In Touch
+                                <?php esc_html_e( 'Get In Touch', 'nezer-motors' ); ?>
                             </a>
 
                             <!-- Mobile hamburger -->
                             <button @click="mobileOpen = !mobileOpen"
                                 class="lg:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg transition-colors"
-                                :class="darkMode ? 'hover:bg-white/10' : 'hover:bg-black/08'">
+                                :class="darkMode ? 'hover:bg-white/10' : 'hover:bg-black/08'"
+                                aria-label="<?php esc_attr_e( 'Toggle mobile menu', 'nezer-motors' ); ?>">
                                 <span :class="mobileOpen ? 'rotate-45 translate-y-2' : ''"
                                     class="w-5 h-0.5 block transition-all duration-300"
                                     :style="darkMode ? 'background:#fff' : 'background:#1a1a1a'"></span>
@@ -144,42 +149,41 @@ defined( 'ABSPATH' ) || exit;
                     <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col gap-1">
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" @click="mobileOpen=false"
                             class="font-sub font-600 text-base px-4 py-3 rounded-xl transition-colors hover:text-gold-500"
-                            :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'">Home</a>
+                            :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'"><?php esc_html_e( 'Home', 'nezer-motors' ); ?></a>
                         <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>" @click="mobileOpen=false"
                             class="font-sub font-600 text-base px-4 py-3 rounded-xl transition-colors hover:text-gold-500"
-                            :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'">About</a>
+                            :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'"><?php esc_html_e( 'About', 'nezer-motors' ); ?></a>
                         <a href="<?php echo esc_url( home_url( '/auto-care-express/' ) ); ?>" @click="mobileOpen=false"
                             class="font-sub font-600 text-base px-4 py-3 rounded-xl transition-colors hover:text-gold-500"
-                            :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'">AutoCare
-                            Express</a>
+                            :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'"><?php esc_html_e( 'AutoCare Express', 'nezer-motors' ); ?></a>
                         <a href="<?php echo esc_url( home_url( '/quik-fix/' ) ); ?>" @click="mobileOpen=false"
                             class="font-sub font-600 text-base px-4 py-3 rounded-xl transition-colors hover:text-gold-500"
-                            :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'">QuikFix</a>
+                            :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'"><?php esc_html_e( 'QuikFix', 'nezer-motors' ); ?></a>
                         <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" @click="mobileOpen=false"
                             class="font-sub font-600 text-base px-4 py-3 rounded-xl transition-colors hover:text-gold-500"
-                            :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'">Contact</a>
+                            :class="darkMode ? 'text-white/80 hover:bg-white/08' : 'text-gray-800 hover:bg-gray-100'"><?php esc_html_e( 'Contact', 'nezer-motors' ); ?></a>
                         <!-- Mobile theme toggle -->
                         <div class="mt-4 pt-4 border-t flex items-center gap-3"
                             :class="darkMode ? 'border-white/10' : 'border-gray-200'">
                             <span class="font-sub text-sm font-600"
-                                :class="darkMode ? 'text-white/50' : 'text-gray-500'">Theme:</span>
+                                :class="darkMode ? 'text-white/50' : 'text-gray-500'"><?php esc_html_e( 'Theme:', 'nezer-motors' ); ?></span>
                             <div class="flex items-center gap-1 rounded-full p-1"
                                 :class="darkMode ? 'bg-white/10' : 'bg-gray-100'">
                                 <button @click="setTheme('system')"
                                     :class="theme === 'system' ? 'bg-gold-500 text-black' : (darkMode ? 'text-white/60' : 'text-gray-500')"
-                                    class="px-3 py-1 rounded-full text-xs font-sub font-600 transition-all">System</button>
+                                    class="px-3 py-1 rounded-full text-xs font-sub font-600 transition-all"><?php esc_html_e( 'System', 'nezer-motors' ); ?></button>
                                 <button @click="setTheme('light')"
                                     :class="theme === 'light' ? 'bg-gold-500 text-black' : (darkMode ? 'text-white/60' : 'text-gray-500')"
-                                    class="px-3 py-1 rounded-full text-xs font-sub font-600 transition-all">Light</button>
+                                    class="px-3 py-1 rounded-full text-xs font-sub font-600 transition-all"><?php esc_html_e( 'Light', 'nezer-motors' ); ?></button>
                                 <button @click="setTheme('dark')"
                                     :class="theme === 'dark' ? 'bg-gold-500 text-black' : (darkMode ? 'text-white/60' : 'text-gray-500')"
-                                    class="px-3 py-1 rounded-full text-xs font-sub font-600 transition-all">Dark</button>
+                                    class="px-3 py-1 rounded-full text-xs font-sub font-600 transition-all"><?php esc_html_e( 'Dark', 'nezer-motors' ); ?></button>
                             </div>
                         </div>
                         <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
                             class="mt-3 flex items-center justify-center gap-2 py-3 rounded-xl font-sub font-700 text-sm transition-all"
                             style="background: linear-gradient(135deg, #d4a017, #f0c040); color: #000;">
-                            Get In Touch
+                            <?php esc_html_e( 'Get In Touch', 'nezer-motors' ); ?>
                         </a>
                     </div>
                 </div>

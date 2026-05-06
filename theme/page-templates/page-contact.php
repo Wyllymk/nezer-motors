@@ -6,300 +6,406 @@
  *
  * @package Nezer_Motors
  */
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 get_header();
 ?>
 
-<main class="bg-cyber-light dark:bg-cyber-dark min-h-screen">
+<main class="min-h-screen">
 
-    <!-- Sidebar Navigation (Mobile) -->
-    <div id="navMenu" class="transform translate-x-full opacity-0 w-64 py-4 px-4 z-40 fixed md:hidden top-0 h-full 
-        bg-cyber-light/90 dark:bg-cyber-dark/90 backdrop-blur-md drop-shadow-cyber-cyan 
-        transition-all duration-400 ease-in-out">
-        <?php get_template_part('template-parts/content/content', 'aside'); ?>
-    </div>
-
-    <!-- Overlay -->
-    <div id="overlay" class="fixed inset-0 top-0 h-screen z-30 bg-black/70 hidden"></div>
-
-    <!-- Hero Section with Animated Background -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <!-- Animated Grid Background -->
-        <div class="absolute inset-0 opacity-10 dark:opacity-20">
-            <div
-                class="absolute inset-0 bg-gradient-to-br from-cyber-blue via-transparent to-cyber-coral dark:from-cyber-cyan dark:via-transparent dark:to-cyber-pink">
-            </div>
-            <div class="grid grid-cols-12 h-full w-full">
-                <div class="border-r border-current animate-pulse"></div>
-                <div class="border-r border-current animate-pulse delay-100"></div>
-                <div class="border-r border-current animate-pulse delay-200"></div>
-                <div class="border-r border-current animate-pulse delay-300"></div>
-                <div class="border-r border-current animate-pulse delay-500"></div>
-                <div class="border-r border-current animate-pulse delay-700"></div>
-                <div class="border-r border-current animate-pulse delay-1000"></div>
-                <div class="border-r border-current animate-pulse delay-100"></div>
-                <div class="border-r border-current animate-pulse delay-300"></div>
-                <div class="border-r border-current animate-pulse delay-500"></div>
-                <div class="border-r border-current animate-pulse delay-700"></div>
-                <div class="animate-pulse delay-1000"></div>
-            </div>
+    <!-- HERO -->
+    <section class="relative pt-32 pb-16 overflow-hidden"
+        style="background: linear-gradient(135deg, #09090b 0%, #1a1a2e 60%, #1e3a4a 100%)">
+        <div class="absolute inset-0"
+            style="background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px); background-size: 28px 28px">
         </div>
+        <div class="absolute top-0 left-0 w-72 h-72 rounded-full blur-3xl opacity-15"
+            style="background: radial-gradient(circle, #d4a017, transparent)"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-sub font-600 tracking-widest uppercase mb-6 glass">
+                <span
+                    class="w-1.5 h-1.5 rounded-full bg-gold-400"></span><?php esc_html_e( 'Get In Touch', 'nezer-motors' ); ?>
+            </div>
+            <h1 class="font-heading text-5xl sm:text-6xl lg:text-7xl font-700 text-white leading-tight mb-6">
+                <?php esc_html_e( 'We\'re Here', 'nezer-motors' ); ?><br /><span
+                    style="background: linear-gradient(135deg, #d4a017, #f0c040); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text"><?php esc_html_e( 'to Help', 'nezer-motors' ); ?></span>
+            </h1>
+            <p class="font-body text-white/65 text-lg max-w-xl mx-auto">
+                <?php esc_html_e( 'Reach us at either branch directly or send us a message below. We respond quickly on WhatsApp or email.', 'nezer-motors' ); ?>
+            </p>
+        </div>
+    </section>
 
-        <div class="container mx-auto px-4 py-20 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
-
-                <!-- Contact Info Card -->
-                <div class="relative">
-                    <!-- Floating Elements -->
-                    <div
-                        class="absolute -top-8 -left-8 w-32 h-32 bg-gradient-to-r from-cyber-blue to-cyber-coral dark:from-cyber-cyan dark:to-cyber-pink rounded-full opacity-20 animate-pulse">
-                    </div>
-                    <div
-                        class="absolute -bottom-8 -right-8 w-24 h-24 bg-gradient-to-r from-cyber-coral to-cyber-blue dark:from-cyber-pink dark:to-cyber-cyan rounded-lg rotate-45 opacity-30 animate-bounce">
-                    </div>
-
-                    <div
-                        class="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg rounded-3xl p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-2xl">
-                        <!-- Glowing Border Effect -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-cyber-blue via-cyber-coral to-cyber-blue dark:from-cyber-cyan dark:via-cyber-pink dark:to-cyber-cyan rounded-3xl opacity-20 blur-sm">
+    <!-- BRANCH CONTACT CARDS -->
+    <section class="py-16" :class="darkMode?'bg-dark-900':'bg-slate-50'">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- AutoCare Express -->
+                <div class="rounded-2xl overflow-hidden border" :class="darkMode?'border-white/10':'border-gray-200'">
+                    <div class="px-6 py-5 flex items-center gap-4"
+                        style="background: linear-gradient(135deg, #1e40af, #2563eb)">
+                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/autocare-logo.png' ); ?>"
+                            alt="<?php esc_attr_e( 'AutoCare Express', 'nezer-motors' ); ?>"
+                            class="h-10 w-auto object-contain" />
+                        <div>
+                            <h3 class="font-heading text-xl font-700 text-white">
+                                <?php esc_html_e( 'AutoCare Express', 'nezer-motors' ); ?></h3>
+                            <p class="text-blue-200/70 text-xs font-body">
+                                <?php esc_html_e( 'Full Vehicle Servicing', 'nezer-motors' ); ?></p>
                         </div>
-
-                        <div class="relative z-10">
-                            <!-- Title with Gradient -->
-                            <div class="mb-8">
-                                <h1
-                                    class="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-cyber-blue to-cyber-coral dark:from-cyber-cyan dark:to-cyber-pink bg-clip-text text-transparent leading-tight">
-                                    Let's Connect
-                                </h1>
-                                <div
-                                    class="w-24 h-1 bg-gradient-to-r from-cyber-blue to-cyber-coral dark:from-cyber-cyan dark:to-cyber-pink mt-4 rounded-full">
-                                </div>
+                        <span
+                            class="ml-auto flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-sub font-600"
+                            style="background: rgba(255, 255, 255, 0.15); color: #fff">
+                            <span
+                                class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span><?php esc_html_e( 'Open Mon-Sat', 'nezer-motors' ); ?>
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-4" :class="darkMode?'bg-white/04':'bg-white'">
+                        <div class="flex items-start gap-3">
+                            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                                style="background: rgba(30, 64, 175, 0.15)">
+                                <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                </svg>
                             </div>
-
-                            <!-- Description -->
-                            <div class="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                                <p>Ready to bring your ideas to life? I'm here to help you build something
-                                    extraordinary.</p>
-                                <p>Drop me a message and let's discuss your next project. I respond to all inquiries
-                                    within 24 hours.</p>
+                            <div>
+                                <p class="font-sub font-600 text-xs uppercase tracking-wider mb-0.5"
+                                    :class="darkMode?'text-white/40':'text-gray-400'">
+                                    <?php esc_html_e( 'Location', 'nezer-motors' ); ?></p>
+                                <p class="font-body text-sm" :class="darkMode?'text-white':'text-gray-800'">
+                                    <?php esc_html_e( 'Nyeri - Opposite King\'ong\'o Prison', 'nezer-motors' ); ?></p>
+                                <p class="font-body text-xs mt-0.5" :class="darkMode?'text-white/50':'text-gray-500'">
+                                    <?php esc_html_e( 'Nyeri Town, Central Kenya', 'nezer-motors' ); ?></p>
                             </div>
-
-                            <!-- Contact Methods -->
-                            <div class="mt-8 space-y-4">
-                                <div
-                                    class="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200/50 dark:border-gray-700/50">
-                                    <div
-                                        class="w-12 h-12 bg-gradient-to-r from-cyber-blue to-cyber-coral dark:from-cyber-cyan dark:to-cyber-pink rounded-lg flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold text-gray-900 dark:text-white">Email</p>
-                                        <p class="text-gray-600 dark:text-gray-400">Quick response guaranteed</p>
-                                    </div>
-                                </div>
-
-                                <div
-                                    class="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200/50 dark:border-gray-700/50">
-                                    <div
-                                        class="w-12 h-12 bg-gradient-to-r from-cyber-coral to-cyber-blue dark:from-cyber-pink dark:to-cyber-cyan rounded-lg flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M16 1H8C6.34 1 5 2.34 5 4v16c0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3V4c0-1.66-1.34-3-3-3zM14 21h-4v-1h4v1zm3.25-3H6.75V4h10.5v14z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold text-gray-900 dark:text-white">Social Media</p>
-                                        <p class="text-gray-600 dark:text-gray-400">Connect on your platform of choice
-                                        </p>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                                style="background: rgba(30, 64, 175, 0.15)">
+                                <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                                </svg>
                             </div>
-
-                            <!-- Social Links -->
-                            <div class="mt-8">
-                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Find me on social platforms</p>
-                                <div class="flex space-x-3">
-                                    <!-- Twitter -->
-                                    <a href="https://twitter.com/WilsonMbuthiaK" target="_blank"
-                                        class="group relative w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center hover:bg-gradient-to-r hover:from-cyber-blue hover:to-cyber-coral dark:hover:from-cyber-cyan dark:hover:to-cyber-pink transition-all duration-300 overflow-hidden">
-                                        <svg class="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-white transition-colors duration-300 relative z-10"
-                                            viewBox="0 0 24 24" fill="currentColor">
-                                            <path
-                                                d="M8 2H1l8.26 11.014L1.45 22H4.1l6.388-7.349L16 22h7l-8.608-11.478L21.8 2h-2.65l-5.986 6.886L8 2Zm9 18L5 4h2l12 16h-2Z" />
-                                        </svg>
-                                    </a>
-
-                                    <!-- LinkedIn -->
-                                    <a href="https://www.linkedin.com/in/wilson-mbuthia-k/" target="_blank"
-                                        class="group relative w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center hover:bg-gradient-to-r hover:from-cyber-blue hover:to-cyber-coral dark:hover:from-cyber-cyan dark:hover:to-cyber-pink transition-all duration-300 overflow-hidden">
-                                        <svg class="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-white transition-colors duration-300 relative z-10"
-                                            viewBox="0 0 128 128" fill="currentColor">
-                                            <path
-                                                d="M116 3H12a8.91 8.91 0 0 0-9 8.8v104.42a8.91 8.91 0 0 0 9 8.78h104a8.93 8.93 0 0 0 9-8.81V11.77A8.93 8.93 0 0 0 116 3zM39.17 107H21.06V48.73h18.11zm-9-66.21a10.5 10.5 0 1 1 10.49-10.5a10.5 10.5 0 0 1-10.54 10.48zM107 107H88.89V78.65c0-6.75-.12-15.44-9.41-15.44s-10.87 7.36-10.87 15V107H50.53V48.73h17.36v8h.24c2.42-4.58 8.32-9.41 17.13-9.41C103.6 47.28 107 59.35 107 75z" />
-                                        </svg>
-                                    </a>
-
-                                    <!-- GitHub -->
-                                    <a href="https://github.com/Wyllymk" target="_blank"
-                                        class="group relative w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center hover:bg-gradient-to-r hover:from-cyber-blue hover:to-cyber-coral dark:hover:from-cyber-cyan dark:hover:to-cyber-pink transition-all duration-300 overflow-hidden">
-                                        <svg class="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-white transition-colors duration-300 relative z-10"
-                                            viewBox="0 0 24 24" fill="currentColor">
-                                            <path
-                                                d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.84 1.236 1.84 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.775.418-1.305.762-1.605c-2.665-.3-5.467-1.335-5.467-5.931c0-1.31.47-2.38 1.235-3.221c-.135-.303-.54-1.52.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.555 3.285-1.23 3.285-1.23c.645 1.655.24 2.872.12 3.176c.765.84 1.23 1.91 1.23 3.221c0 4.615-2.81 5.63-5.475 5.92c.435.375.81 1.11.81 2.24c0 1.62-.015 2.94-.015 3.34c0 .315.21.69.825.575C20.565 22.09 24 17.592 24 12.296c0-6.627-5.373-12-12-12z" />
-                                        </svg>
-                                    </a>
-
-                                    <!-- WhatsApp -->
-                                    <a href="https://wa.me/+254703639230?text=Hi%20I%20want%20to%20get%20in%20touch"
-                                        target="_blank"
-                                        class="group relative w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center hover:bg-gradient-to-r hover:from-cyber-blue hover:to-cyber-coral dark:hover:from-cyber-cyan dark:hover:to-cyber-pink transition-all duration-300 overflow-hidden">
-                                        <svg class="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-white transition-colors duration-300 relative z-10"
-                                            viewBox="0 0 24 24" fill="currentColor">
-                                            <path
-                                                d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23c-1.48 0-2.93-.39-4.19-1.15l-.3-.17l-3.12.82l.83-3.04l-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31c-.22.25-.87.86-.87 2.07c0 1.22.89 2.39 1 2.56c.14.17 1.76 2.67 4.25 3.73c.59.27 1.05.42 1.41.53c.59.19 1.13.16 1.56.1c.48-.07 1.46-.6 1.67-1.18c.21-.58.21-1.07.15-1.18c-.07-.1-.23-.16-.48-.27c-.25-.14-1.47-.74-1.69-.82c-.23-.08-.37-.12-.56.12c-.16.25-.64.81-.78.97c-.15.17-.29.19-.53.07c-.26-.13-1.06-.39-2-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.12-.24-.01-.39.11-.5c.11-.11.27-.29.37-.44c.13-.14.17-.25.25-.41c.08-.17.04-.31-.02-.43c-.06-.11-.56-1.35-.77-1.84c-.2-.48-.4-.42-.56-.43c-.14 0-.3-.01-.47-.01Z" />
-                                        </svg>
-                                    </a>
-                                </div>
+                            <div>
+                                <p class="font-sub font-600 text-xs uppercase tracking-wider mb-0.5"
+                                    :class="darkMode?'text-white/40':'text-gray-400'">
+                                    <?php esc_html_e( 'Phone', 'nezer-motors' ); ?></p>
+                                <a href="<?php echo esc_url( 'tel:+254733204672' ); ?>"
+                                    class="font-body text-sm font-700 text-blue-500 hover:text-blue-400 transition-colors"><?php esc_html_e( '0733 204 672', 'nezer-motors' ); ?></a>
                             </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                                style="background: rgba(30, 64, 175, 0.15)">
+                                <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-sub font-600 text-xs uppercase tracking-wider mb-0.5"
+                                    :class="darkMode?'text-white/40':'text-gray-400'">
+                                    <?php esc_html_e( 'Hours', 'nezer-motors' ); ?></p>
+                                <p class="font-body text-sm" :class="darkMode?'text-white':'text-gray-800'">
+                                    <?php esc_html_e( 'Monday - Saturday', 'nezer-motors' ); ?></p>
+                                <p class="font-body text-sm font-700 text-blue-500">
+                                    <?php esc_html_e( '8:00 AM - 5:00 PM', 'nezer-motors' ); ?></p>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t grid grid-cols-2 gap-3"
+                            :class="darkMode?'border-white/10':'border-gray-100'">
+                            <a href="<?php echo esc_url( 'tel:+254733204672' ); ?>"
+                                class="flex items-center justify-center gap-2 py-2.5 rounded-xl font-sub font-700 text-sm text-white transition-all hover:opacity-90"
+                                style="background: linear-gradient(135deg, #1e40af, #2563eb)">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                                </svg><?php esc_html_e( 'Call Now', 'nezer-motors' ); ?>
+                            </a>
+                            <a href="<?php echo esc_url( 'https://wa.me/254733204672?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20AutoCare%20Express%20services.' ); ?>"
+                                target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-center gap-2 py-2.5 rounded-xl font-sub font-700 text-sm text-white transition-all hover:opacity-90"
+                                style="background: linear-gradient(135deg, #25d366, #128c7e)">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967a.664.664 0 00-.67.15c-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075C12.921 14.72 11.963 14.407 10.828 13.395c-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a6.47 6.47 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.107.547 4.14 1.588 5.945L.057 24l6.305-1.654A11.882 11.882 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+                                </svg><?php esc_html_e( 'WhatsApp', 'nezer-motors' ); ?>
+                            </a>
                         </div>
                     </div>
                 </div>
 
+                <!-- QuikFix -->
+                <div class="rounded-2xl overflow-hidden border" :class="darkMode?'border-white/10':'border-gray-200'">
+                    <div class="px-6 py-5 flex items-center gap-4"
+                        style="background: linear-gradient(135deg, #dc2626, #ef4444)">
+                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/quikfix-logo.png' ); ?>"
+                            alt="<?php esc_attr_e( 'QuikFix', 'nezer-motors' ); ?>"
+                            class="h-10 w-auto object-contain brightness-200" />
+                        <div>
+                            <h3 class="font-heading text-xl font-700 text-white">
+                                <?php esc_html_e( 'QuikFix', 'nezer-motors' ); ?></h3>
+                            <p class="text-red-200/70 text-xs font-body">
+                                <?php esc_html_e( 'Shell Service Station, King\'ong\'o', 'nezer-motors' ); ?></p>
+                        </div>
+                        <span
+                            class="ml-auto flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-sub font-600"
+                            style="background: rgba(255, 255, 255, 0.15); color: #fff">
+                            <span
+                                class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span><?php esc_html_e( 'Open Mon-Sat', 'nezer-motors' ); ?>
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-4" :class="darkMode?'bg-white/04':'bg-white'">
+                        <div class="flex items-start gap-3">
+                            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                                style="background: rgba(220, 38, 38, 0.15)">
+                                <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-sub font-600 text-xs uppercase tracking-wider mb-0.5"
+                                    :class="darkMode?'text-white/40':'text-gray-400'">
+                                    <?php esc_html_e( 'Location', 'nezer-motors' ); ?></p>
+                                <p class="font-body text-sm" :class="darkMode?'text-white':'text-gray-800'">
+                                    <?php esc_html_e( 'Shell Service Station, King\'ong\'o', 'nezer-motors' ); ?></p>
+                                <p class="font-body text-xs mt-0.5" :class="darkMode?'text-white/50':'text-gray-500'">
+                                    <?php esc_html_e( 'Nyeri-Nyahururu Junction, Nyeri', 'nezer-motors' ); ?></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                                style="background: rgba(220, 38, 38, 0.15)">
+                                <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-sub font-600 text-xs uppercase tracking-wider mb-0.5"
+                                    :class="darkMode?'text-white/40':'text-gray-400'">
+                                    <?php esc_html_e( 'Phone', 'nezer-motors' ); ?></p>
+                                <a href="<?php echo esc_url( 'tel:+254710104644' ); ?>"
+                                    class="font-body text-sm font-700 text-red-500 hover:text-red-400 transition-colors"><?php esc_html_e( '0710 104 644', 'nezer-motors' ); ?></a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                                style="background: rgba(220, 38, 38, 0.15)">
+                                <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-sub font-600 text-xs uppercase tracking-wider mb-0.5"
+                                    :class="darkMode?'text-white/40':'text-gray-400'">
+                                    <?php esc_html_e( 'Hours', 'nezer-motors' ); ?></p>
+                                <p class="font-body text-sm" :class="darkMode?'text-white':'text-gray-800'">
+                                    <?php esc_html_e( 'Monday - Saturday', 'nezer-motors' ); ?></p>
+                                <p class="font-body text-sm font-700 text-red-500">
+                                    <?php esc_html_e( '8:00 AM - 5:00 PM', 'nezer-motors' ); ?></p>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t grid grid-cols-2 gap-3"
+                            :class="darkMode?'border-white/10':'border-gray-100'">
+                            <a href="<?php echo esc_url( 'tel:+254710104644' ); ?>"
+                                class="flex items-center justify-center gap-2 py-2.5 rounded-xl font-sub font-700 text-sm text-white transition-all hover:opacity-90"
+                                style="background: linear-gradient(135deg, #dc2626, #ef4444)">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                                </svg><?php esc_html_e( 'Call Now', 'nezer-motors' ); ?>
+                            </a>
+                            <a href="<?php echo esc_url( 'https://wa.me/254733204672?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20QuikFix%20services.' ); ?>"
+                                target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-center gap-2 py-2.5 rounded-xl font-sub font-700 text-sm text-white transition-all hover:opacity-90"
+                                style="background: linear-gradient(135deg, #25d366, #128c7e)">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967a.664.664 0 00-.67.15c-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075C12.921 14.72 11.963 14.407 10.828 13.395c-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a6.47 6.47 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.107.547 4.14 1.588 5.945L.057 24l6.305-1.654A11.882 11.882 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+                                </svg><?php esc_html_e( 'WhatsApp', 'nezer-motors' ); ?>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email row -->
+            <div class="mt-6 p-5 rounded-2xl flex flex-col sm:flex-row items-center gap-4 border"
+                :class="darkMode?'bg-white/04 border-white/10':'bg-white border-gray-200'">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style="background: linear-gradient(135deg, #d4a017, #f0c040)">
+                    <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="font-sub font-700 text-sm" :class="darkMode?'text-white':'text-gray-900'">
+                        <?php esc_html_e( 'General Enquiries', 'nezer-motors' ); ?></p>
+                    <a href="<?php echo esc_url( 'mailto:info@nezermotors.com' ); ?>"
+                        class="font-body text-gold-500 hover:text-gold-400 transition-colors font-700"><?php echo esc_html( 'info@nezermotors.com' ); ?></a>
+                </div>
+                <a href="<?php echo esc_url( 'mailto:info@nezermotors.com' ); ?>"
+                    class="sm:ml-auto flex items-center gap-2 px-5 py-2.5 rounded-xl font-sub font-700 text-sm text-black transition-all hover:opacity-90"
+                    style="background: linear-gradient(135deg, #d4a017, #f0c040)"><?php esc_html_e( 'Send Email', 'nezer-motors' ); ?></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM + MAP -->
+    <section class="py-16" :class="darkMode?'bg-dark-800':'bg-white'">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 <!-- Contact Form -->
-                <div class="relative">
-                    <!-- Form Container -->
-                    <div
-                        class="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg rounded-3xl p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-2xl">
-                        <!-- Animated Border -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-cyber-coral via-cyber-blue to-cyber-coral dark:from-cyber-pink dark:via-cyber-cyan dark:to-cyber-pink rounded-3xl opacity-20 blur-sm animate-pulse">
-                        </div>
-
-                        <div class="relative z-10">
-                            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Send Message</h2>
-                            <p class="text-gray-600 dark:text-gray-400 mb-8">Tell me about your project and I'll get
-                                back to you soon.</p>
-
-                            <!-- Success/Error Messages -->
-                            <?php
-                            $forms_error   = isset( $_SESSION['forms_error'] ) ? $_SESSION['forms_error'] : array();
-                            $forms_success = isset( $_SESSION['forms_success'] ) ? $_SESSION['forms_success'] : array();
-                            unset( $_SESSION['forms_error'], $_SESSION['forms_success'] );
-                            ?>
-
-                            <?php if ( ! empty( $forms_success ) ) : ?>
-                            <?php foreach ( $forms_success as $success ) : ?>
-                            <div class="flex items-center justify-between bg-gradient-to-r from-green-400 to-green-600 text-white p-4 mb-6 rounded-2xl shadow-lg"
-                                role="alert">
-                                <div class="flex items-center">
-                                    <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <p><?php echo esc_html( $success ); ?></p>
-                                </div>
-                                <button type="button" class="text-white hover:text-gray-200"
-                                    onclick="this.parentElement.style.display='none';">×</button>
-                            </div>
-                            <?php endforeach; ?>
-                            <?php endif; ?>
-
-                            <?php if ( ! empty( $forms_error ) ) : ?>
-                            <?php foreach ( $forms_error as $error ) : ?>
-                            <div class="flex items-center justify-between bg-gradient-to-r from-red-400 to-red-600 text-white p-4 mb-6 rounded-2xl shadow-lg"
-                                role="alert">
-                                <div class="flex items-center">
-                                    <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <p><?php echo esc_html( $error ); ?></p>
-                                </div>
-                                <button type="button" class="text-white hover:text-gray-200"
-                                    onclick="this.parentElement.style.display='none';">×</button>
-                            </div>
-                            <?php endforeach; ?>
-                            <?php endif; ?>
-
-                            <!-- Contact Form -->
-                            <form id="contact-form" class="space-y-6">
-                                <input type="text" name="honeypot" class="hidden">
-
-                                <!-- Name Field -->
-                                <div class="relative pb-6">
-                                    <input type="text" id="name" name="name" placeholder=" " required
-                                        class="peer w-full px-4 py-4 bg-gray-50 dark:bg-gray-800/50 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-transparent focus:border-cyber-blue dark:focus:border-cyber-cyan focus:outline-none focus:ring-0 transition-all duration-300">
-                                    <label for="name"
-                                        class="absolute left-4 -top-2.5 bg-white dark:bg-gray-900 px-2 text-sm font-medium text-gray-600 dark:text-gray-400 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:bg-transparent peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-cyber-blue dark:peer-focus:text-cyber-cyan peer-focus:bg-white dark:peer-focus:bg-gray-900">
-                                        <?php esc_html_e( 'Full Name *', 'wilson-devops' ); ?>
-                                    </label>
-                                </div>
-
-                                <!-- Email Field -->
-                                <div class="relative pb-6">
-                                    <input type="email" id="email" name="email" placeholder=" " required
-                                        class="peer w-full px-4 py-4 bg-gray-50 dark:bg-gray-800/50 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-transparent focus:border-cyber-blue dark:focus:border-cyber-cyan focus:outline-none focus:ring-0 transition-all duration-300">
-                                    <label for="email"
-                                        class="absolute left-4 -top-2.5 bg-white dark:bg-gray-900 px-2 text-sm font-medium text-gray-600 dark:text-gray-400 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:bg-transparent peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-cyber-blue dark:peer-focus:text-cyber-cyan peer-focus:bg-white dark:peer-focus:bg-gray-900">
-                                        <?php esc_html_e( 'Email Address *', 'wilson-devops' ); ?>
-                                    </label>
-                                </div>
-
-                                <!-- Subject Field -->
-                                <div class="relative pb-6">
-                                    <input type="text" id="subject" name="subject" placeholder=" "
-                                        class="peer w-full px-4 py-4 bg-gray-50 dark:bg-gray-800/50 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-transparent focus:border-cyber-blue dark:focus:border-cyber-cyan focus:outline-none focus:ring-0 transition-all duration-300">
-                                    <label for="subject"
-                                        class="absolute left-4 -top-2.5 bg-white dark:bg-gray-900 px-2 text-sm font-medium text-gray-600 dark:text-gray-400 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:bg-transparent peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-cyber-blue dark:peer-focus:text-cyber-cyan peer-focus:bg-white dark:peer-focus:bg-gray-900">
-                                        <?php esc_html_e( 'Subject', 'wilson-devops' ); ?>
-                                    </label>
-                                </div>
-
-                                <!-- Message Field -->
-                                <div class="relative pb-6">
-                                    <textarea id="message" name="message" rows="5" placeholder=" " required
-                                        class="peer w-full px-4 py-4 bg-gray-50 dark:bg-gray-800/50 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-transparent focus:border-cyber-blue dark:focus:border-cyber-cyan focus:outline-none focus:ring-0 resize-none transition-all duration-300"></textarea>
-                                    <label for="message"
-                                        class="absolute left-4 -top-2.5 bg-white dark:bg-gray-900 px-2 text-sm font-medium text-gray-600 dark:text-gray-400 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:bg-transparent peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-cyber-blue dark:peer-focus:text-cyber-cyan peer-focus:bg-white dark:peer-focus:bg-gray-900">
-                                        <?php esc_html_e( 'Your Message *', 'wilson-devops' ); ?>
-                                    </label>
-                                </div>
-
-                                <!-- Submit Button -->
-                                <button type="submit" id="submit-btn"
-                                    class="group relative w-full py-4 px-8 bg-gradient-to-r from-cyber-blue to-cyber-coral dark:from-cyber-cyan dark:to-cyber-pink text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden cursor-pointer">
-                                    <span class="relative z-10 flex items-center justify-center">
-                                        <span id="btn-icon">
-                                            <svg class="w-5 h-5 mr-2 group-hover:animate-bounce" fill="none"
-                                                stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                                            </svg>
-                                        </span>
-                                        <span
-                                            id="btn-text"><?php esc_html_e( 'Send Message', 'wilson-devops' ); ?></span>
-                                    </span>
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-r from-cyber-coral to-cyber-blue dark:from-cyber-pink dark:to-cyber-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    </div>
-                                </button>
-                            </form>
-                        </div>
+                <div>
+                    <div class="mb-8">
+                        <h2 class="font-heading text-3xl sm:text-4xl font-700 mb-2"
+                            :class="darkMode?'text-white':'text-gray-900'">
+                            <?php esc_html_e( 'Send Us a Message', 'nezer-motors' ); ?></h2>
+                        <p class="font-body text-sm" :class="darkMode?'text-white/60':'text-gray-500'">
+                            <?php esc_html_e( 'We\'ll get back to you via email or WhatsApp as quickly as possible.', 'nezer-motors' ); ?>
+                        </p>
                     </div>
 
-                    <!-- Decorative Elements -->
-                    <div
-                        class="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-cyber-coral to-cyber-blue dark:from-cyber-pink dark:to-cyber-cyan rounded-full opacity-30 animate-ping">
+                    <div x-data="contactForm()" class="space-y-4">
+                        <!-- Name -->
+                        <div>
+                            <label class="block font-sub font-600 text-xs uppercase tracking-wider mb-1.5"
+                                :class="darkMode?'text-white/50':'text-gray-500'"><?php esc_html_e( 'Your Name', 'nezer-motors' ); ?></label>
+                            <input x-model="form.name" type="text"
+                                placeholder="<?php esc_attr_e( 'e.g. John Kamau', 'nezer-motors' ); ?>"
+                                class="w-full px-4 py-3 rounded-xl text-sm font-body focus:outline-none focus:ring-2 transition-all"
+                                :class="darkMode?'bg-white/08 border border-white/15 text-white placeholder-white/30 focus:ring-gold-500/30':'bg-slate-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-gold-500/30'" />
+                        </div>
+                        <!-- Email -->
+                        <div>
+                            <label class="block font-sub font-600 text-xs uppercase tracking-wider mb-1.5"
+                                :class="darkMode?'text-white/50':'text-gray-500'"><?php esc_html_e( 'Email Address', 'nezer-motors' ); ?></label>
+                            <input x-model="form.email" type="email"
+                                placeholder="<?php esc_attr_e( 'you@example.com', 'nezer-motors' ); ?>"
+                                class="w-full px-4 py-3 rounded-xl text-sm font-body focus:outline-none focus:ring-2 transition-all"
+                                :class="darkMode?'bg-white/08 border border-white/15 text-white placeholder-white/30 focus:ring-gold-500/30':'bg-slate-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-gold-500/30'" />
+                        </div>
+                        <!-- Branch -->
+                        <div>
+                            <label class="block font-sub font-600 text-xs uppercase tracking-wider mb-1.5"
+                                :class="darkMode?'text-white/50':'text-gray-500'"><?php esc_html_e( 'Which Branch?', 'nezer-motors' ); ?></label>
+                            <select x-model="form.branch"
+                                class="w-full px-4 py-3 rounded-xl text-sm font-body focus:outline-none focus:ring-2 transition-all"
+                                :class="darkMode?'bg-white/08 border border-white/15 text-white focus:ring-gold-500/30':'bg-slate-50 border border-gray-200 text-gray-900 focus:ring-gold-500/30'">
+                                <option value=""><?php esc_html_e( 'Select a branch...', 'nezer-motors' ); ?></option>
+                                <option value="<?php echo esc_attr( 'autocare' ); ?>">
+                                    <?php esc_html_e( 'AutoCare Express - Opp King\'ong\'o Prison', 'nezer-motors' ); ?>
+                                </option>
+                                <option value="<?php echo esc_attr( 'quikfix' ); ?>">
+                                    <?php esc_html_e( 'QuikFix - Shell King\'ong\'o', 'nezer-motors' ); ?></option>
+                                <option value="<?php echo esc_attr( 'general' ); ?>">
+                                    <?php esc_html_e( 'General Enquiry', 'nezer-motors' ); ?></option>
+                            </select>
+                        </div>
+                        <!-- Message -->
+                        <div>
+                            <label class="block font-sub font-600 text-xs uppercase tracking-wider mb-1.5"
+                                :class="darkMode?'text-white/50':'text-gray-500'"><?php esc_html_e( 'Message', 'nezer-motors' ); ?></label>
+                            <textarea x-model="form.message" rows="4"
+                                placeholder="<?php esc_attr_e( 'Tell us about your vehicle and what service you need...', 'nezer-motors' ); ?>"
+                                class="w-full px-4 py-3 rounded-xl text-sm font-body focus:outline-none focus:ring-2 transition-all resize-none"
+                                :class="darkMode?'bg-white/08 border border-white/15 text-white placeholder-white/30 focus:ring-gold-500/30':'bg-slate-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-gold-500/30'"></textarea>
+                        </div>
+                        <!-- Submit -->
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <button type="button" @click="submitViaEmail()"
+                                class="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl font-sub font-700 text-sm text-black transition-all hover:opacity-90 hover:scale-105"
+                                style="background: linear-gradient(135deg, #d4a017, #f0c040)">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                                </svg><?php esc_html_e( 'Send via Email', 'nezer-motors' ); ?>
+                            </button>
+                            <button type="button" @click="submitViaWhatsApp()"
+                                class="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl font-sub font-700 text-sm text-white transition-all hover:opacity-90 hover:scale-105"
+                                style="background: linear-gradient(135deg, #25d366, #128c7e)">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967a.664.664 0 00-.67.15c-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075C12.921 14.72 11.963 14.407 10.828 13.395c-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a6.47 6.47 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.107.547 4.14 1.588 5.945L.057 24l6.305-1.654A11.882 11.882 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+                                </svg><?php esc_html_e( 'Send via WhatsApp', 'nezer-motors' ); ?>
+                            </button>
+                        </div>
+                        <!-- Note -->
+                        <p class="font-body text-xs" :class="darkMode?'text-white/30':'text-gray-400'">
+                            <?php esc_html_e( '"Send via Email" opens your email app pre-filled. "Send via WhatsApp" opens WhatsApp with your message.', 'nezer-motors' ); ?>
+                        </p>
                     </div>
-                    <div
-                        class="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-cyber-blue to-cyber-coral dark:from-cyber-cyan dark:to-cyber-pink rounded-lg rotate-12 opacity-40 animate-pulse">
+                </div>
+
+                <!-- Maps -->
+                <div class="space-y-5">
+                    <!-- AutoCare map placeholder -->
+                    <div>
+                        <p class="font-sub font-700 text-sm mb-2 flex items-center gap-2"
+                            :class="darkMode?'text-white':'text-gray-900'">
+                            <span class="w-3 h-3 rounded-full inline-block"
+                                style="background: #1e40af"></span><?php esc_html_e( 'AutoCare Express - Opp King\'ong\'o Prison', 'nezer-motors' ); ?>
+                        </p>
+                        <div class="map-placeholder map-grid h-52 flex items-center justify-center"
+                            style="border: 1px solid rgba(255, 255, 255, 0.1)">
+                            <div class="text-center">
+                                <div class="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3"
+                                    style="background: rgba(30, 64, 175, 0.4)">
+                                    <svg class="w-5 h-5 text-blue-300" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                    </svg>
+                                </div>
+                                <p class="font-body text-white/60 text-sm mb-3">
+                                    <?php esc_html_e( 'Nyeri, Opp King\'ong\'o Prison', 'nezer-motors' ); ?></p>
+                                <a href="<?php echo esc_url( 'https://maps.google.com/?q=King%27ong%27o+Prison+Nyeri+Kenya' ); ?>"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg font-sub font-700 text-xs text-white transition-all hover:opacity-80"
+                                    style="background: rgba(30, 64, 175, 0.5)">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                                    </svg><?php esc_html_e( 'Open in Maps', 'nezer-motors' ); ?>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- QuikFix map placeholder -->
+                    <div>
+                        <p class="font-sub font-700 text-sm mb-2 flex items-center gap-2"
+                            :class="darkMode?'text-white':'text-gray-900'">
+                            <span class="w-3 h-3 rounded-full inline-block"
+                                style="background: #dc2626"></span><?php esc_html_e( 'QuikFix - Shell King\'ong\'o, Nyahururu Junction', 'nezer-motors' ); ?>
+                        </p>
+                        <div class="map-placeholder map-grid h-52 flex items-center justify-center"
+                            style="border: 1px solid rgba(255, 255, 255, 0.1)">
+                            <div class="text-center">
+                                <div class="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3"
+                                    style="background: rgba(220, 38, 38, 0.4)">
+                                    <svg class="w-5 h-5 text-red-300" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                    </svg>
+                                </div>
+                                <p class="font-body text-white/60 text-sm mb-3">
+                                    <?php esc_html_e( 'Shell Station, King\'ong\'o - Nyahururu Junction', 'nezer-motors' ); ?>
+                                </p>
+                                <a href="<?php echo esc_url( 'https://maps.google.com/?q=Shell+King\'ong\'o+Nyeri+Kenya' ); ?>"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg font-sub font-700 text-xs text-white transition-all hover:opacity-80"
+                                    style="background: rgba(220, 38, 38, 0.5)">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                                    </svg><?php esc_html_e( 'Open in Maps', 'nezer-motors' ); ?>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -308,4 +414,5 @@ get_header();
 
 </main>
 
-<?php get_footer(); 
+<?php
+get_footer();
