@@ -33,9 +33,11 @@ defined( 'ABSPATH' ) || exit;
     <meta name="application-name" content="Wilson Devops" />
     <link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/assets/favicon/site.webmanifest" />
     <meta name="description"
-        content="WordPress Developer in Nairobi with 5+ years of experience building custom themes, plugins, and high-performance websites for businesses and brands.">
+        content="Nezer Motors is Nyeri's trusted vehicle service group. AutoCare Express at King'Ong'o and QuikFix at Shell Kingongo offer full car servicing, tyres, alignment, oil change and more. Mon–Sat 8AM–5PM." />
     <meta name="keywords"
-        content="WordPress Developer, Custom Themes, Custom Plugins, Full-Scale Websites, Web Solutions, Nairobi, Kenya">
+        content="car service Nyeri, auto care Nyeri Kenya, vehicle servicing Nyeri, Nezer Motors, AutoCare Express Nyeri, QuikFix Nyeri, wheel alignment Nyeri, tyre fitting Nyeri" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://nezermotors.com/" />
     <?php wp_head(); ?>
 </head>
 
@@ -46,7 +48,12 @@ defined( 'ABSPATH' ) || exit;
     <div id="page">
         <a href="#content" class="sr-only"><?php esc_html_e( 'Skip to content', 'nezer-motors' ); ?></a>
 
-        <div x-data="themeToggle()" x-init="init()" id="content" class="">
+        <!-- <div x-data="themeToggle()" x-init="init()" id="content" class="" x-data="siteApp()" x-init="initTheme()"
+            :class="darkMode ? 'dark bg-dark-900 text-white' : 'bg-slate-50 text-gray-900'"
+            class="min-h-screen transition-colors duration-300"> -->
+        <div id="content" class="" x-data="siteApp()" x-init="initTheme()"
+            :class="darkMode ? 'dark bg-dark-900 text-white' : 'bg-slate-50 text-gray-900'"
+            class="min-h-screen transition-colors duration-300">
 
             <?php get_template_part( 'template-parts/layout/header', 'content' ); ?>
 

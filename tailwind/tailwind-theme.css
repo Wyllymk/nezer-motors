@@ -17,6 +17,7 @@
  * the default theme with new variables or overriding the values of existing
  * variables.
  */
+
 @theme {
 	/**
 	 * These theme variables use CSS variables set by WordPress using values
@@ -51,49 +52,72 @@
 	--font-mono:
 		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
 		"Liberation Mono", "Courier New", monospace;
-
+	--font-family-heading: "Rajdhani", sans-serif;
+	--font-family-sub: "Barlow", sans-serif;
+	--font-family-body: "DM Sans", sans-serif;
 	/**
 	   * Add your theme below:
 	   */
 	/*Shadows*/
 	--drop-shadow-white-glow: 0 0 5px rgba(255, 255, 255, 1);
-	--drop-shadow-brass-nail: 0 0 5px rgba(219, 195, 118, 1);
-	--drop-shadow-mustard-gold: 0 0 5px rgba(112, 102, 36, 1);
-	--drop-shadow-custom: 8px 0px 24px 0px rgba(76, 128, 178, 0.1);
-	/* New cyber glow */
-	--drop-shadow-cyber-cyan: 0 0 15px rgba(1, 146, 134, 0.5);
-	--drop-shadow-cyber-blue: 0 0 15px rgba(0, 123, 255, 0.5);
-	--drop-shadow-cyber-coral: 0 0 15px rgba(255, 51, 102, 0.5);
-	--drop-shadow-cyber-pink: 0 0 15px rgba(255, 0, 122, 0.5);
-	--drop-shadow-cyber-teal: 0 0 15px rgba(13, 148, 136, 0.5);
-	--drop-shadow-cyber-purple: 0 0 15px rgba(147, 51, 234, 0.5);
 
-	/*Fonts*/
-	--font-sans: "Proxima Nova", system-ui, -apple-system, BlinkMacSystemFont,
-		"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-		"Noto Color Emoji";
-	--font-nico: "Nico", sans-serif;
-	--font-oswald: "Oswald", sans-serif;
-	--font-oswald: "Manrope", sans-serif;
-	--font-satisfy: "Satisfy", sans-serif;
-	/*Colors*/
-	--color-regal-blue: #140f49;
-	--color-nav-blue: #605c8d;
-	--color-linkedin: #0077b5;
-	--color-whatsapp: #25d366;
+	/*Custom colors as CSS custom properties*/
+	--color-gold-400: #f0c040;
+	--color-gold-500: #d4a017;
+	--color-gold-600: #b8860b;
+	--color-ac-blue: #1e40af;
+	--color-ac-blue-light: #2563eb;
+	--color-ac-red: #dc2626;
+	--color-qf-red: #dc2626;
+	--color-qf-yellow: #eab308;
+	--color-qf-yellow-light: #facc15;
+	--color-dark-900: #09090b;
+	--color-dark-800: #111113;
+	--color-dark-700: #18181b;
+	--color-dark-600: #27272a;
 
-	/* New techy colors for dark and light modes */
-	--color-cyber-dark: #1a1a2e; /* Deep midnight blue-gray for dark mode bg */
-	--color-cyber-cyan: oklab(
-		0.6 -0.117603 -0.00967695 / 1
-	); /* #00d4ff Electric cyan for accents */
-	--color-cyber-pink: #ff007a; /* Neon pink for highlights */
-	--color-cyber-light: #f5f7fa; /* Light cool gray for light mode bg */
-	--color-cyber-blue: #007bff; /* Vibrant blue for light mode accents */
-	--color-cyber-coral: #ff3366; /* Coral pink for light mode highlights */
-	--color-text-dark: #797979; /* Soft off-white for dark mode text */
-	--color-text-dark-muted: #a0aec0; /* Muted gray-blue for secondary text */
-	--color-text-light: #1a202c; /* Deep charcoal for light mode text */
-	--color-text-light-muted: #718096; /* Slate gray for secondary text */
+	/*Background image as CSS custom property*/
+	--bg-hero-pattern: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Then optionally add custom utilities to use these as Tailwind classes */
+@utility heading {
+	font-family: var(--font-family-heading);
+}
+
+@utility sub {
+	font-family: var(--font-family-sub);
+}
+
+@utility body-font {
+	font-family: var(--font-family-body);
+}
+
+/* Animation keyframes need to be in a separate @keyframes block */
+@keyframes marquee {
+	0% { transform: translateX(0%); }
+	100% { transform: translateX(-50%); }
+}
+
+@keyframes fadeUp {
+	0% { opacity: 0; transform: translateY(20px); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+@keyframes slideInRight {
+	0% { opacity: 0; transform: translateX(30px); }
+	100% { opacity: 1; transform: translateX(0); }
+}
+
+@theme {
+	--animate-marquee: marquee 30s linear infinite;
+	--animate-fade-up: fadeUp 0.6s ease forwards;
+	--animate-fade-in: fadeIn 0.4s ease forwards;
+	--animate-slide-in-right: slideInRight 0.4s ease forwards;
+	--animate-pulse-slow: pulse 3s ease-in-out infinite;
 }
