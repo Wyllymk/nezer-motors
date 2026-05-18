@@ -6,268 +6,6 @@
  */
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
-
-// Start the session if not already started
-function start_session() {
-	if ( ! session_id() ) {
-		session_start();
-	}
-}
-add_action( 'wp', 'start_session', 1 );
-
-/**
- * Contact Form Handler
- * Add this to your theme's functions.php file
- */
-
-// Enqueue scripts for contact form
-function nezer_motors_contact_form_scripts() 
-{
-    if (is_page_template('page-contact.php') || is_page('contact')) {
-        wp_enqueue_script(
-            'contact-form-handler',
-            get_template_directory_uri() . '/js/contact.min.js',
-            array('jquery'),
-            '1.0.0',
-            true
-        );
-        
-        wp_localize_script('contact-form-handler', 'contact_ajax', array(
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('contact_form_nonce'),
-            'messages' => array(
-                'sending' => __('Sending message...', 'nezer-motors'),
-                'success' => __('Message sent successfully! I\'ll get back to you soon.', 'nezer-motors'),
-                'error' => __('Something went wrong. Please try again.', 'nezer-motors'),
-                'required_fields' => __('Please fill in all required fields.', 'nezer-motors'),
-                'invalid_email' => __('Please enter a valid email address.', 'nezer-motors')
-            )
-        ));
-    }
-}
-add_action('wp_enqueue_scripts', 'nezer_motors_contact_form_scripts');
-
-// Handle AJAX form submission for logged in and non-logged in users
-add_action('wp_ajax_submit_contact_form', 'handle_contact_form_submission');
-add_action('wp_ajax_nopriv_submit_contact_form', 'handle_contact_form_submission');
-
-function handle_contact_form_submission() 
-{
-    // Verify nonce for security
-    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'contact_form_nonce')) {
-        wp_send_json_error(array(
-            'message' => __('Security verification failed. Please refresh the page and try again.', 'nezer-motors')
-        ));
-    }
-
-    // Honeypot spam protection
-    if (!empty($_POST['honeypot'])) {
-        wp_send_json_error(array(
-            'message' => __('Spam detected.', 'nezer-motors')
-        ));
-    }
-
-    // Sanitize and validate form data
-    $name    = sanitize_text_field($_POST['name']);
-    $email   = sanitize_email($_POST['email']);
-    $subject = sanitize_text_field($_POST['subject']);
-    $message = sanitize_textarea_field($_POST['message']);
-
-    // Validation
-    $errors = array();
-    
-    if (empty($name)) {
-        $errors[] = __('Name is required.', 'nezer-motors');
-    }
-    
-    if (empty($email)) {
-        $errors[] = __('Email is required.', 'nezer-motors');
-    } elseif (!is_email($email)) {
-        $errors[] = __('Please enter a valid email address.', 'nezer-motors');
-    }
-    
-    if (empty($message)) {
-        $errors[] = __('Message is required.', 'nezer-motors');
-    }
-
-    // Rate limiting check
-    $user_ip = $_SERVER['REMOTE_ADDR'];
-    $rate_limit_key = 'contact_form_' . md5($user_ip);
-    $submission_count = get_transient($rate_limit_key);
-    
-    if ($submission_count && $submission_count >= 3) {
-        wp_die(json_encode(array(
-            'success' => false,
-            'message' => __('Too many submissions. Please wait before sending another message.', 'nezer-motors')
-        )));
-    }
-
-    if (!empty($errors)) {
-        wp_die(json_encode(array(
-            'success' => false,
-            'message' => implode(' ', $errors)
-        )));
-    }
-
-    // Prepare email
-    $to = get_option('admin_email'); 
-    $email_subject = $subject ? '[Contact Form] ' . $subject : '[Contact Form] New Message from ' . $name;
-
-    // Build HTML email body with your theme colors
-    $email_body = '
-    <html>
-    <head>
-      <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: var(--color-background, #f5f7fa); /* fallback to cyber-light */
-            color: var(--color-text-light, #1a202c);
-            padding: 20px;
-        }
-        .container {
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            max-width: 600px;
-            margin: auto;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: var(--color-cyber-cyan, #00d4ff);
-            margin-top: 0;
-        }
-        .field {
-            margin-bottom: 12px;
-        }
-        .label {
-            font-weight: bold;
-            color: var(--color-nav-blue, #605c8d);
-        }
-        .value {
-            margin-left: 5px;
-            color: var(--color-text-light, #1a202c);
-        }
-        .message-box {
-            padding: 12px;
-            background: var(--color-cyber-light, #f5f7fa);
-            border-radius: 6px;
-            border: 1px solid var(--color-text-light-muted, #718096);
-            white-space: pre-line;
-        }
-        .footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: var(--color-text-dark-muted, #a0aec0);
-            border-top: 1px solid #eee;
-            padding-top: 10px;
-        }
-        a {
-            color: var(--color-cyber-blue, #007bff);
-            text-decoration: none;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <h2>📩 New Contact Form Submission</h2>
-        <div class="field"><span class="label">Name:</span><span class="value">'.esc_html($name).'</span></div>
-        <div class="field"><span class="label">Email:</span><span class="value">'.esc_html($email).'</span></div>
-        <div class="field"><span class="label">Subject:</span><span class="value">'.esc_html($subject).'</span></div>
-        <div class="field"><span class="label">Message:</span>
-          <div class="message-box">'.nl2br(esc_html($message)).'</div>
-        </div>
-        <div class="footer">
-          Sent from <a href="'.home_url().'" target="_blank">'.get_bloginfo('name').'</a><br>
-          IP Address: '.$user_ip.'<br>
-          Date: '.current_time('mysql').'
-        </div>
-      </div>
-    </body>
-    </html>';
-
-    // Email headers
-    $headers = array();
-    $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    $headers[] = 'From: '.get_bloginfo('name').' <'.get_option('admin_email').'>';
-    $headers[] = 'Reply-To: '.$name.' <'.$email.'>';
-
-    // Send email
-    $mail_sent = wp_mail($to, $email_subject, $email_body, $headers);
-
-    if ($mail_sent) {
-        $new_count = $submission_count ? $submission_count + 1 : 1;
-        set_transient($rate_limit_key, $new_count, 3600); // 1 hour
-
-        error_log("Contact form submission from {$name} ({$email}) - Subject: {$subject}");
-
-        wp_die(json_encode(array(
-            'success' => true,
-            'message' => __('Thank you for your message! I\'ll get back to you within 24 hours.', 'nezer-motors')
-        )));
-    } else {
-        error_log("Failed to send contact form email from {$name} ({$email})");
-        
-        wp_send_json_error(array(
-            'message' => __('Failed to send message. Please try again or contact me directly via social media.', 'nezer-motors')
-        ));
-
-    }
-}
-
-// Optional: Add contact form settings to WordPress admin
-function nezer_motors_contact_form_admin_menu() 
-{
-    add_options_page(
-        'Contact Form Settings',
-        'Contact Form',
-        'manage_options',
-        'contact-form-settings',
-        'nezer_motors_contact_form_admin_page'
-    );
-}
-add_action('admin_menu', 'nezer_motors_contact_form_admin_menu');
-
-function nezer_motors_contact_form_admin_page() 
-{
-    if (isset($_POST['save_settings'])) {
-        update_option('nezer_motors_contact_email', sanitize_email($_POST['contact_email']));
-        update_option('nezer_motors_contact_subject_prefix', sanitize_text_field($_POST['subject_prefix']));
-        echo '<div class="notice notice-success"><p>Settings saved!</p></div>';
-    }
-    
-    $contact_email = get_option('nezer_motors_contact_email', get_option('admin_email'));
-    $subject_prefix = get_option('nezer_motors_contact_subject_prefix', '[nezer_motors Devops]');
-    ?>
-<div class="wrap">
-    <h1>Contact Form Settings</h1>
-    <form method="post" action="">
-        <table class="form-table">
-            <tr>
-                <th scope="row">Contact Email</th>
-                <td>
-                    <input type="email" name="contact_email" value="<?php echo esc_attr($contact_email); ?>"
-                        class="regular-text" />
-                    <p class="description">Where contact form submissions will be sent.</p>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">Subject Prefix</th>
-                <td>
-                    <input type="text" name="subject_prefix" value="<?php echo esc_attr($subject_prefix); ?>"
-                        class="regular-text" />
-                    <p class="description">Prefix added to email subjects.</p>
-                </td>
-            </tr>
-        </table>
-        <?php submit_button('Save Settings', 'primary', 'save_settings'); ?>
-    </form>
-
-    <h2>Recent Submissions</h2>
-    <p>Check your server error logs for submission records.</p>
-</div>
-<?php
-}
-
 /**
  * Creates the "Home" and "Coming Soon" pages if they don't exist.
  *
@@ -341,106 +79,103 @@ add_action( 'after_switch_theme', 'nezer_motors_create_home_page' );
  * - Creates Project child pages.
  * - Sets Home as the static front page.
  */
-function nezer_motors_create_core_pages() {
-	$pages = array(
-		// === Parent Pages ===
-		array(
-			'title'    => 'Home',
-			'slug'     => 'home',
-			'template' => '',
-			'parent'   => 0,
-			'is_front' => true,
-		),		
-		array(
-			'title'    => 'Contact',
-			'slug'     => 'contact',
-			'template' => 'page-templates/page-contact.php',
-			'parent'   => 0,
-		),
-		array(
-			'title'    => 'About',
-			'slug'     => 'about',
-			'template' => 'page-templates/page-about.php',
-			'parent'   => 0,
-		),
-		array(
-			'title'    => 'Qwik Fix',
-			'slug'     => 'qwik-fix',
-			'template' => 'page-templates/page-qwik-fix.php',
-			'parent'   => 0,
-		),	
+function nezer_motors_create_core_pages() 
+{
+    $pages = array(        
         array(
-			'title'    => 'Auto Care Express',
-			'slug'     => 'auto-care-express',
-			'template' => 'page-templates/page-auto-care-express.php',
-			'parent'   => 0,
-		),	
+            'title'    => 'Contact',
+            'slug'     => 'contact',
+            'template' => 'page-templates/page-contact.php',
+            'parent'   => 0,
+        ),
+        array(
+            'title'    => 'About',
+            'slug'     => 'about',
+            'template' => 'page-templates/page-about.php',
+            'parent'   => 0,
+        ),
+        array(
+            'title'    => 'Qwik Fix',
+            'slug'     => 'qwikfix',
+            'template' => 'page-templates/page-qwik-fix.php',
+            'parent'   => 0,
+        ),
+        array(
+            'title'    => 'Auto Care Express',
+            'slug'     => 'autocare-express',
+            'template' => 'page-templates/page-auto-care-express.php',
+            'parent'   => 0,
+        ),
+        array(
+            'title'    => 'Coming Soon',
+            'slug'     => 'coming-soon',
+            'template' => 'page-templates/page-coming-soon.php',
+            'parent'   => 0,
+        ),
+    );
 
-		// === Child Pages under Projects ===	
-        // array(
-		// 	'title'    => 'Premia Bet',
-		// 	'slug'     => 'premia-bet',
-		// 	'template' => 'page-templates/page-premia-bet.php',
-		// 	'parent'   => 'projects',
-		// ),
-	);
+    $created_pages = [];
 
-	$created_pages = [];
+    foreach ( $pages as $page ) {
 
-	foreach ( $pages as $page ) {
-		// Check if page already exists by title
-		$existing_page = get_page_by_title( $page['title'] );
+        // Check if page already exists by title (WP 6.2+ compatible)
+        $existing_query = new WP_Query( array(
+            'post_type'              => 'page',
+            'title'                  => $page['title'],
+            'posts_per_page'         => 1,
+            'post_status'            => 'publish',
+            'no_found_rows'          => true,
+            'update_post_meta_cache' => false,
+            'update_post_term_cache' => false,
+        ) );
+        $existing_page = $existing_query->have_posts() ? $existing_query->posts[0] : null;
 
-		if ( $existing_page ) {
-			// Update slug if different
-			if ( $existing_page->post_name !== $page['slug'] ) {
-				wp_update_post(
-					array(
-						'ID'        => $existing_page->ID,
-						'post_name' => $page['slug'],
-					)
-				);
-			}
-			$page_id = $existing_page->ID;
-		} else {
-			// Determine parent ID (if parent slug given)
-			$parent_id = 0;
-			if ( ! empty( $page['parent'] ) && $page['parent'] !== 0 ) {
-				$parent_page = get_page_by_path( $page['parent'] );
-				if ( $parent_page ) {
-					$parent_id = $parent_page->ID;
-				}
-			}
+        if ( $existing_page ) {
+            // Update slug if different
+            if ( $existing_page->post_name !== $page['slug'] ) {
+                wp_update_post( array(
+                    'ID'        => $existing_page->ID,
+                    'post_name' => $page['slug'],
+                ) );
+            }
+            $page_id = $existing_page->ID;
+        } else {
+            // Determine parent ID (if parent slug given)
+            $parent_id = 0;
+            if ( ! empty( $page['parent'] ) && $page['parent'] !== 0 ) {
+                $parent_page = get_page_by_path( $page['parent'] );
+                if ( $parent_page ) {
+                    $parent_id = $parent_page->ID;
+                }
+            }
 
-			// Create new page
-			$page_id = wp_insert_post(
-				array(
-					'post_title'   => $page['title'],
-					'post_name'    => $page['slug'],
-					'post_content' => '',
-					'post_status'  => 'publish',
-					'post_type'    => 'page',
-					'post_parent'  => $parent_id,
-				)
-			);
-		}
+            // Create new page
+            $page_id = wp_insert_post( array(
+                'post_title'   => $page['title'],
+                'post_name'    => $page['slug'],
+                'post_content' => '',
+                'post_status'  => 'publish',
+                'post_type'    => 'page',
+                'post_parent'  => $parent_id,
+            ) );
+        }
 
-		// Assign template if specified
-		if ( ! empty( $page['template'] ) && ! is_wp_error( $page_id ) ) {
-			update_post_meta( $page_id, '_wp_page_template', $page['template'] );
-		}
+        // Assign template if specified
+        if ( ! empty( $page['template'] ) && ! is_wp_error( $page_id ) ) {
+            update_post_meta( $page_id, '_wp_page_template', $page['template'] );
+        }
 
-		// Track created/updated pages
-		$created_pages[ $page['slug'] ] = $page_id;
+        // Track created/updated pages
+        $created_pages[ $page['slug'] ] = $page_id;
 
-		// Set Home as front page
-		if ( isset( $page['is_front'] ) && $page['is_front'] ) {
-			update_option( 'page_on_front', $page_id );
-			update_option( 'show_on_front', 'page' );
-		}
-	}
+        // Set Home as front page
+        if ( isset( $page['is_front'] ) && $page['is_front'] ) {
+            update_option( 'page_on_front', $page_id );
+            update_option( 'show_on_front', 'page' );
+        }
+    }
 }
-add_action( 'after_switch_theme', 'nezer_motors_create_core_pages' );
+add_action( 'init', 'nezer_motors_create_core_pages' );
 
 // Automatically set permalinks to 'postname' and timezone to +0300 on theme activation.
 function nezer_motors_setup_settings() 
@@ -455,3 +190,161 @@ function nezer_motors_setup_settings()
 	update_option('gmt_offset', 3); // Set numeric offset to +3
 }
 add_action('after_switch_theme', 'nezer_motors_setup_settings');
+
+add_action( 'template_redirect', function () {
+
+    $coming_soon_active = true;
+
+    if ( ! $coming_soon_active ) return;
+    if ( current_user_can( 'edit_posts' ) ) return;
+    if ( is_page( 'coming-soon' ) ) return;
+    if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || defined( 'REST_REQUEST' ) ) return;
+
+    wp_redirect( home_url( '/coming-soon/' ), 302 );
+    exit;
+
+} );
+
+/* ============================================================
+   1. THEME CONSTANTS
+============================================================ */
+define( 'NM_VERSION',  '1.0.0' );
+define( 'NM_DIR',      get_template_directory() );
+define( 'NM_URI',      get_template_directory_uri() );
+define( 'NM_EMAIL',    'info@nezermotors.com' );
+define( 'NM_WA_NUM',   '254733204672' );
+
+/* ============================================================
+   2. INCLUDE FILES
+============================================================ */
+require_once NM_DIR . '/inc/utilities.php';
+require_once NM_DIR . '/inc/mail.php';
+
+/* ============================================================
+   3. THEME SETUP
+============================================================ */
+
+
+/* ============================================================
+   4. TAILWIND CONFIG (PHP → JS)
+   Returns the Tailwind config object as a JS string.
+============================================================ */
+
+
+/* ============================================================
+   5. ANTI-FLASH DARK MODE SCRIPT
+   Runs before any CSS/HTML renders to prevent white flash.
+============================================================ */
+function nezer_motors_antiflash_script() {
+	echo '<script id="nm-antiflash">(function(){';
+	echo 'var t=localStorage.getItem("nezer-theme")||"system";';
+	echo 'var d=t==="dark"||(t==="system"&&window.matchMedia("(prefers-color-scheme:dark)").matches);';
+	echo 'if(d)document.documentElement.classList.add("dark");';
+	echo '})();</script>' . "\n";
+}
+add_action( 'wp_head', 'nezer_motors_antiflash_script', 1 );
+
+/* ============================================================
+   6. ENQUEUE SCRIPTS & STYLES
+============================================================ */
+
+
+/* ============================================================
+   7. CONTACT FORM AJAX HANDLER
+============================================================ */
+add_action( 'wp_ajax_nm_contact',        'nezer_motors_handle_contact' );
+add_action( 'wp_ajax_nopriv_nm_contact', 'nezer_motors_handle_contact' );
+
+function nezer_motors_handle_contact() {
+	// Verify nonce
+	if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'nm_contact_nonce' ) ) {
+		wp_send_json_error( [ 'message' => esc_html__( 'Security check failed. Please refresh and try again.', 'nezer-motors' ) ], 403 );
+	}
+
+	// Sanitize inputs
+	$name    = sanitize_text_field( wp_unslash( $_POST['name']    ?? '' ) );
+	$email   = sanitize_email(       wp_unslash( $_POST['email']   ?? '' ) );
+	$phone   = sanitize_text_field( wp_unslash( $_POST['phone']   ?? '' ) );
+	$branch  = sanitize_text_field( wp_unslash( $_POST['branch']  ?? '' ) );
+	$vehicle = sanitize_text_field( wp_unslash( $_POST['vehicle'] ?? '' ) );
+	$message = sanitize_textarea_field( wp_unslash( $_POST['message'] ?? '' ) );
+
+	// Validate required fields
+	if ( empty( $name ) || empty( $email ) || empty( $message ) || empty( $branch ) ) {
+		wp_send_json_error( [ 'message' => esc_html__( 'Please fill in all required fields.', 'nezer-motors' ) ], 400 );
+	}
+	if ( ! is_email( $email ) ) {
+		wp_send_json_error( [ 'message' => esc_html__( 'Please enter a valid email address.', 'nezer-motors' ) ], 400 );
+	}
+
+	// Basic honeypot (if your form has a hidden field)
+	if ( ! empty( $_POST['website'] ) ) {
+		wp_send_json_success( [ 'message' => esc_html__( 'Message sent!', 'nezer-motors' ) ] );
+	}
+
+	// Build and send email
+	$sent = nezer_motors_send_contact_email( [
+		'name'    => $name,
+		'email'   => $email,
+		'phone'   => $phone,
+		'branch'  => $branch,
+		'vehicle' => $vehicle,
+		'message' => $message,
+	] );
+
+	if ( $sent ) {
+		// Auto-reply to customer
+		nezer_motors_send_auto_reply( $name, $email, $branch );
+
+		wp_send_json_success( [
+			'message' => esc_html__( 'Thank you! Your message has been sent. We will get back to you shortly.', 'nezer-motors' ),
+		] );
+	} else {
+		wp_send_json_error( [
+			'message' => esc_html__( 'Message could not be sent. Please call us directly.', 'nezer-motors' ),
+		], 500 );
+	}
+}
+
+/* ============================================================
+   8. DOCUMENT TITLE SEPARATOR
+============================================================ */
+function nezer_motors_document_title_separator( $sep ) {
+	return '|';
+}
+add_filter( 'document_title_separator', 'nezer_motors_document_title_separator' );
+
+/* ============================================================
+   9. EXCERPT LENGTH
+============================================================ */
+function nezer_motors_excerpt_length( $length ) {
+	return 20;
+}
+add_filter( 'excerpt_length', 'nezer_motors_excerpt_length' );
+
+/* ============================================================
+   10. BODY CLASSES — add dark-mode-ready class
+============================================================ */
+function nezer_motors_body_classes( $classes ) {
+	$classes[] = 'nm-site';
+	$classes[] = 'transition-colors';
+	$classes[] = 'duration-300';
+	return $classes;
+}
+add_filter( 'body_class', 'nezer_motors_body_classes' );
+
+/* ============================================================
+   11. REMOVE EMOJI SCRIPTS (performance)
+============================================================ */
+remove_action( 'wp_head',             'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles',     'print_emoji_styles' );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'admin_print_styles',  'print_emoji_styles' );
+
+/* ============================================================
+   12. REMOVE UNNECESSARY HEAD LINKS
+============================================================ */
+remove_action( 'wp_head', 'rsd_link' );
+remove_action( 'wp_head', 'wlwmanifest_link' );
+remove_action( 'wp_head', 'wp_generator' );
+remove_action( 'wp_head', 'wp_shortlink_wp_head' );

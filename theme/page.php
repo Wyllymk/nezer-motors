@@ -15,9 +15,8 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 ?>
-
-<section id="primary">
-    <main id="main">
+<main id="main-content" class="pt-32 pb-24 min-h-screen nm-section-light" role="main">
+    <section id="primary">
 
         <?php
 			/* Start the Loop */
@@ -35,8 +34,8 @@ get_header();
 			endwhile; // End of the loop.
 			?>
 
-    </main><!-- #main -->
-</section><!-- #primary -->
 
+    </section><!-- #primary -->
+</main><!-- #main -->
 <?php
 get_footer();

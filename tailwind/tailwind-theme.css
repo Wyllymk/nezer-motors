@@ -4,7 +4,7 @@
  * https://tailwindcss.com/docs/theme
  */
 /**
- * Import Tailwind’s default theme.
+ * Import Tailwind's default theme.
  */
 @import "tailwindcss/theme";
 
@@ -13,7 +13,7 @@
  */
 @custom-variant dark (&:where(.dark, .dark *));
 /**
- * Your theme variables are merged with Tailwind’s defaults, either extending
+ * Your theme variables are merged with Tailwind's defaults, either extending
  * the default theme with new variables or overriding the values of existing
  * variables.
  */
@@ -40,14 +40,15 @@
 	 * beginning of each value.
 	 *
 	 * Default theme variables can be found in their entirety at the links
-	 * below, on GitHub or in Tailwind’s documentation, respectively:
+	 * below, on GitHub or in Tailwind's documentation, respectively:
 	 *
 	 * https://github.com/tailwindlabs/tailwindcss/blob/main/packages/tailwindcss/theme.css
 	 * https://tailwindcss.com/docs/theme#default-theme-variable-reference
 	 */
 	--font-sans:
-		var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+		"Noto Color Emoji";
 	--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 	--font-mono:
 		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
@@ -59,12 +60,12 @@
 	--font-rajdhani-medium: "Rajdhani Medium", sans-serif;
 	--font-rajdhani-semibold: "Rajdhani SemiBold", sans-serif;
 	--font-rajdhani-bold: "Rajdhani Bold", sans-serif;
-	
+
 	--font-barlow-regular: "Barlow Regular", sans-serif;
 	--font-barlow-medium: "Barlow Medium", sans-serif;
 	--font-barlow-semibold: "Barlow SemiBold", sans-serif;
 	--font-barlow-bold: "Barlow Bold", sans-serif;
-	
+
 	--font-dm-sans: "DM Sans Variable", sans-serif;
 	/**
 	   * Add your theme below:
@@ -106,23 +107,54 @@
 
 /* Animation keyframes need to be in a separate @keyframes block */
 @keyframes marquee {
-	0% { transform: translateX(0%); }
-	100% { transform: translateX(-50%); }
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
 }
 
 @keyframes fadeUp {
-	0% { opacity: 0; transform: translateY(20px); }
-	100% { opacity: 1; transform: translateY(0); }
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 @keyframes fadeIn {
-	0% { opacity: 0; }
-	100% { opacity: 1; }
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 @keyframes slideInRight {
-	0% { opacity: 0; transform: translateX(30px); }
-	100% { opacity: 1; transform: translateX(0); }
+	0% {
+		opacity: 0;
+		transform: translateX(30px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+/* Added from JS config */
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-16px);
+	}
 }
 
 @theme {
@@ -131,4 +163,5 @@
 	--animate-fade-in: fadeIn 0.4s ease forwards;
 	--animate-slide-in-right: slideInRight 0.4s ease forwards;
 	--animate-pulse-slow: pulse 3s ease-in-out infinite;
+	--animate-float: float 4s ease-in-out infinite;
 }

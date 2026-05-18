@@ -48,12 +48,8 @@ defined( 'ABSPATH' ) || exit;
     <div id="page">
         <a href="#content" class="sr-only"><?php esc_html_e( 'Skip to content', 'nezer-motors' ); ?></a>
 
-        <!-- <div x-data="themeToggle()" x-init="init()" id="content" class="" x-data="siteApp()" x-init="initTheme()"
-            :class="darkMode ? 'dark bg-dark-900 text-white' : 'bg-slate-50 text-gray-900'"
-            class="min-h-screen transition-colors duration-300"> -->
-        <div id="content" class="" x-data="siteApp()" x-init="initTheme()"
-            :class="darkMode ? 'dark bg-dark-900 text-white' : 'bg-slate-50 text-gray-900'"
-            class="min-h-screen transition-colors duration-300">
+        <div id="content" class=""
+            class="bg-slate-50 dark:bg-dark-900 text-gray-900 dark:text-white font-body antialiased transition-colors duration-300">
 
             <?php get_template_part( 'template-parts/layout/header', 'content' ); ?>
 

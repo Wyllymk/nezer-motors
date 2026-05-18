@@ -118,6 +118,11 @@ if ( ! function_exists( 'nezer_motors_setup' ) ) :
 
 		// Remove support for block templates.
 		remove_theme_support( 'block-templates' );
+
+		// Custom image sizes
+		add_image_size( 'nm-gallery',  800, 600, true );
+		add_image_size( 'nm-product',  600, 450, true );
+		add_image_size( 'nm-hero',    1600, 900, true );
 	}
 endif;
 add_action( 'after_setup_theme', 'nezer_motors_setup' );
@@ -133,6 +138,19 @@ function nezer_motors_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	// Pass PHP data to JS
+	wp_localize_script( 'nezer-motors-script', 'NM', [
+		'ajaxUrl' => esc_url( admin_url( 'admin-ajax.php' ) ),
+		'nonce'   => wp_create_nonce( 'nm_contact_nonce' ),
+		'waNum'   => esc_js( NM_WA_NUM ),
+		'strings' => [
+			'sending'  => esc_html__( 'Sending…',       'nezer-motors' ),
+			'success'  => esc_html__( 'Message sent! We will get back to you shortly.', 'nezer-motors' ),
+			'error'    => esc_html__( 'Something went wrong. Please try again or call us directly.', 'nezer-motors' ),
+			'required' => esc_html__( 'Please fill in all required fields.', 'nezer-motors' ),
+		],
+	] );
 }
 add_action( 'wp_enqueue_scripts', 'nezer_motors_scripts' );
 

@@ -1,15 +1,18 @@
 /*!
 Theme Name: Nezer Motors
 Theme URI: https://github.com/wyllymk/nezer-motors
-Description: A custom theme based on _tw
+Description: Official WordPress theme for Nezer Motors, Nyeri, Kenya. AutoCare Express & QwikFix vehicle servicing. Built with Tailwind CSS, Alpine.js and glassmorphism design.
 Version: 1.0.0
 Author: Wilson Mbuthia
 Author URI: https://wilsondevops.com/
 Text Domain: nezer-motors
-Requires at least: 6.9
-Requires PHP: 7.4
+Requires at least: 6.0
+Tested up to:      6.7
+Requires PHP:      8.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
+Tags:              automotive, dark-mode, tailwind, glassmorphism, responsive
+
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned.

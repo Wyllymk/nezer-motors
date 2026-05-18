@@ -16,637 +16,730 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// SEO meta
+add_action( 'wp_head', function () {
+	nm_seo_meta(
+		esc_html__( 'Nezer Motors | AutoCare Express & QwikFix — Vehicle Servicing in Nyeri, Kenya', 'nezer-motors' ),
+		esc_html__( 'Nezer Motors — Nyeri\'s trusted automotive group. AutoCare Express (mechanical repairs, engine overhaul, suspension, shocks) and QwikFix at Shell Station (alignment, tyres, batteries, oil change). Open Mon–Sat 8AM–5PM.', 'nezer-motors' )
+	);
+	nm_organization_schema();
+}, 5 );
+
 get_header();
 
+$ac = nm_branch( 'autocare' );
+$qf = nm_branch( 'qwikfix' );
 ?>
 
-<main>
+<main id="main-content" role="main">
 
     <!-- ============================================================
-	 HERO SECTION
-	============================================================ -->
-    <section x-data="heroSection()" class="relative min-h-screen flex items-center overflow-hidden"
-        style="min-height: 100dvh;">
-        <!-- Background layers -->
-        <!-- Dark overlay base -->
-        <div class="absolute inset-0 bg-dark-900 z-0"></div>
+     HERO
+    ============================================================ -->
+    <section id="nm-hero" data-active-brand="autocare"
+        aria-label="<?php esc_attr_e( 'Nezer Motors — choose a branch', 'nezer-motors' ); ?>"
+        class="relative overflow-hidden">
 
-        <!-- Animated gradient mesh -->
-        <div class="absolute inset-0 z-0 transition-all duration-1000"
-            :style="activeBrand === 'autocare' ? 'background: radial-gradient(ellipse at 20% 50%, rgba(30,64,175,0.45) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(220,38,38,0.2) 0%, transparent 50%), radial-gradient(ellipse at 60% 80%, rgba(212,160,23,0.12) 0%, transparent 50%)' : 'background: radial-gradient(ellipse at 20% 50%, rgba(220,38,38,0.45) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(234,179,8,0.25) 0%, transparent 50%), radial-gradient(ellipse at 60% 80%, rgba(212,160,23,0.12) 0%, transparent 50%)'">
-        </div>
+        <div class="nm-hero-bg" aria-hidden="true"></div>
+        <div class="nm-hero-dots" aria-hidden="true"></div>
 
-        <!-- Grid pattern overlay -->
-        <div class="absolute inset-0 z-0 opacity-40"
-            style="background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E');">
-        </div>
+        <div
+            class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 pb-16 lg:pt-0 lg:pb-0 min-h-screen flex items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center w-full py-16">
 
-        <!-- Large decorative car silhouette -->
-        <div class="absolute right-0 bottom-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none">
-            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/car_upscaled.png' ); ?>"
-                alt="<?php esc_attr_e( 'Car silhouette', 'nezer-motors' ); ?>"
-                class="opacity-10 blur-[3.5px] w-full h-full" onerror="this.style.display='none'">
-        </div>
+                <!-- ── LEFT: Dynamic content per tab ── -->
+                <div>
 
-        <!-- Content -->
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-12">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-
-                <!-- Left: Dynamic headline content -->
-                <div class="text-white">
-                    <!-- Parent brand badge -->
-                    <div
-                        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-sub font-600 tracking-widest uppercase mb-6 glass border border-white/20">
-                        <span class="w-1.5 h-1.5 rounded-full animate-pulse-slow"
-                            :class="activeBrand === 'autocare' ? 'bg-blue-400' : 'bg-red-400'"></span>
-                        <?php esc_html_e( 'Nezer Motors Group', 'nezer-motors' ); ?>
-                    </div>
-
-                    <!-- Dynamic headline -->
-                    <div x-show="activeBrand === 'autocare'" x-transition:enter="transition ease-out duration-500"
-                        x-transition:enter-start="opacity-0 translate-y-4"
-                        x-transition:enter-end="opacity-100 translate-y-0">
-                        <h1 class="font-heading text-5xl sm:text-6xl lg:text-7xl font-700 leading-tight mb-4">
-                            <?php echo wp_kses_post( __( "Nyeri's Premier<br><span class='text-blue-gradient'>Auto Care</span><br>Specialists", 'nezer-motors' ) ); ?>
+                    <!-- AutoCare Panel -->
+                    <div data-hero-panel="autocare"
+                        aria-label="<?php esc_attr_e( 'AutoCare Express information', 'nezer-motors' ); ?>">
+                        <span
+                            class="nm-hero-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-sub font-700 tracking-widest uppercase mb-5 nm-glass text-blue-300 dark:text-blue-300 border border-blue-500/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" aria-hidden="true"></span>
+                            <?php esc_html_e( 'AutoCare Express — Nyeri', 'nezer-motors' ); ?>
+                        </span>
+                        <h1
+                            class="font-heading text-5xl sm:text-6xl lg:text-7xl font-700 leading-none mb-5 text-gray-900 dark:text-white">
+                            <?php esc_html_e( 'Expert Car', 'nezer-motors' ); ?><br>
+                            <span
+                                style="background:linear-gradient(135deg,#60a5fa,#2563eb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"><?php esc_html_e( 'Repairs', 'nezer-motors' ); ?></span><br>
+                            <?php esc_html_e( 'You Trust', 'nezer-motors' ); ?>
                         </h1>
-                        <p class="font-body text-base sm:text-lg text-white/70 mb-8 max-w-md leading-relaxed">
-                            <?php esc_html_e( 'AutoCare Express delivers expert vehicle servicing, engine care, brake inspection, and full vehicle health checks at our King\'Ong\'o branch. Trusted by Nyeri drivers.', 'nezer-motors' ); ?>
+                        <p
+                            class="nm-hero-sub font-body text-lg text-gray-600 dark:text-white/65 mb-8 max-w-md leading-relaxed">
+                            <?php esc_html_e( 'Mechanical repairs, engine overhaul, suspension and shocks — professional care at Kingongo, Nyeri.', 'nezer-motors' ); ?>
                         </p>
-                        <div class="flex flex-wrap gap-3">
-                            <a href="<?php echo esc_url( home_url( '/auto-care-express/' ) ); ?>"
-                                class="flex items-center gap-2 px-6 py-3 rounded-xl font-sub font-700 text-sm transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30"
-                                style="background: linear-gradient(135deg, #1e40af, #2563eb);">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
-                                </svg>
-                                <?php esc_html_e( 'Book a Service', 'nezer-motors' ); ?>
-                            </a>
-                            <a href="<?php echo esc_url( home_url( '/auto-care-express/#services' ) ); ?>"
-                                class="flex items-center gap-2 px-6 py-3 rounded-xl font-sub font-700 text-sm transition-all duration-200 hover:bg-white/15 glass border border-white/25">
-                                <?php esc_html_e( 'View Services', 'nezer-motors' ); ?>
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <div class="flex flex-wrap gap-3 mb-7">
+                            <a href="<?php echo esc_url( home_url( '/autocare-express/' ) ); ?>"
+                                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-sub font-700 text-sm text-white hover:scale-105 hover:shadow-lg hover:shadow-blue-600/25 transition-all"
+                                style="background:linear-gradient(135deg,#1e40af,#2563eb)">
+                                <?php esc_html_e( 'Our Services', 'nezer-motors' ); ?>
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
                                 </svg>
                             </a>
-                        </div>
-                    </div>
-
-                    <div x-show="activeBrand === 'quikfix'" x-transition:enter="transition ease-out duration-500"
-                        x-transition:enter-start="opacity-0 translate-y-4"
-                        x-transition:enter-end="opacity-100 translate-y-0" x-cloak>
-                        <h1 class="font-heading text-5xl sm:text-6xl lg:text-7xl font-700 leading-tight mb-4">
-                            <?php echo wp_kses_post( __( 'Alignment.<br><span class="text-red-gradient">Tyres.</span><br>Done Right.', 'nezer-motors' ) ); ?>
-                        </h1>
-                        <p class="font-body text-base sm:text-lg text-white/70 mb-8 max-w-md leading-relaxed">
-                            <?php esc_html_e( 'QuikFix at Shell King\'ong\'o offers precision wheel alignment, tyre fitting, balancing, oil changes, and full car servicing at the Nyeri-Nyahururu Junction.', 'nezer-motors' ); ?>
-                        </p>
-                        <div class="flex flex-wrap gap-3">
-                            <a href="tel:+254710104644"
-                                class="flex items-center gap-2 px-6 py-3 rounded-xl font-sub font-700 text-sm transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
-                                style="background: linear-gradient(135deg, #dc2626, #ef4444);">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <a href="tel:<?php echo esc_attr( $ac['tel'] ); ?>"
+                                class="nm-hero-ghost-btn inline-flex items-center gap-2 px-6 py-3 rounded-xl font-sub font-700 text-sm text-gray-900 dark:text-white nm-glass border border-black/10 dark:border-white/25 hover:bg-black/[0.06] dark:hover:bg-white/15 transition-all">
+                                <svg class="w-4 h-4 text-blue-500 dark:text-blue-300" fill="currentColor"
+                                    viewBox="0 0 24 24" aria-hidden="true">
                                     <path
                                         d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                                 </svg>
-                                <?php esc_html_e( 'Call QuikFix', 'nezer-motors' ); ?>
+                                <?php echo esc_html( $ac['phone'] ); ?>
                             </a>
-                            <a href="<?php echo esc_url( home_url( '/quik-fix/#services' ) ); ?>"
-                                class="flex items-center gap-2 px-6 py-3 rounded-xl font-sub font-700 text-sm transition-all duration-200 hover:bg-white/15 glass border border-white/25">
-                                <?php esc_html_e( 'View Services', 'nezer-motors' ); ?>
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="nm-hero-chip px-3 py-1 rounded-full text-xs font-sub font-700 nm-glass text-gray-700 dark:text-white/70 border border-black/08 dark:border-white/15">
+                                <svg class="w-3 h-3 inline mr-1 text-blue-500 dark:text-blue-400" fill="currentColor"
+                                    viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                </svg>
+                                <?php echo esc_html( $ac['location'] ); ?>
+                            </span>
+                            <span
+                                class="nm-hero-chip px-3 py-1 rounded-full text-xs font-sub font-700 nm-glass text-gray-700 dark:text-white/70 border border-black/08 dark:border-white/15">
+                                <?php echo esc_html( $ac['hours'] ); ?>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- QwikFix Panel -->
+                    <div data-hero-panel="qwikfix"
+                        aria-label="<?php esc_attr_e( 'QwikFix information', 'nezer-motors' ); ?>">
+                        <span
+                            class="nm-hero-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-sub font-700 tracking-widest uppercase mb-5 nm-glass text-red-300 dark:text-red-300 border border-red-500/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" aria-hidden="true"></span>
+                            <?php esc_html_e( 'QwikFix — Shell Station, Nyeri', 'nezer-motors' ); ?>
+                        </span>
+                        <h1
+                            class="font-heading text-5xl sm:text-6xl lg:text-7xl font-700 leading-none mb-5 text-gray-900 dark:text-white">
+                            <?php esc_html_e( 'Alignment.', 'nezer-motors' ); ?><br>
+                            <span
+                                style="background:linear-gradient(135deg,#fbbf24,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"><?php esc_html_e( 'Tyres.', 'nezer-motors' ); ?></span><br>
+                            <?php esc_html_e( 'Done Right.', 'nezer-motors' ); ?>
+                        </h1>
+                        <p
+                            class="nm-hero-sub font-body text-lg text-gray-600 dark:text-white/65 mb-8 max-w-md leading-relaxed">
+                            <?php esc_html_e( 'Wheel balancing, alignment, oil change, batteries, tyre sales and car accessories at Shell Service Station, Nyeri-Nyahururu Road.', 'nezer-motors' ); ?>
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-7">
+                            <a href="<?php echo esc_url( home_url( '/qwikfix/' ) ); ?>"
+                                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-sub font-700 text-sm text-white hover:scale-105 hover:shadow-lg hover:shadow-red-600/25 transition-all"
+                                style="background:linear-gradient(135deg,#dc2626,#ef4444)">
+                                <?php esc_html_e( 'Our Services', 'nezer-motors' ); ?>
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
                                 </svg>
                             </a>
+                            <a href="tel:<?php echo esc_attr( $qf['tel'] ); ?>"
+                                class="nm-hero-ghost-btn inline-flex items-center gap-2 px-6 py-3 rounded-xl font-sub font-700 text-sm text-gray-900 dark:text-white nm-glass border border-black/10 dark:border-white/25 hover:bg-black/[0.06] dark:hover:bg-white/15 transition-all">
+                                <svg class="w-4 h-4 text-red-500 dark:text-red-300" fill="currentColor"
+                                    viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                                </svg>
+                                <?php echo esc_html( $qf['phone'] ); ?>
+                            </a>
                         </div>
-                    </div>
-
-                    <!-- Static info chips below CTA -->
-                    <div class="flex flex-wrap gap-2 mt-8">
-                        <div
-                            class="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-sub font-600 glass border border-white/15 text-white/70">
-                            <svg class="w-3 h-3 text-gold-400" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                            </svg>
-                            <?php esc_html_e( '2 Locations in Nyeri', 'nezer-motors' ); ?>
-                        </div>
-                        <div
-                            class="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-sub font-600 glass border border-white/15 text-white/70">
-                            <svg class="w-3 h-3 text-gold-400" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
-                            </svg>
-                            <?php esc_html_e( 'Mon – Sat, 8AM – 5PM', 'nezer-motors' ); ?>
-                        </div>
-                        <div
-                            class="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-sub font-600 glass border border-white/15 text-white/70">
-                            <svg class="w-3 h-3 text-gold-400" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                            </svg>
-                            <?php esc_html_e( 'Certified Technicians', 'nezer-motors' ); ?>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="nm-hero-chip px-3 py-1 rounded-full text-xs font-sub font-700 nm-glass text-gray-700 dark:text-white/70 border border-black/08 dark:border-white/15">
+                                <svg class="w-3 h-3 inline mr-1 text-red-500 dark:text-red-400" fill="currentColor"
+                                    viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                </svg>
+                                <?php echo esc_html( $qf['location'] ); ?>
+                            </span>
+                            <span
+                                class="nm-hero-chip px-3 py-1 rounded-full text-xs font-sub font-700 nm-glass text-gray-700 dark:text-white/70 border border-black/08 dark:border-white/15">
+                                <?php echo esc_html( $qf['hours'] ); ?>
+                            </span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right: Tab card -->
+                <!-- ── RIGHT: Tab card ── -->
                 <div class="w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
-                    <div class="rounded-2xl overflow-hidden shadow-2xl glass-dark border border-white/15">
+                    <div class="nm-tab-card" role="tablist"
+                        aria-label="<?php esc_attr_e( 'Select a branch', 'nezer-motors' ); ?>">
+
                         <!-- Tab headers -->
-                        <div class="flex">
-                            <button @click="activeBrand = 'autocare'"
-                                :class="activeBrand === 'autocare' ? 'bg-gradient-to-r from-blue-800 to-blue-600 text-white' : 'text-white/50 hover:text-white/80'"
-                                class="flex-1 flex items-center justify-center gap-2 py-4 px-4 font-sub font-700 text-sm transition-all duration-300">
-                                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/autocare-logo.png' ); ?>"
-                                    alt="<?php esc_attr_e( 'AutoCare Express', 'nezer-motors' ); ?>"
-                                    class="h-6 w-auto object-contain" onerror="this.style.display='none'">
+                        <div class="flex" style="background:rgba(0,0,0,0.25)">
+                            <button class="nm-hero-tab" data-hero-tab="autocare" role="tab" aria-selected="true"
+                                aria-controls="nm-panel-autocare" id="nm-tab-autocare">
+                                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/' . $ac['logo'] ); ?>"
+                                    alt="<?php echo esc_attr( $ac['logo_alt'] ); ?>" class="h-5 w-auto object-contain"
+                                    loading="eager">
                                 <span><?php esc_html_e( 'AutoCare', 'nezer-motors' ); ?></span>
                             </button>
-                            <button @click="activeBrand = 'quikfix'"
-                                :class="activeBrand === 'quikfix' ? 'bg-gradient-to-r from-red-700 to-red-500 text-white' : 'text-white/50 hover:text-white/80'"
-                                class="flex-1 flex items-center justify-center gap-2 py-4 px-4 font-sub font-700 text-sm transition-all duration-300">
-                                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/quikfix-logo.png' ); ?>"
-                                    alt="<?php esc_attr_e( 'QuikFix', 'nezer-motors' ); ?>"
-                                    class="h-6 w-auto object-contain brightness-200"
-                                    onerror="this.style.display='none'">
-                                <span><?php esc_html_e( 'QuikFix', 'nezer-motors' ); ?></span>
+                            <button class="nm-hero-tab" data-hero-tab="qwikfix" role="tab" aria-selected="false"
+                                aria-controls="nm-panel-qwikfix" id="nm-tab-qwikfix">
+                                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/' . $qf['logo'] ); ?>"
+                                    alt="<?php echo esc_attr( $qf['logo_alt'] ); ?>"
+                                    class="h-5 w-auto object-contain brightness-200" loading="eager">
+                                <span><?php esc_html_e( 'QwikFix', 'nezer-motors' ); ?></span>
                             </button>
                         </div>
 
-                        <!-- Tab content -->
-                        <div class="p-6">
+                        <!-- AutoCare Tab Content -->
+                        <div id="nm-panel-autocare" data-hero-panel="autocare" role="tabpanel"
+                            aria-labelledby="nm-tab-autocare" class="p-6">
 
-                            <!-- AutoCare Tab Content -->
-                            <div x-show="activeBrand === 'autocare'"
-                                x-transition:enter="transition ease-out duration-400"
-                                x-transition:enter-start="opacity-0 translate-x-4"
-                                x-transition:enter-end="opacity-100 translate-x-0">
-                                <!-- Location badge -->
-                                <div class="flex items-center gap-2 mb-4">
-                                    <div class="w-8 h-8 rounded-lg flex items-center justify-center"
-                                        style="background:rgba(30,64,175,0.3)">
-                                        <svg class="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                            <div
+                                class="flex items-center gap-3 mb-5 pb-4 nm-tc-divider border-b border-white/10 dark:border-white/10">
+                                <div class="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center flex-shrink-0"
+                                    style="background:rgba(30,64,175,0.25)">
+                                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/' . $ac['logo'] ); ?>"
+                                        alt="<?php echo esc_attr( $ac['logo_alt'] ); ?>"
+                                        class="w-full h-full object-contain p-1" loading="lazy">
+                                </div>
+                                <div>
+                                    <p
+                                        class="nm-tc-branch-name font-heading text-lg font-700 text-white dark:text-white leading-tight">
+                                        <?php echo esc_html( $ac['name'] ); ?></p>
+                                    <p class="nm-tc-meta text-white/40 dark:text-white/40 text-xs font-body">
+                                        <?php echo esc_html( $ac['tagline'] ); ?></p>
+                                </div>
+                                <span
+                                    class="ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-sub font-700 text-green-300"
+                                    style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.30)">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"
+                                        aria-hidden="true"></span>
+                                    <?php esc_html_e( 'Open', 'nezer-motors' ); ?>
+                                </span>
+                            </div>
+
+                            <div class="space-y-3 mb-4">
+                                <?php
+              $ac_meta = [
+                [ 'icon' => 'location', 'label' => __( 'Location', 'nezer-motors' ), 'value' => $ac['location'],  'color' => 'rgba(30,64,175,0.25)', 'icon_color' => '#93c5fd' ],
+                [ 'icon' => 'clock',    'label' => __( 'Hours',    'nezer-motors' ), 'value' => $ac['hours'],    'color' => 'rgba(30,64,175,0.25)', 'icon_color' => '#93c5fd' ],
+                [ 'icon' => 'phone',    'label' => __( 'Phone',    'nezer-motors' ), 'value' => $ac['phone'],    'color' => 'rgba(30,64,175,0.25)', 'icon_color' => '#93c5fd', 'link' => 'tel:' . $ac['tel'] ],
+              ];
+              foreach ( $ac_meta as $m ) :
+              ?>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                                        style="background:<?php echo esc_attr( $m['color'] ); ?>">
+                                        <?php if ( $m['icon'] === 'location' ) : ?>
+                                        <svg class="w-3.5 h-3.5" fill="currentColor"
+                                            style="color:<?php echo esc_attr( $m['icon_color'] ); ?>"
+                                            viewBox="0 0 24 24" aria-hidden="true">
                                             <path
                                                 d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                                         </svg>
+                                        <?php elseif ( $m['icon'] === 'clock' ) : ?>
+                                        <svg class="w-3.5 h-3.5" fill="currentColor"
+                                            style="color:<?php echo esc_attr( $m['icon_color'] ); ?>"
+                                            viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                                        </svg>
+                                        <?php else : ?>
+                                        <svg class="w-3.5 h-3.5" fill="currentColor"
+                                            style="color:<?php echo esc_attr( $m['icon_color'] ); ?>"
+                                            viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                                        </svg>
+                                        <?php endif; ?>
                                     </div>
                                     <div>
-                                        <p class="font-sub font-700 text-white text-sm">
-                                            <?php esc_html_e( 'AutoCare Express', 'nezer-motors' ); ?></p>
-                                        <p class="text-white/50 text-xs font-body">
-                                            <?php esc_html_e( 'Nyeri — Opp King\'ong\'o Prison', 'nezer-motors' ); ?>
-                                        </p>
+                                        <p
+                                            class="nm-tc-label text-[10px] font-sub uppercase tracking-widest text-white/35 dark:text-white/35 mb-0.5">
+                                            <?php echo esc_html( $m['label'] ); ?></p>
+                                        <?php if ( isset( $m['link'] ) ) : ?>
+                                        <a href="<?php echo esc_url( $m['link'] ); ?>"
+                                            class="nm-tc-body font-body text-sm text-white dark:text-white hover:opacity-80 transition-opacity"><?php echo esc_html( $m['value'] ); ?></a>
+                                        <?php else : ?>
+                                        <p class="nm-tc-body font-body text-sm text-white dark:text-white">
+                                            <?php echo esc_html( $m['value'] ); ?></p>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
+                                <?php endforeach; ?>
+                            </div>
 
-                                <!-- Services list -->
-                                <div class="space-y-2 mb-5">
-                                    <p class="font-sub font-600 text-white/40 text-xs uppercase tracking-wider mb-3">
-                                        <?php esc_html_e( 'Core Services', 'nezer-motors' ); ?></p>
-                                    <div class="grid grid-cols-2 gap-2">
-                                        <template x-for="s in autocareServices">
-                                            <div class="flex items-center gap-2 text-white/80 text-sm font-body">
-                                                <svg class="w-3.5 h-3.5 text-blue-400 flex-shrink-0" fill="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                                                </svg>
-                                                <span x-text="s"></span>
-                                            </div>
-                                        </template>
-                                    </div>
+                            <div class="nm-tc-svc-box p-3 rounded-xl mb-4"
+                                style="background:rgba(0,0,0,0.18);border:1px solid rgba(255,255,255,0.07)">
+                                <p
+                                    class="nm-tc-label text-[10px] font-sub uppercase tracking-widest text-white/30 dark:text-white/30 mb-2">
+                                    <?php esc_html_e( 'Services', 'nezer-motors' ); ?></p>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <?php foreach ( $ac['services'] as $svc ) : nm_service_chip( $svc, 'autocare' ); endforeach; ?>
                                 </div>
+                            </div>
 
-                                <!-- Info row -->
-                                <div class="grid grid-cols-2 gap-3 mb-5">
-                                    <div class="rounded-xl p-3" style="background:rgba(30,64,175,0.2)">
-                                        <p class="text-white/40 text-xs font-sub mb-1">
-                                            <?php esc_html_e( 'Phone', 'nezer-motors' ); ?></p>
-                                        <a href="tel:+254733204672"
-                                            class="text-white font-sub font-700 text-sm hover:text-blue-300 transition-colors"><?php esc_html_e( '0733 204 672', 'nezer-motors' ); ?></a>
-                                    </div>
-                                    <div class="rounded-xl p-3" style="background:rgba(30,64,175,0.2)">
-                                        <p class="text-white/40 text-xs font-sub mb-1">
-                                            <?php esc_html_e( 'Hours', 'nezer-motors' ); ?></p>
-                                        <p class="text-white font-sub font-700 text-sm">
-                                            <?php esc_html_e( 'Mon–Sat 8–5', 'nezer-motors' ); ?></p>
-                                    </div>
-                                </div>
-
-                                <!-- CTA -->
-                                <a href="<?php echo esc_url( home_url( '/auto-care-express/' ) ); ?>"
-                                    class="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-sub font-700 text-sm transition-all hover:opacity-90"
+                            <div class="grid grid-cols-2 gap-2">
+                                <a href="<?php echo esc_url( home_url( '/autocare-express/' ) ); ?>"
+                                    class="text-center py-2.5 rounded-xl font-sub font-700 text-sm text-white hover:opacity-90 transition-opacity"
                                     style="background:linear-gradient(135deg,#1e40af,#2563eb)">
-                                    <?php esc_html_e( 'Explore AutoCare Express', 'nezer-motors' ); ?>
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-                                    </svg>
+                                    <?php esc_html_e( 'View Services', 'nezer-motors' ); ?>
+                                </a>
+                                <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
+                                    class="nm-tc-ghost text-center py-2.5 rounded-xl font-sub font-700 text-sm text-white dark:text-white hover:bg-white/10 transition-all"
+                                    style="border:1px solid rgba(255,255,255,0.18)">
+                                    <?php esc_html_e( 'Book Now', 'nezer-motors' ); ?>
                                 </a>
                             </div>
+                        </div>
 
-                            <!-- QuikFix Tab Content -->
-                            <div x-show="activeBrand === 'quikfix'"
-                                x-transition:enter="transition ease-out duration-400"
-                                x-transition:enter-start="opacity-0 translate-x-4"
-                                x-transition:enter-end="opacity-100 translate-x-0" x-cloak>
-                                <!-- Location badge -->
-                                <div class="flex items-center gap-2 mb-4">
-                                    <div class="w-8 h-8 rounded-lg flex items-center justify-center"
-                                        style="background:rgba(220,38,38,0.3)">
-                                        <svg class="w-4 h-4 text-red-400" fill="currentColor" viewBox="0 0 24 24">
+                        <!-- QwikFix Tab Content -->
+                        <div id="nm-panel-qwikfix" data-hero-panel="qwikfix" role="tabpanel"
+                            aria-labelledby="nm-tab-qwikfix" class="p-6">
+
+                            <div
+                                class="flex items-center gap-3 mb-5 pb-4 nm-tc-divider border-b border-white/10 dark:border-white/10">
+                                <div class="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center flex-shrink-0"
+                                    style="background:rgba(220,38,38,0.25)">
+                                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/' . $qf['logo'] ); ?>"
+                                        alt="<?php echo esc_attr( $qf['logo_alt'] ); ?>"
+                                        class="w-full h-full object-contain p-1 brightness-200" loading="lazy">
+                                </div>
+                                <div>
+                                    <p
+                                        class="nm-tc-branch-name font-heading text-lg font-700 text-white dark:text-white leading-tight">
+                                        <?php echo esc_html( $qf['name'] ); ?></p>
+                                    <p class="nm-tc-meta text-white/40 dark:text-white/40 text-xs font-body">
+                                        <?php echo esc_html( $qf['tagline'] ); ?></p>
+                                </div>
+                                <span
+                                    class="ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-sub font-700 text-green-300"
+                                    style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.30)">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"
+                                        aria-hidden="true"></span>
+                                    <?php esc_html_e( 'Open', 'nezer-motors' ); ?>
+                                </span>
+                            </div>
+
+                            <div class="space-y-3 mb-4">
+                                <?php
+              $qf_meta = [
+                [ 'icon' => 'location', 'label' => __( 'Location', 'nezer-motors' ), 'value' => $qf['location'], 'color' => 'rgba(220,38,38,0.25)', 'icon_color' => '#fca5a5' ],
+                [ 'icon' => 'clock',    'label' => __( 'Hours',    'nezer-motors' ), 'value' => $qf['hours'],   'color' => 'rgba(220,38,38,0.25)', 'icon_color' => '#fca5a5' ],
+                [ 'icon' => 'phone',    'label' => __( 'Phone',    'nezer-motors' ), 'value' => $qf['phone'],   'color' => 'rgba(220,38,38,0.25)', 'icon_color' => '#fca5a5', 'link' => 'tel:' . $qf['tel'] ],
+              ];
+              foreach ( $qf_meta as $m ) :
+              ?>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                                        style="background:<?php echo esc_attr( $m['color'] ); ?>">
+                                        <?php if ( $m['icon'] === 'location' ) : ?>
+                                        <svg class="w-3.5 h-3.5" fill="currentColor"
+                                            style="color:<?php echo esc_attr( $m['icon_color'] ); ?>"
+                                            viewBox="0 0 24 24" aria-hidden="true">
                                             <path
                                                 d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                                         </svg>
+                                        <?php elseif ( $m['icon'] === 'clock' ) : ?>
+                                        <svg class="w-3.5 h-3.5" fill="currentColor"
+                                            style="color:<?php echo esc_attr( $m['icon_color'] ); ?>"
+                                            viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                                        </svg>
+                                        <?php else : ?>
+                                        <svg class="w-3.5 h-3.5" fill="currentColor"
+                                            style="color:<?php echo esc_attr( $m['icon_color'] ); ?>"
+                                            viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                                        </svg>
+                                        <?php endif; ?>
                                     </div>
                                     <div>
-                                        <p class="font-sub font-700 text-white text-sm">
-                                            <?php esc_html_e( 'QuikFix', 'nezer-motors' ); ?></p>
-                                        <p class="text-white/50 text-xs font-body">
-                                            <?php esc_html_e( 'Shell Station, Kingongo — Nyahururu Junction', 'nezer-motors' ); ?>
-                                        </p>
+                                        <p
+                                            class="nm-tc-label text-[10px] font-sub uppercase tracking-widest text-white/35 dark:text-white/35 mb-0.5">
+                                            <?php echo esc_html( $m['label'] ); ?></p>
+                                        <?php if ( isset( $m['link'] ) ) : ?>
+                                        <a href="<?php echo esc_url( $m['link'] ); ?>"
+                                            class="nm-tc-body font-body text-sm text-white dark:text-white hover:opacity-80 transition-opacity"><?php echo esc_html( $m['value'] ); ?></a>
+                                        <?php else : ?>
+                                        <p class="nm-tc-body font-body text-sm text-white dark:text-white">
+                                            <?php echo esc_html( $m['value'] ); ?></p>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
-
-                                <!-- Services list -->
-                                <div class="space-y-2 mb-5">
-                                    <p class="font-sub font-600 text-white/40 text-xs uppercase tracking-wider mb-3">
-                                        <?php esc_html_e( 'Core Services', 'nezer-motors' ); ?></p>
-                                    <div class="grid grid-cols-2 gap-2">
-                                        <template x-for="s in quikfixServices">
-                                            <div class="flex items-center gap-2 text-white/80 text-sm font-body">
-                                                <svg class="w-3.5 h-3.5 text-red-400 flex-shrink-0" fill="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                                                </svg>
-                                                <span x-text="s"></span>
-                                            </div>
-                                        </template>
-                                    </div>
-                                </div>
-
-                                <!-- Info row -->
-                                <div class="grid grid-cols-2 gap-3 mb-5">
-                                    <div class="rounded-xl p-3" style="background:rgba(220,38,38,0.2)">
-                                        <p class="text-white/40 text-xs font-sub mb-1">
-                                            <?php esc_html_e( 'Phone', 'nezer-motors' ); ?></p>
-                                        <a href="tel:+254710104644"
-                                            class="text-white font-sub font-700 text-sm hover:text-red-300 transition-colors"><?php esc_html_e( '0710 104 644', 'nezer-motors' ); ?></a>
-                                    </div>
-                                    <div class="rounded-xl p-3" style="background:rgba(220,38,38,0.2)">
-                                        <p class="text-white/40 text-xs font-sub mb-1">
-                                            <?php esc_html_e( 'Hours', 'nezer-motors' ); ?></p>
-                                        <p class="text-white font-sub font-700 text-sm">
-                                            <?php esc_html_e( 'Mon–Sat 8–5', 'nezer-motors' ); ?></p>
-                                    </div>
-                                </div>
-
-                                <!-- Voucher promo badge -->
-                                <div class="flex items-center gap-2 p-3 rounded-xl mb-4"
-                                    style="background:linear-gradient(135deg,rgba(234,179,8,0.15),rgba(220,38,38,0.15)); border:1px solid rgba(234,179,8,0.3)">
-                                    <svg class="w-5 h-5 text-yellow-400 flex-shrink-0" fill="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M20 12c0-1.1.9-2 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-1.99.9-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2z" />
-                                    </svg>
-                                    <p class="text-yellow-300 text-xs font-sub font-600">
-                                        <?php esc_html_e( 'Free gift voucher with every oil change', 'nezer-motors' ); ?>
-                                    </p>
-                                </div>
-
-                                <!-- CTA -->
-                                <a href="<?php echo esc_url( home_url( '/quik-fix/' ) ); ?>"
-                                    class="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-sub font-700 text-sm transition-all hover:opacity-90"
-                                    style="background:linear-gradient(135deg,#dc2626,#ef4444)">
-                                    <?php esc_html_e( 'Explore QuikFix', 'nezer-motors' ); ?>
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-                                    </svg>
-                                </a>
+                                <?php endforeach; ?>
                             </div>
 
+                            <div class="nm-tc-svc-box p-3 rounded-xl mb-4"
+                                style="background:rgba(0,0,0,0.18);border:1px solid rgba(255,255,255,0.07)">
+                                <p
+                                    class="nm-tc-label text-[10px] font-sub uppercase tracking-widest text-white/30 dark:text-white/30 mb-2">
+                                    <?php esc_html_e( 'Services', 'nezer-motors' ); ?></p>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <?php foreach ( $qf['services'] as $svc ) : nm_service_chip( $svc, 'qwikfix' ); endforeach; ?>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2">
+                                <a href="<?php echo esc_url( home_url( '/qwikfix/' ) ); ?>"
+                                    class="text-center py-2.5 rounded-xl font-sub font-700 text-sm text-white hover:opacity-90 transition-opacity"
+                                    style="background:linear-gradient(135deg,#dc2626,#ef4444)">
+                                    <?php esc_html_e( 'View Services', 'nezer-motors' ); ?>
+                                </a>
+                                <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
+                                    class="nm-tc-ghost text-center py-2.5 rounded-xl font-sub font-700 text-sm text-white dark:text-white hover:bg-white/10 transition-all"
+                                    style="border:1px solid rgba(255,255,255,0.18)">
+                                    <?php esc_html_e( 'Book Now', 'nezer-motors' ); ?>
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    </div><!-- /nm-tab-card -->
                 </div>
 
-            </div>
+            </div><!-- /grid -->
         </div>
 
         <!-- Scroll indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 z-10">
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+            aria-hidden="true">
             <span
-                class="font-sub text-xs tracking-widest uppercase"><?php esc_html_e( 'Scroll', 'nezer-motors' ); ?></span>
-            <div class="w-px h-12 bg-gradient-to-b from-white/40 to-transparent animate-pulse"></div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-	 STATS BAR
-	============================================================ -->
-    <section class="relative py-10 border-y"
-        :class="darkMode ? 'border-white/10 bg-dark-800' : 'border-gray-200 bg-white'">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <template x-for="stat in stats" :key="stat.label">
-                    <div class="text-center">
-                        <p class="font-heading text-4xl sm:text-5xl font-700 text-gold-500 stat-number"
-                            x-text="stat.value"></p>
-                        <p class="font-sub text-sm font-600 mt-1 uppercase tracking-widest"
-                            :class="darkMode ? 'text-white/50' : 'text-gray-500'" x-text="stat.label"></p>
-                    </div>
-                </template>
+                class="nm-scroll-label font-sub text-xs tracking-widest uppercase text-gray-500 dark:text-white/30"><?php esc_html_e( 'Scroll', 'nezer-motors' ); ?></span>
+            <div
+                class="nm-scroll-line w-px h-10 bg-gradient-to-b from-gray-400 dark:from-white/40 to-transparent animate-pulse">
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-	 SERVICES OVERVIEW
-	============================================================ -->
-    <section class="py-24 relative overflow-hidden" :class="darkMode ? 'bg-dark-900' : 'bg-slate-50'">
-        <!-- Decorative bg blob -->
-        <div class="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl opacity-10 pointer-events-none"
-            :class="darkMode ? 'bg-blue-600' : 'bg-blue-200'"></div>
-        <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full blur-3xl opacity-10 pointer-events-none"
-            :class="darkMode ? 'bg-red-600' : 'bg-red-200'"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <!-- Heading -->
-            <div class="text-center mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-sub font-600 tracking-widest uppercase mb-4"
-                    :class="darkMode ? 'bg-gold-500/15 text-gold-400 border border-gold-500/30' : 'bg-gold-500/10 text-gold-600 border border-gold-500/20'">
-                    <?php esc_html_e( 'What We Offer', 'nezer-motors' ); ?>
+     STATS BAR
+    ============================================================ -->
+    <section class="nm-stats-bar py-10" aria-label="<?php esc_attr_e( 'Nezer Motors at a glance', 'nezer-motors' ); ?>">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <dl class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center" data-animate-stagger>
+                <?php
+      $stats = [
+        [ 'value' => '2',        'label' => __( 'Branch Locations', 'nezer-motors' ) ],
+        [ 'value' => '10+',      'label' => __( 'Services Offered',  'nezer-motors' ) ],
+        [ 'value' => 'Mon–Sat',  'label' => __( 'Open 6 Days',       'nezer-motors' ) ],
+        [ 'value' => 'Nyeri',    'label' => __( 'Based & Trusted',   'nezer-motors' ) ],
+      ];
+      foreach ( $stats as $stat ) :
+      ?>
+                <div>
+                    <dt class="font-heading text-4xl sm:text-5xl font-700 text-gold-500">
+                        <?php echo esc_html( $stat['value'] ); ?></dt>
+                    <dd
+                        class="font-sub text-sm font-600 uppercase tracking-widest mt-1 text-gray-500 dark:text-white/50">
+                        <?php echo esc_html( $stat['label'] ); ?></dd>
                 </div>
-                <h2 class="font-heading text-4xl sm:text-5xl font-700"
-                    :class="darkMode ? 'text-white' : 'text-gray-900'">
-                    <?php esc_html_e( 'Full-Spectrum Vehicle Care', 'nezer-motors' ); ?>
+                <?php endforeach; ?>
+            </dl>
+        </div>
+    </section>
+
+    <!-- ============================================================
+     SERVICES OVERVIEW
+    ============================================================ -->
+    <section class="py-24 nm-section-light overflow-hidden relative" id="services" aria-labelledby="services-heading">
+        <div class="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl opacity-[0.07] pointer-events-none bg-blue-600 dark:opacity-15"
+            aria-hidden="true"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-animate>
+                <span
+                    class="inline-flex px-3 py-1.5 rounded-full text-xs font-sub font-700 tracking-widest uppercase mb-4 bg-gold-500/10 dark:bg-gold-500/15 text-gold-600 dark:text-gold-400 border border-gold-500/20 dark:border-gold-500/30">
+                    <?php esc_html_e( 'What We Offer', 'nezer-motors' ); ?>
+                </span>
+                <h2 id="services-heading"
+                    class="font-heading text-4xl sm:text-5xl font-700 text-gray-900 dark:text-white">
+                    <?php esc_html_e( 'Services Across Both Branches', 'nezer-motors' ); ?>
                 </h2>
-                <p class="font-body mt-4 max-w-xl mx-auto" :class="darkMode ? 'text-white/60' : 'text-gray-500'">
-                    <?php esc_html_e( 'From engine diagnostics to wheel alignment, both our branches cover every aspect of your vehicle\'s health.', 'nezer-motors' ); ?>
+                <p class="font-body mt-4 max-w-xl mx-auto text-gray-500 dark:text-white/60">
+                    <?php esc_html_e( 'From mechanical overhauls to tyre sales, our two branches cover everything your vehicle needs.', 'nezer-motors' ); ?>
                 </p>
             </div>
 
-            <!-- Services grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <template x-for="svc in services" :key="svc.title">
-                    <div class="service-card group rounded-2xl p-6 cursor-default transition-all duration-300"
-                        :class="darkMode ? 'glass border border-white/10 hover:border-white/20' : 'bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200'">
-                        <!-- Icon -->
-                        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
-                            :style="`background: linear-gradient(135deg, ${svc.color1}, ${svc.color2})`">
-                            <span class="text-2xl" x-text="svc.icon"></span>
-                        </div>
-                        <p class="font-heading text-xl font-700 mb-2" :class="darkMode ? 'text-white' : 'text-gray-900'"
-                            x-text="svc.title"></p>
-                        <p class="font-body text-sm leading-relaxed"
-                            :class="darkMode ? 'text-white/55' : 'text-gray-500'" x-text="svc.desc"></p>
-                        <!-- Branch badge -->
-                        <div class="mt-4 flex flex-wrap gap-1">
-                            <template x-for="branch in svc.branches">
-                                <span class="px-2 py-0.5 rounded-full text-xs font-sub font-600"
-                                    :class="branch === 'AutoCare' ? 'bg-blue-500/15 text-blue-400' : 'bg-red-500/15 text-red-400'"
-                                    x-text="branch">
-                                </span>
-                            </template>
-                        </div>
+            <?php
+    $services = [
+      [ 'title' => __( 'Mechanical Repairs', 'nezer-motors' ), 'desc' => __( 'Comprehensive mechanical repair service for all vehicle makes and models.', 'nezer-motors' ), 'icon' => '🔧', 'c1' => '#1e3a8a', 'c2' => '#2563eb', 'branch' => 'autocare' ],
+      [ 'title' => __( 'Engine Overhaul',    'nezer-motors' ), 'desc' => __( 'Full engine rebuilds and top-end overhauls by skilled technicians.',            'nezer-motors' ), 'icon' => '⚙️', 'c1' => '#0f1f5c', 'c2' => '#1e40af', 'branch' => 'autocare' ],
+      [ 'title' => __( 'Suspension',         'nezer-motors' ), 'desc' => __( 'Full suspension diagnostics, repairs and component replacement.',               'nezer-motors' ), 'icon' => '🚗', 'c1' => '#1e3a8a', 'c2' => '#3b82f6', 'branch' => 'autocare' ],
+      [ 'title' => __( 'Shocks',             'nezer-motors' ), 'desc' => __( 'Shock absorber testing and replacement for a smooth, safe ride.',               'nezer-motors' ), 'icon' => '🏎️', 'c1' => '#1e40af', 'c2' => '#2563eb', 'branch' => 'autocare' ],
+      [ 'title' => __( 'Wheel Balancing',    'nezer-motors' ), 'desc' => __( 'Dynamic balancing for all tyre sizes to eliminate vibration.',                  'nezer-motors' ), 'icon' => '⚖️', 'c1' => '#7f1d1d', 'c2' => '#dc2626', 'branch' => 'qwikfix' ],
+      [ 'title' => __( 'Wheel Alignment',    'nezer-motors' ), 'desc' => __( 'Computerised 4-wheel alignment for saloons and SUVs.',                          'nezer-motors' ), 'icon' => '🎯', 'c1' => '#991b1b', 'c2' => '#ef4444', 'branch' => 'qwikfix' ],
+      [ 'title' => __( 'Oil Change',         'nezer-motors' ), 'desc' => __( 'Engine oil and filter service using quality-approved products.',                 'nezer-motors' ), 'icon' => '🛢️', 'c1' => '#78350f', 'c2' => '#d97706', 'branch' => 'qwikfix' ],
+      [ 'title' => __( 'Batteries',          'nezer-motors' ), 'desc' => __( 'Battery testing, supply and professional fitting for all vehicles.',             'nezer-motors' ), 'icon' => '⚡', 'c1' => '#713f12', 'c2' => '#ca8a04', 'branch' => 'qwikfix' ],
+      [ 'title' => __( 'Tyre Sales',         'nezer-motors' ), 'desc' => __( 'Quality tyres sourced and professionally fitted for all vehicle types.',         'nezer-motors' ), 'icon' => '🔘', 'c1' => '#7f1d1d', 'c2' => '#b91c1c', 'branch' => 'qwikfix' ],
+      [ 'title' => __( 'Car Accessories',    'nezer-motors' ), 'desc' => __( 'A wide range of quality car accessories available in-store.',                    'nezer-motors' ), 'icon' => '🛒', 'c1' => '#450a0a', 'c2' => '#dc2626', 'branch' => 'qwikfix' ],
+    ];
+    ?>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" data-animate-stagger>
+                <?php foreach ( $services as $svc ) :
+        $branch_label = $svc['branch'] === 'autocare' ? __( 'AutoCare', 'nezer-motors' ) : __( 'QwikFix', 'nezer-motors' );
+        $badge_class  = $svc['branch'] === 'autocare'
+          ? 'bg-blue-500/15 dark:bg-blue-500/15 text-blue-700 dark:text-blue-400'
+          : 'bg-red-500/15 dark:bg-red-500/15 text-red-700 dark:text-red-400';
+      ?>
+                <article class="nm-card p-5 rounded-2xl group cursor-default"
+                    aria-label="<?php echo esc_attr( sprintf( __( '%s service', 'nezer-motors' ), $svc['title'] ) ); ?>">
+                    <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4 text-xl group-hover:scale-110 transition-transform duration-300"
+                        style="background:linear-gradient(135deg,<?php echo esc_attr( $svc['c1'] ); ?>,<?php echo esc_attr( $svc['c2'] ); ?>)"
+                        aria-hidden="true">
+                        <?php echo esc_html( $svc['icon'] ); ?>
                     </div>
-                </template>
+                    <h3 class="font-heading text-lg font-700 mb-1.5 text-gray-900 dark:text-white">
+                        <?php echo esc_html( $svc['title'] ); ?></h3>
+                    <p class="font-body text-xs leading-relaxed mb-3 text-gray-500 dark:text-white/50">
+                        <?php echo esc_html( $svc['desc'] ); ?></p>
+                    <span
+                        class="px-2 py-0.5 rounded-full text-xs font-sub font-700 <?php echo esc_attr( $badge_class ); ?>"><?php echo esc_html( $branch_label ); ?></span>
+                </article>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-	 OUR BRANDS
-	============================================================ -->
-    <section class="py-24" :class="darkMode ? 'bg-dark-800' : 'bg-white'">
+     PRODUCTS SECTION
+    ============================================================ -->
+    <section class="py-24 nm-section-alt" id="products" aria-labelledby="products-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-sub font-600 tracking-widest uppercase mb-4"
-                    :class="darkMode ? 'bg-gold-500/15 text-gold-400 border border-gold-500/30' : 'bg-gold-500/10 text-gold-600 border border-gold-500/20'">
-                    <?php esc_html_e( 'The Nezer Motors Family', 'nezer-motors' ); ?>
-                </div>
-                <h2 class="font-heading text-4xl sm:text-5xl font-700"
-                    :class="darkMode ? 'text-white' : 'text-gray-900'">
-                    <?php esc_html_e( 'Two Locations. One Standard.', 'nezer-motors' ); ?></h2>
-                <p class="font-body mt-4 max-w-xl mx-auto" :class="darkMode ? 'text-white/60' : 'text-gray-500'">
-                    <?php esc_html_e( 'Each branch operates independently with its own team and specialties, unified by Nezer Motors\' commitment to quality.', 'nezer-motors' ); ?>
+            <div class="text-center mb-16" data-animate>
+                <span
+                    class="inline-flex px-3 py-1.5 rounded-full text-xs font-sub font-700 tracking-widest uppercase mb-4 bg-gold-500/10 dark:bg-gold-500/15 text-gold-600 dark:text-gold-400 border border-gold-500/20 dark:border-gold-500/30">
+                    <?php esc_html_e( 'Our Products', 'nezer-motors' ); ?>
+                </span>
+                <h2 id="products-heading"
+                    class="font-heading text-4xl sm:text-5xl font-700 text-gray-900 dark:text-white">
+                    <?php esc_html_e( 'Quality Parts & Accessories', 'nezer-motors' ); ?>
+                </h2>
+                <p class="font-body mt-4 max-w-xl mx-auto text-gray-500 dark:text-white/60">
+                    <?php esc_html_e( 'We stock and supply quality automotive products at both branches. Speak to our team for availability and pricing.', 'nezer-motors' ); ?>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5" data-animate-stagger>
+                <?php foreach ( nm_products() as $product ) :
+                    $img_src = esc_url( get_template_directory_uri() . '/assets/img/' . $product['img'] );
+                ?>
+                <article class="group rounded-2xl overflow-hidden nm-card cursor-default"
+                    aria-label="<?php echo esc_attr( $product['name'] ); ?>">
+                    <div class="relative overflow-hidden" style="height:180px">
+                        <img src="<?php echo $img_src; ?>" alt="<?php echo esc_attr( $product['alt'] ); ?>"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy" decoding="async"
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <!-- Placeholder when no image -->
+                        <div class="absolute inset-0 items-center justify-content-center flex-col gap-3 bg-gray-100 dark:bg-white/[0.04]"
+                            style="display:none">
+                            <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl"
+                                style="background:linear-gradient(135deg,<?php echo esc_attr( $product['color'] ); ?>,<?php echo esc_attr( $product['color'] ); ?>88)"
+                                aria-hidden="true"><?php echo esc_html( $product['icon'] ); ?></div>
+                            <p
+                                class="font-sub font-700 text-xs uppercase tracking-wider text-gray-400 dark:text-white/40">
+                                <?php esc_html_e( 'Photo coming soon', 'nezer-motors' ); ?></p>
+                        </div>
+                        <!-- Overlay gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"
+                            aria-hidden="true"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <h3 class="font-heading text-xl font-700 text-white">
+                                <?php echo esc_html( $product['name'] ); ?></h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-white/55">
+                            <?php echo esc_html( $product['desc'] ); ?></p>
+                        <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
+                            class="mt-3 inline-flex items-center gap-1 font-sub font-700 text-xs text-gold-600 dark:text-gold-400 hover:text-gold-500 dark:hover:text-gold-300 transition-colors">
+                            <?php esc_html_e( 'Enquire', 'nezer-motors' ); ?>
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+                <?php endforeach; ?>
+            </div>
+            <p class="text-center font-body text-sm mt-8 text-gray-400 dark:text-white/35">
+                <?php esc_html_e( 'Contact either branch for current stock availability and pricing.', 'nezer-motors' ); ?>
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================================
+     OUR BRANCHES
+    ============================================================ -->
+    <section class="py-24 nm-section-light" id="branches" aria-labelledby="branches-heading">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-animate>
+                <span
+                    class="inline-flex px-3 py-1.5 rounded-full text-xs font-sub font-700 tracking-widest uppercase mb-4 bg-gold-500/10 dark:bg-gold-500/15 text-gold-600 dark:text-gold-400 border border-gold-500/20 dark:border-gold-500/30">
+                    <?php esc_html_e( 'Find Us', 'nezer-motors' ); ?>
+                </span>
+                <h2 id="branches-heading"
+                    class="font-heading text-4xl sm:text-5xl font-700 text-gray-900 dark:text-white">
+                    <?php esc_html_e( 'Two Locations. One Standard.', 'nezer-motors' ); ?>
+                </h2>
+                <p class="font-body mt-4 max-w-xl mx-auto text-gray-500 dark:text-white/60">
+                    <?php esc_html_e( 'Both branches operate under the Nezer Motors name with the same commitment to quality and honest service.', 'nezer-motors' ); ?>
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                 <!-- AutoCare Card -->
-                <div class="relative rounded-3xl overflow-hidden group"
-                    style="background:linear-gradient(135deg,#0f1f5c 0%,#1e3a8a 50%,#1e40af 100%)">
-                    <!-- Decorative circles -->
+                <article class="relative rounded-3xl overflow-hidden"
+                    style="background:linear-gradient(135deg,#0f1f5c,#1e3a8a)" data-animate="left"
+                    aria-label="<?php esc_attr_e( 'AutoCare Express branch details', 'nezer-motors' ); ?>">
                     <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-10"
-                        style="background:radial-gradient(circle,#60a5fa,transparent)"></div>
-                    <div class="absolute -bottom-16 -left-16 w-48 h-48 rounded-full opacity-15"
-                        style="background:radial-gradient(circle,#dc2626,transparent)"></div>
-
+                        style="background:radial-gradient(circle,#60a5fa,transparent)" aria-hidden="true"></div>
                     <div class="relative z-10 p-8 sm:p-10">
-                        <!-- Logo -->
-                        <div class="mb-6">
-                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/autocare-logo.png' ); ?>"
-                                alt="<?php esc_attr_e( 'AutoCare Express Logo', 'nezer-motors' ); ?>"
-                                class="h-16 w-auto object-contain" onerror="this.style.display='none'">
+                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/' . $ac['logo'] ); ?>"
+                            alt="<?php echo esc_attr( $ac['logo_alt'] ); ?>" class="h-14 w-auto object-contain mb-5"
+                            loading="lazy">
+                        <h3 class="font-heading text-3xl font-700 text-white mb-2">
+                            <?php echo esc_html( $ac['name'] ); ?></h3>
+                        <p class="text-blue-200/60 text-sm font-body mb-6"><?php echo esc_html( $ac['tagline'] ); ?></p>
+                        <address class="not-italic space-y-2 mb-7">
+                            <?php nm_branch_info_card( 'autocare', 'card' ); ?>
+                            <p class="flex items-center gap-3 text-white/80 text-sm font-body">
+                                <svg class="w-4 h-4 text-blue-300 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true">
+                                    <path
+                                        d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 14H5V8l7 4.5L19 8v10zm-7-7.5L5 8h14l-7 2.5z" />
+                                </svg>
+                                <?php echo esc_html( $ac['address'] ); ?>
+                            </p>
+                        </address>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <?php foreach ( $ac['services'] as $svc ) : ?>
+                            <span class="text-xs px-3 py-1 rounded-full font-sub font-700 text-white/80"
+                                style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2)">
+                                <?php echo esc_html( $svc ); ?>
+                            </span>
+                            <?php endforeach; ?>
                         </div>
-                        <h3 class="font-heading text-3xl font-700 text-white mb-3">
-                            <?php esc_html_e( 'AutoCare Express', 'nezer-motors' ); ?></h3>
-                        <p class="font-body text-white/70 mb-6 text-sm leading-relaxed">
-                            <?php esc_html_e( 'Full mechanical servicing, engine diagnostics, brake and suspension care, lubrication, and vehicle health reports. Our flagship branch at King\'Ong\'o serves Nyeri\'s drivers with expert care.', 'nezer-motors' ); ?>
-                        </p>
-
-                        <div class="space-y-2 mb-8">
-                            <div class="flex items-center gap-3 text-white/80 text-sm font-body">
-                                <svg class="w-4 h-4 text-blue-300 flex-shrink-0" fill="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                                </svg>
-                                <?php esc_html_e( 'Nyeri — Opp King\'Ong\'o Prison', 'nezer-motors' ); ?>
-                            </div>
-                            <div class="flex items-center gap-3 text-white/80 text-sm font-body">
-                                <svg class="w-4 h-4 text-blue-300 flex-shrink-0" fill="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-                                </svg>
-                                <?php esc_html_e( '0733 204 672', 'nezer-motors' ); ?>
-                            </div>
-                            <div class="flex items-center gap-3 text-white/80 text-sm font-body">
-                                <svg class="w-4 h-4 text-blue-300 flex-shrink-0" fill="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
-                                </svg>
-                                <?php esc_html_e( 'Mon – Sat, 8AM – 5PM', 'nezer-motors' ); ?>
-                            </div>
-                        </div>
-
-                        <a href="<?php echo esc_url( home_url( '/auto-care-express/' ) ); ?>"
-                            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-sub font-700 text-sm bg-white text-blue-800 transition-all hover:bg-blue-50 hover:scale-105">
+                        <a href="<?php echo esc_url( home_url( '/autocare-express/' ) ); ?>"
+                            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-sub font-700 text-sm bg-white text-blue-800 hover:bg-blue-50 transition-all hover:scale-105">
                             <?php esc_html_e( 'Visit AutoCare Express', 'nezer-motors' ); ?>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
                             </svg>
                         </a>
                     </div>
-                </div>
+                </article>
 
-                <!-- QuikFix Card -->
-                <div class="relative rounded-3xl overflow-hidden group"
-                    style="background:linear-gradient(135deg,#450a0a 0%,#7f1d1d 50%,#991b1b 100%)">
-                    <!-- Decorative circles -->
+                <!-- QwikFix Card -->
+                <article class="relative rounded-3xl overflow-hidden"
+                    style="background:linear-gradient(135deg,#450a0a,#991b1b)" data-animate="right"
+                    aria-label="<?php esc_attr_e( 'QwikFix branch details', 'nezer-motors' ); ?>">
                     <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-10"
-                        style="background:radial-gradient(circle,#fbbf24,transparent)"></div>
-                    <div class="absolute -bottom-16 -left-16 w-48 h-48 rounded-full opacity-15"
-                        style="background:radial-gradient(circle,#eab308,transparent)"></div>
-
+                        style="background:radial-gradient(circle,#fbbf24,transparent)" aria-hidden="true"></div>
                     <div class="relative z-10 p-8 sm:p-10">
-                        <!-- Logo -->
-                        <div class="mb-6">
-                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/quikfix-logo.png' ); ?>"
-                                alt="<?php esc_attr_e( 'QuikFix Logo', 'nezer-motors' ); ?>"
-                                class="h-16 w-auto object-contain brightness-200" onerror="this.style.display='none'">
-                        </div>
-                        <h3 class="font-heading text-3xl font-700 text-white mb-3">
-                            <?php esc_html_e( 'QuikFix', 'nezer-motors' ); ?></h3>
-                        <p class="font-body text-white/70 mb-6 text-sm leading-relaxed">
-                            <?php esc_html_e( 'Precision wheel alignment, tyre supply and fitting, wheel balancing, oil changes, and full car servicing. Located at Shell Kingongo on the Nyeri-Nyahururu Junction for easy access.', 'nezer-motors' ); ?>
-                        </p>
-
-                        <div class="space-y-2 mb-8">
-                            <div class="flex items-center gap-3 text-white/80 text-sm font-body">
-                                <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor"
-                                    viewBox="0 0 24 24">
+                        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/' . $qf['logo'] ); ?>"
+                            alt="<?php echo esc_attr( $qf['logo_alt'] ); ?>"
+                            class="h-14 w-auto object-contain brightness-200 mb-5" loading="lazy">
+                        <h3 class="font-heading text-3xl font-700 text-white mb-2">
+                            <?php echo esc_html( $qf['name'] ); ?></h3>
+                        <p class="text-red-200/60 text-sm font-body mb-6"><?php echo esc_html( $qf['tagline'] ); ?></p>
+                        <address class="not-italic space-y-2 mb-7">
+                            <?php nm_branch_info_card( 'qwikfix', 'card' ); ?>
+                            <p class="flex items-center gap-3 text-white/80 text-sm font-body">
+                                <svg class="w-4 h-4 text-red-300 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true">
                                     <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                        d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 14H5V8l7 4.5L19 8v10zm-7-7.5L5 8h14l-7 2.5z" />
                                 </svg>
-                                <?php esc_html_e( 'Shell Station, Kingongo — Nyahururu Jct', 'nezer-motors' ); ?>
-                            </div>
-                            <div class="flex items-center gap-3 text-white/80 text-sm font-body">
-                                <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-                                </svg>
-                                <?php esc_html_e( '0710 104 644', 'nezer-motors' ); ?>
-                            </div>
-                            <div class="flex items-center gap-3 text-white/80 text-sm font-body">
-                                <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
-                                </svg>
-                                <?php esc_html_e( 'Mon – Sat, 8AM – 5PM', 'nezer-motors' ); ?>
-                            </div>
+                                <?php echo esc_html( $qf['address'] ); ?>
+                            </p>
+                        </address>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <?php foreach ( $qf['services'] as $svc ) : ?>
+                            <span class="text-xs px-3 py-1 rounded-full font-sub font-700 text-white/80"
+                                style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2)">
+                                <?php echo esc_html( $svc ); ?>
+                            </span>
+                            <?php endforeach; ?>
                         </div>
-
-                        <!-- Voucher badge -->
-                        <div class="flex items-center gap-2 px-4 py-2 rounded-xl mb-6 inline-flex w-fit"
-                            style="background:rgba(234,179,8,0.2);border:1px solid rgba(234,179,8,0.4)">
-                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M20 12c0-1.1.9-2 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-1.99.9-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2z" />
-                            </svg>
-                            <span
-                                class="text-yellow-300 text-xs font-sub font-700"><?php esc_html_e( 'Free voucher with every oil change', 'nezer-motors' ); ?></span>
-                        </div>
-
-                        <a href="<?php echo esc_url( home_url( '/quik-fix/' ) ); ?>"
-                            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-sub font-700 text-sm bg-white text-red-800 transition-all hover:bg-red-50 hover:scale-105">
-                            <?php esc_html_e( 'Visit QuikFix', 'nezer-motors' ); ?>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <a href="<?php echo esc_url( home_url( '/qwikfix/' ) ); ?>"
+                            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-sub font-700 text-sm bg-white text-red-800 hover:bg-red-50 transition-all hover:scale-105">
+                            <?php esc_html_e( 'Visit QwikFix', 'nezer-motors' ); ?>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
                             </svg>
                         </a>
                     </div>
-                </div>
+                </article>
 
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-	 PARTNERS STRIP
-	============================================================ -->
-    <section class="py-16 border-y overflow-hidden"
-        :class="darkMode ? 'border-white/10 bg-dark-900' : 'border-gray-100 bg-slate-50'">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
-            <p class="font-sub font-600 text-sm uppercase tracking-widest"
-                :class="darkMode ? 'text-white/40' : 'text-gray-400'">
-                <?php esc_html_e( 'Brands & Partners We Work With', 'nezer-motors' ); ?></p>
+     PARTNERS MARQUEE
+    ============================================================ -->
+    <section class="py-14 border-y border-gray-100 dark:border-white/[0.08] nm-section-alt overflow-hidden"
+        aria-label="<?php esc_attr_e( 'Our brand partners', 'nezer-motors' ); ?>">
+        <div class="max-w-7xl mx-auto px-4 mb-8 text-center" data-animate>
+            <p class="font-sub font-700 text-xs uppercase tracking-widest text-gray-400 dark:text-white/35">
+                <?php esc_html_e( 'Brands We Work With', 'nezer-motors' ); ?>
+            </p>
         </div>
-        <div class="relative overflow-hidden">
-            <!-- Fade edges -->
-            <div class="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-                :style="darkMode ? 'background:linear-gradient(to right,#09090b,transparent)' : 'background:linear-gradient(to right,#f8fafc,transparent)'">
-            </div>
-            <div class="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-                :style="darkMode ? 'background:linear-gradient(to left,#09090b,transparent)' : 'background:linear-gradient(to left,#f8fafc,transparent)'">
-            </div>
-
-            <div class="marquee-track">
-                <template x-for="(partner, i) in [...partners, ...partners]" :key="i">
-                    <div class="flex-shrink-0 mx-6 flex items-center gap-2 px-5 py-3 rounded-full font-sub font-700 text-sm transition-all"
-                        :class="darkMode ? 'bg-white/08 text-white/60 border border-white/10 hover:border-white/20 hover:text-white' : 'bg-white text-gray-500 border border-gray-200 hover:border-gray-300 hover:text-gray-800'">
-                        <span x-text="partner.icon" class="text-base"></span>
-                        <span x-text="partner.name"></span>
-                    </div>
-                </template>
-            </div>
+        <div class="nm-marquee-wrap">
+            <div class="nm-marquee-fade-l" aria-hidden="true"></div>
+            <div class="nm-marquee-fade-r" aria-hidden="true"></div>
+            <?php nm_partners_strip(); ?>
         </div>
     </section>
 
     <!-- ============================================================
-	 CTA BANNER
-	============================================================ -->
+     CTA BAND
+    ============================================================ -->
     <section class="py-20 relative overflow-hidden"
-        style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 40%,#991b1b 100%)">
-        <!-- Grid pattern -->
-        <div class="absolute inset-0 opacity-80"
-            style="background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E');">
-        </div>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        style="background:linear-gradient(135deg,#0f172a,#1e3a8a 50%,#991b1b)" aria-labelledby="cta-heading">
+        <div class="absolute inset-0 opacity-[0.06]"
+            style="background-image:radial-gradient(rgba(255,255,255,0.15) 1px,transparent 1px);background-size:28px 28px"
+            aria-hidden="true"></div>
+        <div class="max-w-3xl mx-auto px-4 text-center relative z-10" data-animate>
             <div class="w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center"
-                style="background:linear-gradient(135deg,#d4a017,#f0c040)">
-                <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                style="background:linear-gradient(135deg,#d4a017,#f0c040)" aria-hidden="true">
+                <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path
                         d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z" />
                 </svg>
             </div>
-            <h2 class="font-heading text-4xl sm:text-5xl font-700 text-white mb-4">
-                <?php esc_html_e( 'Ready to Service Your Vehicle?', 'nezer-motors' ); ?></h2>
-            <p class="font-body text-white/70 mb-8 max-w-xl mx-auto">
-                <?php esc_html_e( 'Visit either of our two branches in Nyeri. Bring your vehicle in or call ahead to schedule your service appointment.', 'nezer-motors' ); ?>
+            <h2 id="cta-heading" class="font-heading text-4xl sm:text-5xl font-700 text-white mb-4">
+                <?php esc_html_e( 'Ready to Service Your Vehicle?', 'nezer-motors' ); ?>
+            </h2>
+            <p class="font-body text-white/65 mb-8">
+                <?php esc_html_e( 'Visit either of our two branches in Nyeri or reach us by phone.', 'nezer-motors' ); ?>
             </p>
             <div class="flex flex-wrap items-center justify-center gap-4">
                 <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
-                    class="flex items-center gap-2 px-8 py-4 rounded-xl font-sub font-700 text-sm transition-all hover:scale-105 hover:shadow-xl"
-                    style="background:linear-gradient(135deg,#d4a017,#f0c040);color:#000">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    class="flex items-center gap-2 px-8 py-4 rounded-xl font-sub font-700 text-sm text-black hover:scale-105 transition-all"
+                    style="background:linear-gradient(135deg,#d4a017,#f0c040)">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path
                             d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                     </svg>
                     <?php esc_html_e( 'Contact Us', 'nezer-motors' ); ?>
                 </a>
-                <a href="tel:+254733204672"
-                    class="flex items-center gap-2 px-8 py-4 rounded-xl font-sub font-700 text-sm text-white glass border border-white/30 transition-all hover:bg-white/15">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <a href="tel:<?php echo esc_attr( $ac['tel'] ); ?>"
+                    class="flex items-center gap-2 px-8 py-4 rounded-xl font-sub font-700 text-sm text-white nm-glass border border-white/30 hover:bg-white/15 transition-all">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path
                             d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                     </svg>
-                    <?php esc_html_e( 'Call AutoCare', 'nezer-motors' ); ?>
+                    <?php esc_html_e( 'AutoCare: 0733 204 672', 'nezer-motors' ); ?>
                 </a>
-                <a href="tel:+254710104644"
-                    class="flex items-center gap-2 px-8 py-4 rounded-xl font-sub font-700 text-sm text-white glass border border-white/30 transition-all hover:bg-white/15">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <a href="tel:<?php echo esc_attr( $qf['tel'] ); ?>"
+                    class="flex items-center gap-2 px-8 py-4 rounded-xl font-sub font-700 text-sm text-white nm-glass border border-white/30 hover:bg-white/15 transition-all">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path
                             d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                     </svg>
-                    <?php esc_html_e( 'Call QuikFix', 'nezer-motors' ); ?>
+                    <?php esc_html_e( 'QwikFix: 0701 104 644', 'nezer-motors' ); ?>
                 </a>
             </div>
         </div>
     </section>
+
 </main>
 
 <?php
