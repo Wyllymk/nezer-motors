@@ -11,13 +11,6 @@
  */
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'wp_head', function () {
-	nm_seo_meta(
-		esc_html__( 'Contact Nezer Motors | AutoCare Express & QwikFix — Nyeri, Kenya', 'nezer-motors' ),
-		esc_html__( 'Contact Nezer Motors in Nyeri. AutoCare Express: 0733 204 672 (Kingongo, Opp GK Prison). QwikFix: 0701 104 644 (Shell Station, Nyeri-Nyahururu Road). Email: info@nezermotors.com. Open Mon–Sat 8AM–5PM.', 'nezer-motors' )
-	);
-}, 5 );
-
 get_header();
 $ac = nm_branch( 'autocare' );
 $qf = nm_branch( 'qwikfix' );

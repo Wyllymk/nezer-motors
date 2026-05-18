@@ -10,14 +10,6 @@
  */
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'wp_head', function () {
-	nm_seo_meta(
-		esc_html__( 'QwikFix Nyeri | Wheel Balancing, Alignment, Tyres, Batteries & Oil Change | Shell Station', 'nezer-motors' ),
-		esc_html__( 'QwikFix at Shell Service Station, Nyeri-Nyahururu Road. Wheel balancing, alignment, oil change, batteries, tyre sales and car accessories. Call 0701 104 644. Open Mon–Sat 8AM–5PM.', 'nezer-motors' )
-	);
-	nm_local_business_schema( 'qwikfix' );
-}, 5 );
-
 get_header();
 $qf = nm_branch( 'qwikfix' );
 ?>

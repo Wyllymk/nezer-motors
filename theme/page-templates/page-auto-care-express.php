@@ -11,14 +11,6 @@
  */
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'wp_head', function () {
-	nm_seo_meta(
-		esc_html__( 'AutoCare Express Nyeri | Mechanical Repairs, Engine Overhaul, Suspension & Shocks', 'nezer-motors' ),
-		esc_html__( 'AutoCare Express — professional mechanical repairs, engine overhaul, suspension and shocks at Kingongo, Opposite GK Prison, Nyeri. Call 0733 204 672. Mon–Sat 8AM–5PM.', 'nezer-motors' )
-	);
-	nm_local_business_schema( 'autocare' );
-}, 5 );
-
 get_header();
 $ac = nm_branch( 'autocare' );
 ?>
