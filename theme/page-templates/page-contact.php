@@ -255,10 +255,15 @@ $qf = nm_branch( 'qwikfix' );
                                 aria-label="<?php esc_attr_e( 'Contact Nezer Motors', 'nezer-motors' ); ?>">
 
                                 <!-- Honeypot — hidden from real users -->
+                                <?php
+                                  $nm_hp = nm_cs()['honeypot_field'] ?? 'website';
+                                ?>
                                 <div style="display:none" aria-hidden="true">
-                                    <label
-                                        for="nm-website"><?php esc_html_e( 'Leave this blank', 'nezer-motors' ); ?></label>
-                                    <input type="text" id="nm-website" name="website" tabindex="-1" autocomplete="off">
+                                    <label for="nm-<?php echo esc_attr( $nm_hp ); ?>">
+                                        <?php esc_html_e( 'Leave this blank', 'nezer-motors' ); ?>
+                                    </label>
+                                    <input type="text" id="nm-<?php echo esc_attr( $nm_hp ); ?>"
+                                        name="<?php echo esc_attr( $nm_hp ); ?>" tabindex="-1" autocomplete="off">
                                 </div>
 
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
