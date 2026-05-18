@@ -6,17 +6,129 @@
  */
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
-/**
- * Creates the "Home" and "Coming Soon" pages if they don't exist.
- *
- * This function checks if the "Home" and "Coming Soon" pages already exist.
- * If they do exist but have a different slug, it updates them to the correct
- * slug ('home' for the Home page, 'coming-soon' for the Coming Soon page).
- * If the pages do not exist, it creates them with the specified slugs and
- * assigns appropriate templates, and sets the "Home" page as the front page.
- *
- * @return void
- */
+/* ============================================================
+   1. THEME CONSTANTS
+============================================================ */
+define( 'NM_VERSION',  '1.0.0' );
+define( 'NM_DIR',      get_template_directory() );
+define( 'NM_URI',      get_template_directory_uri() );
+define( 'NM_EMAIL',    'info@nezermotors.com' );
+define( 'NM_WA_NUM',   '254733204672' );
+
+/* ============================================================
+   2. INCLUDE FILES
+============================================================ */
+require_once NM_DIR . '/inc/utilities.php';
+require_once NM_DIR . '/inc/mail.php';
+
+/* ============================================================
+   3. ANTI-FLASH DARK MODE SCRIPT
+   Runs before any CSS/HTML renders to prevent white flash.
+============================================================ */
+function nezer_motors_antiflash_script() {
+	echo '<script id="nm-antiflash">(function(){';
+	echo 'var t=localStorage.getItem("nezer-theme")||"system";';
+	echo 'var d=t==="dark"||(t==="system"&&window.matchMedia("(prefers-color-scheme:dark)").matches);';
+	echo 'if(d)document.documentElement.classList.add("dark");';
+	echo '})();</script>' . "\n";
+}
+add_action( 'wp_head', 'nezer_motors_antiflash_script', 1 );
+
+/* ============================================================
+   4. CONTACT FORM AJAX HANDLER
+============================================================ */
+add_action( 'wp_ajax_nm_contact',        'nezer_motors_handle_contact' );
+add_action( 'wp_ajax_nopriv_nm_contact', 'nezer_motors_handle_contact' );
+
+function nezer_motors_handle_contact() {
+	// Verify nonce
+	if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'nm_contact_nonce' ) ) {
+		wp_send_json_error( [ 'message' => esc_html__( 'Security check failed. Please refresh and try again.', 'nezer-motors' ) ], 403 );
+	}
+
+	// Sanitize inputs
+	$name    = sanitize_text_field( wp_unslash( $_POST['name']    ?? '' ) );
+	$email   = sanitize_email(       wp_unslash( $_POST['email']   ?? '' ) );
+	$phone   = sanitize_text_field( wp_unslash( $_POST['phone']   ?? '' ) );
+	$branch  = sanitize_text_field( wp_unslash( $_POST['branch']  ?? '' ) );
+	$vehicle = sanitize_text_field( wp_unslash( $_POST['vehicle'] ?? '' ) );
+	$message = sanitize_textarea_field( wp_unslash( $_POST['message'] ?? '' ) );
+
+	// Validate required fields
+	if ( empty( $name ) || empty( $email ) || empty( $message ) || empty( $branch ) ) {
+		wp_send_json_error( [ 'message' => esc_html__( 'Please fill in all required fields.', 'nezer-motors' ) ], 400 );
+	}
+	if ( ! is_email( $email ) ) {
+		wp_send_json_error( [ 'message' => esc_html__( 'Please enter a valid email address.', 'nezer-motors' ) ], 400 );
+	}
+
+	// Basic honeypot (if your form has a hidden field)
+	if ( ! empty( $_POST['website'] ) ) {
+		wp_send_json_success( [ 'message' => esc_html__( 'Message sent!', 'nezer-motors' ) ] );
+	}
+
+	// Build and send email
+	$sent = nezer_motors_send_contact_email( [
+		'name'    => $name,
+		'email'   => $email,
+		'phone'   => $phone,
+		'branch'  => $branch,
+		'vehicle' => $vehicle,
+		'message' => $message,
+	] );
+
+	if ( $sent ) {
+		// Auto-reply to customer
+		nezer_motors_send_auto_reply( $name, $email, $branch );
+
+		wp_send_json_success( [
+			'message' => esc_html__( 'Thank you! Your message has been sent. We will get back to you shortly.', 'nezer-motors' ),
+		] );
+	} else {
+		wp_send_json_error( [
+			'message' => esc_html__( 'Message could not be sent. Please call us directly.', 'nezer-motors' ),
+		], 500 );
+	}
+}
+
+/* ============================================================
+   5. Automatically set permalinks to 'postname' 
+   and timezone to +0300 on theme activation.
+============================================================ */
+function nezer_motors_setup_settings() 
+{
+    // Set permalinks to 'postname'
+    global $wp_rewrite;
+    $wp_rewrite->set_permalink_structure('/%postname%/');
+    $wp_rewrite->flush_rules(); // Flush the rewrite rules to apply changes
+
+    // Set the timezone to UTC+3
+	update_option('timezone_string', ''); // Clear named timezone
+	update_option('gmt_offset', 3); // Set numeric offset to +3
+}
+add_action('after_switch_theme', 'nezer_motors_setup_settings');
+
+
+/* ============================================================
+   6. COMING SOON MODE — redirect all non-admin users to a Coming Soon page
+============================================================ */
+add_action( 'template_redirect', function () {
+
+    $coming_soon_active = true;
+
+    if ( ! $coming_soon_active ) return;
+    if ( current_user_can( 'edit_posts' ) ) return;
+    if ( is_page( 'coming-soon' ) ) return;
+    if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || defined( 'REST_REQUEST' ) ) return;
+
+    wp_redirect( home_url( '/coming-soon/' ), 302 );
+    exit;
+
+} );
+
+/* ============================================================
+   7. CORE PAGES CREATION — create essential pages with correct slugs, templates, and hierarchy
+============================================================ */
 function nezer_motors_create_home_page() 
 {
 	// Check if the "Home" page exists using WP_Query
@@ -65,20 +177,7 @@ function nezer_motors_create_home_page()
 // Hook the function to run when WordPress initializes (after theme is activated)
 add_action( 'after_switch_theme', 'nezer_motors_create_home_page' );
 
-/**
- * Create essential pages upon theme activation.
- *
- * This function creates several essential pages (such as Coming Soon, etc.)
- * for the theme. The function checks if each page already exists based on the slug and
- * if it does not, the page is created and associated with the appropriate template.
- */
-/**
- * Creates core site pages and ensures correct hierarchy, slugs, and templates.
- *
- * - Creates Home, Coming Soon, Contact, About Me, Services, Projects.
- * - Creates Project child pages.
- * - Sets Home as the static front page.
- */
+
 function nezer_motors_create_core_pages() 
 {
     $pages = array(        
@@ -175,152 +274,7 @@ function nezer_motors_create_core_pages()
         }
     }
 }
-add_action( 'init', 'nezer_motors_create_core_pages' );
-
-// Automatically set permalinks to 'postname' and timezone to +0300 on theme activation.
-function nezer_motors_setup_settings() 
-{
-    // Set permalinks to 'postname'
-    global $wp_rewrite;
-    $wp_rewrite->set_permalink_structure('/%postname%/');
-    $wp_rewrite->flush_rules(); // Flush the rewrite rules to apply changes
-
-    // Set the timezone to UTC+3
-	update_option('timezone_string', ''); // Clear named timezone
-	update_option('gmt_offset', 3); // Set numeric offset to +3
-}
-add_action('after_switch_theme', 'nezer_motors_setup_settings');
-
-add_action( 'template_redirect', function () {
-
-    $coming_soon_active = true;
-
-    if ( ! $coming_soon_active ) return;
-    if ( current_user_can( 'edit_posts' ) ) return;
-    if ( is_page( 'coming-soon' ) ) return;
-    if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || defined( 'REST_REQUEST' ) ) return;
-
-    wp_redirect( home_url( '/coming-soon/' ), 302 );
-    exit;
-
-} );
-
-/* ============================================================
-   1. THEME CONSTANTS
-============================================================ */
-define( 'NM_VERSION',  '1.0.0' );
-define( 'NM_DIR',      get_template_directory() );
-define( 'NM_URI',      get_template_directory_uri() );
-define( 'NM_EMAIL',    'info@nezermotors.com' );
-define( 'NM_WA_NUM',   '254733204672' );
-
-/* ============================================================
-   2. INCLUDE FILES
-============================================================ */
-require_once NM_DIR . '/inc/utilities.php';
-require_once NM_DIR . '/inc/mail.php';
-
-/* ============================================================
-   3. THEME SETUP
-============================================================ */
-
-
-/* ============================================================
-   4. TAILWIND CONFIG (PHP → JS)
-   Returns the Tailwind config object as a JS string.
-============================================================ */
-
-
-/* ============================================================
-   5. ANTI-FLASH DARK MODE SCRIPT
-   Runs before any CSS/HTML renders to prevent white flash.
-============================================================ */
-function nezer_motors_antiflash_script() {
-	echo '<script id="nm-antiflash">(function(){';
-	echo 'var t=localStorage.getItem("nezer-theme")||"system";';
-	echo 'var d=t==="dark"||(t==="system"&&window.matchMedia("(prefers-color-scheme:dark)").matches);';
-	echo 'if(d)document.documentElement.classList.add("dark");';
-	echo '})();</script>' . "\n";
-}
-add_action( 'wp_head', 'nezer_motors_antiflash_script', 1 );
-
-/* ============================================================
-   6. ENQUEUE SCRIPTS & STYLES
-============================================================ */
-
-
-/* ============================================================
-   7. CONTACT FORM AJAX HANDLER
-============================================================ */
-add_action( 'wp_ajax_nm_contact',        'nezer_motors_handle_contact' );
-add_action( 'wp_ajax_nopriv_nm_contact', 'nezer_motors_handle_contact' );
-
-function nezer_motors_handle_contact() {
-	// Verify nonce
-	if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'nm_contact_nonce' ) ) {
-		wp_send_json_error( [ 'message' => esc_html__( 'Security check failed. Please refresh and try again.', 'nezer-motors' ) ], 403 );
-	}
-
-	// Sanitize inputs
-	$name    = sanitize_text_field( wp_unslash( $_POST['name']    ?? '' ) );
-	$email   = sanitize_email(       wp_unslash( $_POST['email']   ?? '' ) );
-	$phone   = sanitize_text_field( wp_unslash( $_POST['phone']   ?? '' ) );
-	$branch  = sanitize_text_field( wp_unslash( $_POST['branch']  ?? '' ) );
-	$vehicle = sanitize_text_field( wp_unslash( $_POST['vehicle'] ?? '' ) );
-	$message = sanitize_textarea_field( wp_unslash( $_POST['message'] ?? '' ) );
-
-	// Validate required fields
-	if ( empty( $name ) || empty( $email ) || empty( $message ) || empty( $branch ) ) {
-		wp_send_json_error( [ 'message' => esc_html__( 'Please fill in all required fields.', 'nezer-motors' ) ], 400 );
-	}
-	if ( ! is_email( $email ) ) {
-		wp_send_json_error( [ 'message' => esc_html__( 'Please enter a valid email address.', 'nezer-motors' ) ], 400 );
-	}
-
-	// Basic honeypot (if your form has a hidden field)
-	if ( ! empty( $_POST['website'] ) ) {
-		wp_send_json_success( [ 'message' => esc_html__( 'Message sent!', 'nezer-motors' ) ] );
-	}
-
-	// Build and send email
-	$sent = nezer_motors_send_contact_email( [
-		'name'    => $name,
-		'email'   => $email,
-		'phone'   => $phone,
-		'branch'  => $branch,
-		'vehicle' => $vehicle,
-		'message' => $message,
-	] );
-
-	if ( $sent ) {
-		// Auto-reply to customer
-		nezer_motors_send_auto_reply( $name, $email, $branch );
-
-		wp_send_json_success( [
-			'message' => esc_html__( 'Thank you! Your message has been sent. We will get back to you shortly.', 'nezer-motors' ),
-		] );
-	} else {
-		wp_send_json_error( [
-			'message' => esc_html__( 'Message could not be sent. Please call us directly.', 'nezer-motors' ),
-		], 500 );
-	}
-}
-
-/* ============================================================
-   8. DOCUMENT TITLE SEPARATOR
-============================================================ */
-function nezer_motors_document_title_separator( $sep ) {
-	return '|';
-}
-add_filter( 'document_title_separator', 'nezer_motors_document_title_separator' );
-
-/* ============================================================
-   9. EXCERPT LENGTH
-============================================================ */
-function nezer_motors_excerpt_length( $length ) {
-	return 20;
-}
-add_filter( 'excerpt_length', 'nezer_motors_excerpt_length' );
+add_action( 'after_switch_theme', 'nezer_motors_create_core_pages' );
 
 /* ============================================================
    10. BODY CLASSES — add dark-mode-ready class

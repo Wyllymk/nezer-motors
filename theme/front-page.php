@@ -204,7 +204,7 @@ $qf = nm_branch( 'qwikfix' );
                                         <?php echo esc_html( $ac['tagline'] ); ?></p>
                                 </div>
                                 <span
-                                    class="ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-sub font-700 text-green-300"
+                                    class="ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-sub font-700 text-green-500"
                                     style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.30)">
                                     <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"
                                         aria-hidden="true"></span>
@@ -214,13 +214,13 @@ $qf = nm_branch( 'qwikfix' );
 
                             <div class="space-y-3 mb-4">
                                 <?php
-              $ac_meta = [
-                [ 'icon' => 'location', 'label' => __( 'Location', 'nezer-motors' ), 'value' => $ac['location'],  'color' => 'rgba(30,64,175,0.25)', 'icon_color' => '#93c5fd' ],
-                [ 'icon' => 'clock',    'label' => __( 'Hours',    'nezer-motors' ), 'value' => $ac['hours'],    'color' => 'rgba(30,64,175,0.25)', 'icon_color' => '#93c5fd' ],
-                [ 'icon' => 'phone',    'label' => __( 'Phone',    'nezer-motors' ), 'value' => $ac['phone'],    'color' => 'rgba(30,64,175,0.25)', 'icon_color' => '#93c5fd', 'link' => 'tel:' . $ac['tel'] ],
-              ];
-              foreach ( $ac_meta as $m ) :
-              ?>
+                                $ac_meta = [
+                                    [ 'icon' => 'location', 'label' => __( 'Location', 'nezer-motors' ), 'value' => $ac['location'],  'color' => 'rgba(30,64,175,0.25)', 'icon_color' => '#0078ff' ],
+                                    [ 'icon' => 'clock',    'label' => __( 'Hours',    'nezer-motors' ), 'value' => $ac['hours'],    'color' => 'rgba(30,64,175,0.25)', 'icon_color' => '#0078ff' ],
+                                    [ 'icon' => 'phone',    'label' => __( 'Phone',    'nezer-motors' ), 'value' => $ac['phone'],    'color' => 'rgba(30,64,175,0.25)', 'icon_color' => '#0078ff', 'link' => 'tel:' . $ac['tel'] ],
+                                ];
+                                foreach ( $ac_meta as $m ) :
+                                ?>
                                 <div class="flex items-start gap-3">
                                     <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
                                         style="background:<?php echo esc_attr( $m['color'] ); ?>">
@@ -280,8 +280,7 @@ $qf = nm_branch( 'qwikfix' );
                                     <?php esc_html_e( 'View Services', 'nezer-motors' ); ?>
                                 </a>
                                 <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
-                                    class="nm-tc-ghost text-center py-2.5 rounded-xl font-sub font-700 text-sm text-white dark:text-white hover:bg-white/10 transition-all"
-                                    style="border:1px solid rgba(255,255,255,0.18)">
+                                    class="nm-tc-ghost border border-white/18 hover:bg-ac-blue-light dark:border-dark/18 text-center py-2.5 rounded-xl font-sub font-700 text-sm text-white dark:text-white transition-all">
                                     <?php esc_html_e( 'Book Now', 'nezer-motors' ); ?>
                                 </a>
                             </div>
@@ -307,7 +306,7 @@ $qf = nm_branch( 'qwikfix' );
                                         <?php echo esc_html( $qf['tagline'] ); ?></p>
                                 </div>
                                 <span
-                                    class="ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-sub font-700 text-green-300"
+                                    class="ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-sub font-700 text-green-500"
                                     style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.30)">
                                     <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"
                                         aria-hidden="true"></span>
@@ -317,13 +316,13 @@ $qf = nm_branch( 'qwikfix' );
 
                             <div class="space-y-3 mb-4">
                                 <?php
-              $qf_meta = [
-                [ 'icon' => 'location', 'label' => __( 'Location', 'nezer-motors' ), 'value' => $qf['location'], 'color' => 'rgba(220,38,38,0.25)', 'icon_color' => '#fca5a5' ],
-                [ 'icon' => 'clock',    'label' => __( 'Hours',    'nezer-motors' ), 'value' => $qf['hours'],   'color' => 'rgba(220,38,38,0.25)', 'icon_color' => '#fca5a5' ],
-                [ 'icon' => 'phone',    'label' => __( 'Phone',    'nezer-motors' ), 'value' => $qf['phone'],   'color' => 'rgba(220,38,38,0.25)', 'icon_color' => '#fca5a5', 'link' => 'tel:' . $qf['tel'] ],
-              ];
-              foreach ( $qf_meta as $m ) :
-              ?>
+                                $qf_meta = [
+                                    [ 'icon' => 'location', 'label' => __( 'Location', 'nezer-motors' ), 'value' => $qf['location'], 'color' => 'rgba(220,38,38,0.25)', 'icon_color' => '#ff0000' ],
+                                    [ 'icon' => 'clock',    'label' => __( 'Hours',    'nezer-motors' ), 'value' => $qf['hours'],   'color' => 'rgba(220,38,38,0.25)', 'icon_color' => '#ff0000' ],
+                                    [ 'icon' => 'phone',    'label' => __( 'Phone',    'nezer-motors' ), 'value' => $qf['phone'],   'color' => 'rgba(220,38,38,0.25)', 'icon_color' => '#ff0000', 'link' => 'tel:' . $qf['tel'] ],
+                                ];
+                                foreach ( $qf_meta as $m ) :
+                                ?>
                                 <div class="flex items-start gap-3">
                                     <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
                                         style="background:<?php echo esc_attr( $m['color'] ); ?>">
@@ -383,8 +382,7 @@ $qf = nm_branch( 'qwikfix' );
                                     <?php esc_html_e( 'View Services', 'nezer-motors' ); ?>
                                 </a>
                                 <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
-                                    class="nm-tc-ghost text-center py-2.5 rounded-xl font-sub font-700 text-sm text-white dark:text-white hover:bg-white/10 transition-all"
-                                    style="border:1px solid rgba(255,255,255,0.18)">
+                                    class="nm-tc-ghost border border-white/18 text-center py-2.5 rounded-xl font-sub font-700 text-sm text-white dark:text-white hover:bg-white/10 transition-all">
                                     <?php esc_html_e( 'Book Now', 'nezer-motors' ); ?>
                                 </a>
                             </div>
@@ -455,26 +453,26 @@ $qf = nm_branch( 'qwikfix' );
             </div>
 
             <?php
-    $services = [
-      [ 'title' => __( 'Mechanical Repairs', 'nezer-motors' ), 'desc' => __( 'Comprehensive mechanical repair service for all vehicle makes and models.', 'nezer-motors' ), 'icon' => '🔧', 'c1' => '#1e3a8a', 'c2' => '#2563eb', 'branch' => 'autocare' ],
-      [ 'title' => __( 'Engine Overhaul',    'nezer-motors' ), 'desc' => __( 'Full engine rebuilds and top-end overhauls by skilled technicians.',            'nezer-motors' ), 'icon' => '⚙️', 'c1' => '#0f1f5c', 'c2' => '#1e40af', 'branch' => 'autocare' ],
-      [ 'title' => __( 'Suspension',         'nezer-motors' ), 'desc' => __( 'Full suspension diagnostics, repairs and component replacement.',               'nezer-motors' ), 'icon' => '🚗', 'c1' => '#1e3a8a', 'c2' => '#3b82f6', 'branch' => 'autocare' ],
-      [ 'title' => __( 'Shocks',             'nezer-motors' ), 'desc' => __( 'Shock absorber testing and replacement for a smooth, safe ride.',               'nezer-motors' ), 'icon' => '🏎️', 'c1' => '#1e40af', 'c2' => '#2563eb', 'branch' => 'autocare' ],
-      [ 'title' => __( 'Wheel Balancing',    'nezer-motors' ), 'desc' => __( 'Dynamic balancing for all tyre sizes to eliminate vibration.',                  'nezer-motors' ), 'icon' => '⚖️', 'c1' => '#7f1d1d', 'c2' => '#dc2626', 'branch' => 'qwikfix' ],
-      [ 'title' => __( 'Wheel Alignment',    'nezer-motors' ), 'desc' => __( 'Computerised 4-wheel alignment for saloons and SUVs.',                          'nezer-motors' ), 'icon' => '🎯', 'c1' => '#991b1b', 'c2' => '#ef4444', 'branch' => 'qwikfix' ],
-      [ 'title' => __( 'Oil Change',         'nezer-motors' ), 'desc' => __( 'Engine oil and filter service using quality-approved products.',                 'nezer-motors' ), 'icon' => '🛢️', 'c1' => '#78350f', 'c2' => '#d97706', 'branch' => 'qwikfix' ],
-      [ 'title' => __( 'Batteries',          'nezer-motors' ), 'desc' => __( 'Battery testing, supply and professional fitting for all vehicles.',             'nezer-motors' ), 'icon' => '⚡', 'c1' => '#713f12', 'c2' => '#ca8a04', 'branch' => 'qwikfix' ],
-      [ 'title' => __( 'Tyre Sales',         'nezer-motors' ), 'desc' => __( 'Quality tyres sourced and professionally fitted for all vehicle types.',         'nezer-motors' ), 'icon' => '🔘', 'c1' => '#7f1d1d', 'c2' => '#b91c1c', 'branch' => 'qwikfix' ],
-      [ 'title' => __( 'Car Accessories',    'nezer-motors' ), 'desc' => __( 'A wide range of quality car accessories available in-store.',                    'nezer-motors' ), 'icon' => '🛒', 'c1' => '#450a0a', 'c2' => '#dc2626', 'branch' => 'qwikfix' ],
-    ];
-    ?>
+            $services = [
+            [ 'title' => __( 'Mechanical Repairs', 'nezer-motors' ), 'desc' => __( 'Comprehensive mechanical repair service for all vehicle makes and models.', 'nezer-motors' ), 'icon' => '🔧', 'c1' => '#1e3a8a', 'c2' => '#2563eb', 'branch' => 'autocare' ],
+            [ 'title' => __( 'Engine Overhaul',    'nezer-motors' ), 'desc' => __( 'Full engine rebuilds and top-end overhauls by skilled technicians.',            'nezer-motors' ), 'icon' => '⚙️', 'c1' => '#0f1f5c', 'c2' => '#1e40af', 'branch' => 'autocare' ],
+            [ 'title' => __( 'Suspension',         'nezer-motors' ), 'desc' => __( 'Full suspension diagnostics, repairs and component replacement.',               'nezer-motors' ), 'icon' => '🚗', 'c1' => '#1e3a8a', 'c2' => '#3b82f6', 'branch' => 'autocare' ],
+            [ 'title' => __( 'Shocks',             'nezer-motors' ), 'desc' => __( 'Shock absorber testing and replacement for a smooth, safe ride.',               'nezer-motors' ), 'icon' => '🏎️', 'c1' => '#1e40af', 'c2' => '#2563eb', 'branch' => 'autocare' ],
+            [ 'title' => __( 'Wheel Balancing',    'nezer-motors' ), 'desc' => __( 'Dynamic balancing for all tyre sizes to eliminate vibration.',                  'nezer-motors' ), 'icon' => '⚖️', 'c1' => '#7f1d1d', 'c2' => '#dc2626', 'branch' => 'qwikfix' ],
+            [ 'title' => __( 'Wheel Alignment',    'nezer-motors' ), 'desc' => __( 'Computerised 4-wheel alignment for saloons and SUVs.',                          'nezer-motors' ), 'icon' => '🎯', 'c1' => '#991b1b', 'c2' => '#ef4444', 'branch' => 'qwikfix' ],
+            [ 'title' => __( 'Oil Change',         'nezer-motors' ), 'desc' => __( 'Engine oil and filter service using quality-approved products.',                 'nezer-motors' ), 'icon' => '🛢️', 'c1' => '#78350f', 'c2' => '#d97706', 'branch' => 'qwikfix' ],
+            [ 'title' => __( 'Batteries',          'nezer-motors' ), 'desc' => __( 'Battery testing, supply and professional fitting for all vehicles.',             'nezer-motors' ), 'icon' => '⚡', 'c1' => '#713f12', 'c2' => '#ca8a04', 'branch' => 'qwikfix' ],
+            [ 'title' => __( 'Tyre Sales',         'nezer-motors' ), 'desc' => __( 'Quality tyres sourced and professionally fitted for all vehicle types.',         'nezer-motors' ), 'icon' => '🔘', 'c1' => '#7f1d1d', 'c2' => '#b91c1c', 'branch' => 'qwikfix' ],
+            [ 'title' => __( 'Car Accessories',    'nezer-motors' ), 'desc' => __( 'A wide range of quality car accessories available in-store.',                    'nezer-motors' ), 'icon' => '🛒', 'c1' => '#450a0a', 'c2' => '#dc2626', 'branch' => 'qwikfix' ],
+            ];
+            ?>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" data-animate-stagger>
                 <?php foreach ( $services as $svc ) :
-        $branch_label = $svc['branch'] === 'autocare' ? __( 'AutoCare', 'nezer-motors' ) : __( 'QwikFix', 'nezer-motors' );
-        $badge_class  = $svc['branch'] === 'autocare'
-          ? 'bg-blue-500/15 dark:bg-blue-500/15 text-blue-700 dark:text-blue-400'
-          : 'bg-red-500/15 dark:bg-red-500/15 text-red-700 dark:text-red-400';
-      ?>
+                    $branch_label = $svc['branch'] === 'autocare' ? __( 'AutoCare', 'nezer-motors' ) : __( 'QwikFix', 'nezer-motors' );
+                    $badge_class  = $svc['branch'] === 'autocare'
+                    ? 'bg-blue-500/15 dark:bg-blue-500/15 text-blue-700 dark:text-blue-400'
+                    : 'bg-red-500/15 dark:bg-red-500/15 text-red-700 dark:text-red-400';
+                ?>
                 <article class="nm-card p-5 rounded-2xl group cursor-default"
                     aria-label="<?php echo esc_attr( sprintf( __( '%s service', 'nezer-motors' ), $svc['title'] ) ); ?>">
                     <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4 text-xl group-hover:scale-110 transition-transform duration-300"

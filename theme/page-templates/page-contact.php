@@ -26,24 +26,24 @@ $qf = nm_branch( 'qwikfix' );
 <main id="main-content" role="main">
 
     <!-- PAGE HERO -->
-    <section class="relative pt-36 pb-20 overflow-hidden"
-        style="background:linear-gradient(135deg,#09090b,#111827 65%,#1a1a1a)">
-        <div class="absolute inset-0 opacity-20"
-            style="background-image:radial-gradient(rgba(255,255,255,0.10) 1px,transparent 1px);background-size:28px 28px"
-            aria-hidden="true"></div>
+    <section
+        class="relative pt-36 pb-20 overflow-hidden bg-linear-to-br from-zinc-50 via-gray-100 to-blue-100 dark:from-zinc-950 dark:via-gray-900 dark:to-blue-900">
+        <div class="absolute inset-0 opacity-70 bg-[radial-gradient(rgba(0,0,0,0.10)_1px,transparent_1px)] dark:bg-[radial-gradient(rgba(255,255,255,0.10)_1px,transparent_1px)] bg-size-[28px_28px]"
+            aria-hidden="true">
+        </div>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <span
-                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-sub font-700 tracking-widest uppercase mb-6 nm-glass text-white/70">
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-sub font-700 tracking-widest uppercase mb-6 bg-black/5 dark:bg-black/95 text-zinc-600 dark:nm-glass dark:text-white/70">
                 <?php esc_html_e( 'Get In Touch', 'nezer-motors' ); ?>
             </span>
-            <h1 class="font-heading text-5xl sm:text-7xl font-700 text-white mb-6 leading-tight">
+            <h1 class="font-heading text-5xl sm:text-7xl font-700 text-zinc-900 dark:text-white mb-6 leading-tight">
                 <?php esc_html_e( 'Contact', 'nezer-motors' ); ?>
                 <span
                     style="background:linear-gradient(135deg,#f0c040,#d4a017);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
                     <?php esc_html_e( 'Us', 'nezer-motors' ); ?>
                 </span>
             </h1>
-            <p class="font-body text-lg text-white/60 max-w-xl mx-auto">
+            <p class="font-body text-lg text-zinc-500 dark:text-white/60 max-w-2xl mx-auto">
                 <?php esc_html_e( 'Reach either branch directly or use the form below. We respond to all enquiries promptly.', 'nezer-motors' ); ?>
             </p>
         </div>

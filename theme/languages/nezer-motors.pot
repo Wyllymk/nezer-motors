@@ -1,0 +1,1808 @@
+# Copyright (C) 2026 Wilson Mbuthia
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Nezer Motors 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/nezer-motors\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-05-18T12:16:33+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: nezer-motors\n"
+
+#. Theme Name of the theme
+#: theme
+#: theme/page-templates/page-about.php:38
+#: theme/template-parts/content/whatsapp-widget.php:11
+msgid "Nezer Motors"
+msgstr ""
+
+#. Theme URI of the theme
+#: theme
+msgid "https://github.com/wyllymk/nezer-motors"
+msgstr ""
+
+#. Description of the theme
+#: theme
+msgid "Official WordPress theme for Nezer Motors, Nyeri, Kenya. AutoCare Express & QwikFix vehicle servicing. Built with Tailwind CSS, Alpine.js and glassmorphism design."
+msgstr ""
+
+#. Author of the theme
+#: theme
+msgid "Wilson Mbuthia"
+msgstr ""
+
+#. Author URI of the theme
+#: theme
+msgid "https://wilsondevops.com/"
+msgstr ""
+
+#: theme/404.php:45
+msgid "Looks like you took a wrong turn."
+msgstr ""
+
+#: theme/404.php:48
+msgid "The page you are looking for doesn't exist or may have been moved. Let us help you get back on track."
+msgstr ""
+
+#: theme/404.php:52
+msgid "404 navigation shortcuts"
+msgstr ""
+
+#: theme/404.php:60
+msgid "Go Home"
+msgstr ""
+
+#. Template Name of the theme
+#: theme/404.php:65
+#: theme/404.php:98
+#: theme/inc/utilities.php:25
+#: theme/inc/utilities.php:488
+#: theme/page-templates/page-about.php:126
+#: theme/page-templates/page-about.php:232
+#: theme/page-templates/page-coming-soon.php:715
+#: theme/template-parts/content/whatsapp-widget.php:16
+msgid "AutoCare Express"
+msgstr ""
+
+#. Template Name of the theme
+#: theme/404.php:70
+#: theme/404.php:118
+#: theme/front-page.php:183
+#: theme/front-page.php:471
+#: theme/inc/utilities.php:46
+#: theme/inc/utilities.php:493
+#: theme/page-templates/page-about.php:165
+#: theme/page-templates/page-about.php:234
+#: theme/page-templates/page-coming-soon.php:729
+msgid "QwikFix"
+msgstr ""
+
+#: theme/404.php:74
+#: theme/front-page.php:719
+#: theme/page-templates/page-about.php:230
+msgid "Contact Us"
+msgstr ""
+
+#: theme/404.php:81
+msgid "Or call us directly"
+msgstr ""
+
+#: theme/404.php:87
+#: theme/page-templates/page-contact.php:59
+#, php-format
+msgid "Call AutoCare Express on %s"
+msgstr ""
+
+#: theme/404.php:107
+#: theme/page-templates/page-contact.php:77
+#, php-format
+msgid "Call QwikFix on %s"
+msgstr ""
+
+#: theme/404.php:127
+#: theme/page-templates/page-contact.php:95
+#: theme/page-templates/page-contact.php:380
+msgid "Chat with Nezer Motors on WhatsApp"
+msgstr ""
+
+#: theme/404.php:138
+#: theme/page-templates/page-coming-soon.php:744
+#: theme/page-templates/page-contact.php:105
+msgid "WhatsApp"
+msgstr ""
+
+#: theme/404.php:139
+#: theme/page-templates/page-contact.php:107
+msgid "0733 204 672"
+msgstr ""
+
+#. translators: 1: title.
+#: theme/comments.php:36
+#, php-format
+msgid "One comment on &ldquo;%1$s&rdquo;"
+msgstr ""
+
+#. translators: 1: comment count number, 2: title.
+#: theme/comments.php:44
+#, php-format
+msgctxt "comments title"
+msgid "%1$s comment on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s comments on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: theme/comments.php:74
+msgid "Comments are closed."
+msgstr ""
+
+#: theme/front-page.php:22
+msgid "Nezer Motors | AutoCare Express & QwikFix — Vehicle Servicing in Nyeri, Kenya"
+msgstr ""
+
+#: theme/front-page.php:23
+msgid "Nezer Motors — Nyeri's trusted automotive group. AutoCare Express (mechanical repairs, engine overhaul, suspension, shocks) and QwikFix at Shell Station (alignment, tyres, batteries, oil change). Open Mon–Sat 8AM–5PM."
+msgstr ""
+
+#: theme/front-page.php:40
+msgid "Nezer Motors — choose a branch"
+msgstr ""
+
+#: theme/front-page.php:55
+msgid "AutoCare Express information"
+msgstr ""
+
+#: theme/front-page.php:59
+msgid "AutoCare Express — Nyeri"
+msgstr ""
+
+#: theme/front-page.php:63
+msgid "Expert Car"
+msgstr ""
+
+#: theme/front-page.php:65
+msgid "Repairs"
+msgstr ""
+
+#: theme/front-page.php:66
+msgid "You Trust"
+msgstr ""
+
+#: theme/front-page.php:70
+msgid "Mechanical repairs, engine overhaul, suspension and shocks — professional care at Kingongo, Nyeri."
+msgstr ""
+
+#: theme/front-page.php:76
+#: theme/front-page.php:131
+#: theme/page-templates/page-auto-care-express.php:159
+msgid "Our Services"
+msgstr ""
+
+#: theme/front-page.php:110
+msgid "QwikFix information"
+msgstr ""
+
+#: theme/front-page.php:114
+msgid "QwikFix — Shell Station, Nyeri"
+msgstr ""
+
+#: theme/front-page.php:118
+msgid "Alignment."
+msgstr ""
+
+#: theme/front-page.php:120
+msgid "Tyres."
+msgstr ""
+
+#: theme/front-page.php:121
+msgid "Done Right."
+msgstr ""
+
+#: theme/front-page.php:125
+#: theme/page-templates/page-qwik-fix.php:61
+msgid "Wheel balancing, alignment, oil change, batteries, tyre sales and car accessories at Shell Service Station, Nyeri-Nyahururu Road."
+msgstr ""
+
+#: theme/front-page.php:167
+msgid "Select a branch"
+msgstr ""
+
+#: theme/front-page.php:176
+#: theme/front-page.php:471
+#: theme/page-templates/page-auto-care-express.php:54
+msgid "AutoCare"
+msgstr ""
+
+#: theme/front-page.php:211
+#: theme/front-page.php:313
+msgid "Open"
+msgstr ""
+
+#: theme/front-page.php:218
+#: theme/front-page.php:320
+msgid "Location"
+msgstr ""
+
+#: theme/front-page.php:219
+#: theme/front-page.php:321
+#: theme/page-templates/page-coming-soon.php:664
+#: theme/page-templates/page-contact.php:181
+msgid "Hours"
+msgstr ""
+
+#: theme/front-page.php:220
+#: theme/front-page.php:322
+#: theme/inc/mail.php:74
+#: theme/page-templates/page-contact.php:182
+msgid "Phone"
+msgstr ""
+
+#: theme/front-page.php:270
+#: theme/front-page.php:372
+#: theme/template-parts/layout/footer-content.php:161
+#: theme/template-parts/layout/footer-content.php:232
+msgid "Services"
+msgstr ""
+
+#: theme/front-page.php:280
+#: theme/front-page.php:382
+#: theme/page-templates/page-about.php:114
+#: theme/page-templates/page-about.php:208
+msgid "View Services"
+msgstr ""
+
+#: theme/front-page.php:284
+#: theme/front-page.php:386
+msgid "Book Now"
+msgstr ""
+
+#: theme/front-page.php:400
+#: theme/page-templates/page-auto-care-express.php:146
+#: theme/page-templates/page-qwik-fix.php:144
+msgid "Scroll"
+msgstr ""
+
+#: theme/front-page.php:410
+msgid "Nezer Motors at a glance"
+msgstr ""
+
+#: theme/front-page.php:415
+msgid "Branch Locations"
+msgstr ""
+
+#: theme/front-page.php:416
+msgid "Services Offered"
+msgstr ""
+
+#: theme/front-page.php:417
+msgid "Open 6 Days"
+msgstr ""
+
+#: theme/front-page.php:418
+msgid "Based & Trusted"
+msgstr ""
+
+#: theme/front-page.php:444
+msgid "What We Offer"
+msgstr ""
+
+#: theme/front-page.php:448
+msgid "Services Across Both Branches"
+msgstr ""
+
+#: theme/front-page.php:451
+msgid "From mechanical overhauls to tyre sales, our two branches cover everything your vehicle needs."
+msgstr ""
+
+#: theme/front-page.php:457
+#: theme/inc/utilities.php:35
+#: theme/page-templates/page-auto-care-express.php:167
+msgid "Mechanical Repairs"
+msgstr ""
+
+#: theme/front-page.php:457
+msgid "Comprehensive mechanical repair service for all vehicle makes and models."
+msgstr ""
+
+#: theme/front-page.php:458
+#: theme/inc/utilities.php:36
+#: theme/page-templates/page-auto-care-express.php:169
+msgid "Engine Overhaul"
+msgstr ""
+
+#: theme/front-page.php:458
+msgid "Full engine rebuilds and top-end overhauls by skilled technicians."
+msgstr ""
+
+#: theme/front-page.php:459
+#: theme/inc/utilities.php:37
+#: theme/page-templates/page-auto-care-express.php:171
+msgid "Suspension"
+msgstr ""
+
+#: theme/front-page.php:459
+msgid "Full suspension diagnostics, repairs and component replacement."
+msgstr ""
+
+#: theme/front-page.php:460
+#: theme/inc/utilities.php:38
+#: theme/inc/utilities.php:109
+#: theme/page-templates/page-auto-care-express.php:173
+msgid "Shocks"
+msgstr ""
+
+#: theme/front-page.php:460
+msgid "Shock absorber testing and replacement for a smooth, safe ride."
+msgstr ""
+
+#: theme/front-page.php:461
+#: theme/inc/utilities.php:56
+#: theme/page-templates/page-qwik-fix.php:165
+msgid "Wheel Balancing"
+msgstr ""
+
+#: theme/front-page.php:461
+msgid "Dynamic balancing for all tyre sizes to eliminate vibration."
+msgstr ""
+
+#: theme/front-page.php:462
+#: theme/page-templates/page-qwik-fix.php:167
+msgid "Wheel Alignment"
+msgstr ""
+
+#: theme/front-page.php:462
+#: theme/page-templates/page-qwik-fix.php:167
+msgid "Computerised 4-wheel alignment for saloons and SUVs."
+msgstr ""
+
+#: theme/front-page.php:463
+#: theme/inc/utilities.php:58
+#: theme/page-templates/page-qwik-fix.php:169
+msgid "Oil Change"
+msgstr ""
+
+#: theme/front-page.php:463
+#: theme/page-templates/page-qwik-fix.php:169
+msgid "Engine oil and filter service using quality-approved products."
+msgstr ""
+
+#: theme/front-page.php:464
+#: theme/inc/utilities.php:59
+#: theme/inc/utilities.php:101
+#: theme/page-templates/page-qwik-fix.php:171
+msgid "Batteries"
+msgstr ""
+
+#: theme/front-page.php:464
+#: theme/page-templates/page-qwik-fix.php:171
+msgid "Battery testing, supply and professional fitting for all vehicles."
+msgstr ""
+
+#: theme/front-page.php:465
+#: theme/inc/utilities.php:60
+#: theme/page-templates/page-qwik-fix.php:173
+msgid "Tyre Sales"
+msgstr ""
+
+#: theme/front-page.php:465
+msgid "Quality tyres sourced and professionally fitted for all vehicle types."
+msgstr ""
+
+#: theme/front-page.php:466
+#: theme/inc/utilities.php:61
+#: theme/page-templates/page-qwik-fix.php:175
+msgid "Car Accessories"
+msgstr ""
+
+#: theme/front-page.php:466
+msgid "A wide range of quality car accessories available in-store."
+msgstr ""
+
+#: theme/front-page.php:477
+#, php-format
+msgid "%s service"
+msgstr ""
+
+#: theme/front-page.php:503
+msgid "Our Products"
+msgstr ""
+
+#: theme/front-page.php:507
+msgid "Quality Parts & Accessories"
+msgstr ""
+
+#: theme/front-page.php:510
+msgid "We stock and supply quality automotive products at both branches. Speak to our team for availability and pricing."
+msgstr ""
+
+#: theme/front-page.php:533
+msgid "Photo coming soon"
+msgstr ""
+
+#: theme/front-page.php:548
+msgid "Enquire"
+msgstr ""
+
+#: theme/front-page.php:558
+msgid "Contact either branch for current stock availability and pricing."
+msgstr ""
+
+#: theme/front-page.php:571
+msgid "Find Us"
+msgstr ""
+
+#: theme/front-page.php:575
+msgid "Two Locations. One Standard."
+msgstr ""
+
+#: theme/front-page.php:578
+msgid "Both branches operate under the Nezer Motors name with the same commitment to quality and honest service."
+msgstr ""
+
+#: theme/front-page.php:587
+msgid "AutoCare Express branch details"
+msgstr ""
+
+#: theme/front-page.php:618
+msgid "Visit AutoCare Express"
+msgstr ""
+
+#: theme/front-page.php:629
+msgid "QwikFix branch details"
+msgstr ""
+
+#: theme/front-page.php:660
+msgid "Visit QwikFix"
+msgstr ""
+
+#: theme/front-page.php:676
+msgid "Our brand partners"
+msgstr ""
+
+#: theme/front-page.php:679
+msgid "Brands We Work With"
+msgstr ""
+
+#: theme/front-page.php:706
+msgid "Ready to Service Your Vehicle?"
+msgstr ""
+
+#: theme/front-page.php:709
+msgid "Visit either of our two branches in Nyeri or reach us by phone."
+msgstr ""
+
+#: theme/front-page.php:727
+msgid "AutoCare: 0733 204 672"
+msgstr ""
+
+#: theme/front-page.php:735
+msgid "QwikFix: 0701 104 644"
+msgstr ""
+
+#: theme/functions.php:85
+msgid "Primary"
+msgstr ""
+
+#: theme/functions.php:86
+msgid "Footer Menu"
+msgstr ""
+
+#: theme/functions.php:148
+#: theme/page-templates/page-contact.php:365
+msgid "Sending…"
+msgstr ""
+
+#: theme/functions.php:149
+msgid "Message sent! We will get back to you shortly."
+msgstr ""
+
+#: theme/functions.php:150
+msgid "Something went wrong. Please try again or call us directly."
+msgstr ""
+
+#: theme/functions.php:151
+#: theme/inc/custom-functions.php:59
+msgid "Please fill in all required fields."
+msgstr ""
+
+#: theme/header.php:49
+msgid "Skip to content"
+msgstr ""
+
+#: theme/inc/custom-functions.php:46
+msgid "Security check failed. Please refresh and try again."
+msgstr ""
+
+#: theme/inc/custom-functions.php:62
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: theme/inc/custom-functions.php:67
+msgid "Message sent!"
+msgstr ""
+
+#: theme/inc/custom-functions.php:85
+msgid "Thank you! Your message has been sent. We will get back to you shortly."
+msgstr ""
+
+#: theme/inc/custom-functions.php:89
+msgid "Message could not be sent. Please call us directly."
+msgstr ""
+
+#. translators: %s = branch name
+#: theme/inc/mail.php:23
+#, php-format
+msgid "[Nezer Motors] New Enquiry — %s"
+msgstr ""
+
+#: theme/inc/mail.php:47
+msgid "Thank you for contacting Nezer Motors"
+msgstr ""
+
+#: theme/inc/mail.php:72
+msgid "Name"
+msgstr ""
+
+#: theme/inc/mail.php:73
+#: theme/page-templates/page-contact.php:183
+msgid "Email"
+msgstr ""
+
+#: theme/inc/mail.php:74
+msgid "Not provided"
+msgstr ""
+
+#: theme/inc/mail.php:75
+msgid "Branch"
+msgstr ""
+
+#: theme/inc/mail.php:76
+msgid "Vehicle"
+msgstr ""
+
+#: theme/inc/mail.php:76
+msgid "Not specified"
+msgstr ""
+
+#: theme/inc/template-functions.php:41
+msgid "Category Archives: "
+msgstr ""
+
+#: theme/inc/template-functions.php:43
+msgid "Tag Archives: "
+msgstr ""
+
+#: theme/inc/template-functions.php:45
+msgid "Author Archives: "
+msgstr ""
+
+#: theme/inc/template-functions.php:47
+msgid "Yearly Archives: "
+msgstr ""
+
+#: theme/inc/template-functions.php:47
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: theme/inc/template-functions.php:49
+msgid "Monthly Archives: "
+msgstr ""
+
+#: theme/inc/template-functions.php:49
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr ""
+
+#: theme/inc/template-functions.php:51
+msgid "Daily Archives: "
+msgstr ""
+
+#. translators: %s: Post type singular name
+#. translators: %s: Taxonomy singular name
+#: theme/inc/template-functions.php:56
+#: theme/inc/template-functions.php:63
+#, php-format
+msgid "%s Archives"
+msgstr ""
+
+#: theme/inc/template-functions.php:67
+msgid "Archives:"
+msgstr ""
+
+#. translators: %s: Name of current post.
+#: theme/inc/template-functions.php:97
+#, php-format
+msgid "Continue reading %s"
+msgstr ""
+
+#: theme/inc/template-functions.php:131
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: theme/inc/template-functions.php:133
+msgid "Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved."
+msgstr ""
+
+#. translators: %s: Comment author link.
+#: theme/inc/template-functions.php:155
+#, php-format
+msgid "%s <span class=\"says\">says:</span>"
+msgstr ""
+
+#. translators: 1: Comment date, 2: Comment time.
+#: theme/inc/template-functions.php:170
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: theme/inc/template-functions.php:177
+msgid "Edit"
+msgstr ""
+
+#: theme/inc/template-tags.php:46
+msgid "Posted by"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers.
+#: theme/inc/template-tags.php:60
+#, php-format
+msgid "Leave a comment<span class=\"sr-only\"> on %s</span>"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma.
+#: theme/inc/template-tags.php:82
+#: theme/inc/template-tags.php:93
+#: theme/inc/template-tags.php:143
+#: theme/inc/template-tags.php:154
+msgid ", "
+msgstr ""
+
+#: theme/inc/template-tags.php:87
+#: theme/inc/template-tags.php:148
+msgid "Posted in"
+msgstr ""
+
+#: theme/inc/template-tags.php:98
+#: theme/inc/template-tags.php:159
+msgid "Tags:"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers.
+#: theme/inc/template-tags.php:114
+#: theme/inc/template-tags.php:175
+#: theme/template-parts/content/content-page.php:47
+#, php-format
+msgid "Edit <span class=\"sr-only\">%s</span>"
+msgstr ""
+
+#: theme/inc/template-tags.php:266
+msgid "Newer posts"
+msgstr ""
+
+#: theme/inc/template-tags.php:267
+msgid "Older posts"
+msgstr ""
+
+#: theme/inc/utilities.php:26
+msgid "A Nezer Motors Branch"
+msgstr ""
+
+#: theme/inc/utilities.php:30
+msgid "Kingongo, Opposite GK Prison, Nyeri"
+msgstr ""
+
+#: theme/inc/utilities.php:31
+#: theme/inc/utilities.php:52
+msgid "P.O. Box 643, 10100 Nyeri"
+msgstr ""
+
+#: theme/inc/utilities.php:32
+#: theme/inc/utilities.php:53
+msgid "Mon – Sat, 8:00 AM – 5:00 PM"
+msgstr ""
+
+#: theme/inc/utilities.php:43
+msgid "AutoCare Express logo"
+msgstr ""
+
+#: theme/inc/utilities.php:47
+msgid "Shell Service Station, Nyeri"
+msgstr ""
+
+#: theme/inc/utilities.php:51
+msgid "Shell Service Station, Nyeri-Nyahururu Road"
+msgstr ""
+
+#: theme/inc/utilities.php:57
+msgid "Alignment"
+msgstr ""
+
+#: theme/inc/utilities.php:66
+msgid "QwikFix logo"
+msgstr ""
+
+#: theme/inc/utilities.php:93
+msgid "Tyres"
+msgstr ""
+
+#: theme/inc/utilities.php:94
+msgid "Quality tyres for all vehicle types. Wide range of brands and sizes in stock at both branches."
+msgstr ""
+
+#: theme/inc/utilities.php:97
+msgid "Assorted car tyres on display"
+msgstr ""
+
+#: theme/inc/utilities.php:102
+msgid "Reliable batteries for all vehicles. Testing and professional fitting included."
+msgstr ""
+
+#: theme/inc/utilities.php:105
+msgid "Car batteries ready for fitting"
+msgstr ""
+
+#: theme/inc/utilities.php:110
+msgid "Genuine shock absorbers to restore ride comfort and vehicle handling."
+msgstr ""
+
+#: theme/inc/utilities.php:113
+msgid "Shock absorbers for cars"
+msgstr ""
+
+#: theme/inc/utilities.php:117
+msgid "Lubricants"
+msgstr ""
+
+#: theme/inc/utilities.php:118
+msgid "Engine oils and lubricants from trusted brands for optimal vehicle performance."
+msgstr ""
+
+#: theme/inc/utilities.php:121
+msgid "Engine oil and lubricant products"
+msgstr ""
+
+#: theme/inc/utilities.php:125
+msgid "Accessories"
+msgstr ""
+
+#: theme/inc/utilities.php:126
+msgid "A curated range of quality car accessories to enhance and personalise your vehicle."
+msgstr ""
+
+#: theme/inc/utilities.php:129
+msgid "Car accessories and add-ons"
+msgstr ""
+
+#: theme/inc/utilities.php:151
+msgid "Shell fuel and lubricants"
+msgstr ""
+
+#: theme/inc/utilities.php:152
+msgid "Castrol engine oils"
+msgstr ""
+
+#: theme/inc/utilities.php:153
+msgid "Mobil lubricants"
+msgstr ""
+
+#: theme/inc/utilities.php:154
+msgid "TotalEnergies products"
+msgstr ""
+
+#: theme/inc/utilities.php:155
+msgid "Michelin tyres"
+msgstr ""
+
+#: theme/inc/utilities.php:156
+msgid "Bridgestone tyres"
+msgstr ""
+
+#: theme/inc/utilities.php:157
+msgid "Goodyear tyres"
+msgstr ""
+
+#: theme/inc/utilities.php:158
+msgid "Bosch automotive parts"
+msgstr ""
+
+#: theme/inc/utilities.php:159
+msgid "NGK spark plugs"
+msgstr ""
+
+#: theme/inc/utilities.php:160
+msgid "Toyota vehicles"
+msgstr ""
+
+#: theme/inc/utilities.php:161
+msgid "Hyundai vehicles"
+msgstr ""
+
+#: theme/inc/utilities.php:162
+msgid "Nissan vehicles"
+msgstr ""
+
+#: theme/inc/utilities.php:270
+msgid "Brand partners"
+msgstr ""
+
+#: theme/inc/utilities.php:287
+msgid "AutoCare Express workshop photos"
+msgstr ""
+
+#: theme/inc/utilities.php:288
+msgid "QwikFix service bay photos"
+msgstr ""
+
+#. translators: %1$s = branch name, %2$d = photo number
+#: theme/inc/utilities.php:299
+#, php-format
+msgid "%1$s — photo %2$d"
+msgstr ""
+
+#: theme/inc/utilities.php:315
+msgid "Photo"
+msgstr ""
+
+#: theme/inc/utilities.php:332
+msgid "Photo lightbox"
+msgstr ""
+
+#: theme/inc/utilities.php:334
+msgid "Previous photo"
+msgstr ""
+
+#: theme/inc/utilities.php:344
+msgid "Close lightbox"
+msgstr ""
+
+#: theme/inc/utilities.php:345
+msgid "Close ✕"
+msgstr ""
+
+#: theme/inc/utilities.php:350
+msgid "Next photo"
+msgstr ""
+
+#: theme/inc/utilities.php:478
+msgid "Home"
+msgstr ""
+
+#. Template Name of the theme
+#: theme/inc/utilities.php:483
+#: theme/page-templates/page-about.php:35
+#: theme/template-parts/layout/footer-content.php:260
+msgid "About"
+msgstr ""
+
+#: theme/inc/utilities.php:498
+#: theme/page-templates/page-contact.php:40
+#: theme/template-parts/layout/footer-content.php:266
+msgid "Contact"
+msgstr ""
+
+#: theme/index.php:27
+msgid "Latest Posts"
+msgstr ""
+
+#: theme/index.php:31
+msgid "Blog"
+msgstr ""
+
+#: theme/index.php:57
+msgid "Read More"
+msgstr ""
+
+#: theme/index.php:69
+msgid "No posts found."
+msgstr ""
+
+#: theme/page-templates/page-about.php:32
+msgid "Our Story"
+msgstr ""
+
+#: theme/page-templates/page-about.php:42
+msgid "Nyeri's trusted automotive group. Two branches. One commitment to quality, honest vehicle care."
+msgstr ""
+
+#: theme/page-templates/page-about.php:54
+msgid "The Parent Company"
+msgstr ""
+
+#: theme/page-templates/page-about.php:57
+msgid "Who We Are"
+msgstr ""
+
+#: theme/page-templates/page-about.php:60
+msgid "Nezer Motors is a Nyeri-based automotive group that owns and operates two vehicle service brands: AutoCare Express and QwikFix. Both branches serve drivers across Nyeri and the wider Central Kenya region with professional, reliable car care."
+msgstr ""
+
+#: theme/page-templates/page-about.php:62
+msgid "Founded on the belief that vehicle owners deserve honest information, quality parts, and skilled technicians, Nezer Motors has built a reputation for consistent service. Whether you need a full engine overhaul or a quick wheel alignment, our teams handle it with care."
+msgstr ""
+
+#: theme/page-templates/page-about.php:64
+msgid "Each branch maintains its own specialist team, giving you access to a broader range of automotive expertise under one trusted group name."
+msgstr ""
+
+#: theme/page-templates/page-about.php:73
+msgid "Honest Service"
+msgstr ""
+
+#: theme/page-templates/page-about.php:73
+msgid "We tell you exactly what your vehicle needs — no upsells, no surprises."
+msgstr ""
+
+#: theme/page-templates/page-about.php:74
+msgid "Quality Parts"
+msgstr ""
+
+#: theme/page-templates/page-about.php:74
+msgid "Genuine, approved components for every repair and service we carry out."
+msgstr ""
+
+#: theme/page-templates/page-about.php:75
+msgid "Skilled Techs"
+msgstr ""
+
+#: theme/page-templates/page-about.php:75
+msgid "Trained technicians with hands-on experience across all major vehicle makes."
+msgstr ""
+
+#: theme/page-templates/page-about.php:76
+msgid "Fair Pricing"
+msgstr ""
+
+#: theme/page-templates/page-about.php:76
+msgid "Transparent pricing before work begins. No hidden charges, ever."
+msgstr ""
+
+#: theme/page-templates/page-about.php:129
+msgid "Mechanical Expertise at Kingongo"
+msgstr ""
+
+#: theme/page-templates/page-about.php:132
+msgid "AutoCare Express is our full mechanical service branch at Kingongo, opposite GK Prison in Nyeri. The team handles everything from routine repairs to complex engine overhauls, working on all major vehicle brands."
+msgstr ""
+
+#: theme/page-templates/page-about.php:135
+msgid "With trained technicians and the right tools for the job, AutoCare Express delivers work that lasts. We stock genuine parts and give customers a clear picture of what their vehicle needs before any work begins."
+msgstr ""
+
+#: theme/page-templates/page-about.php:168
+msgid "Tyres, Alignment & More at Shell Station"
+msgstr ""
+
+#: theme/page-templates/page-about.php:171
+msgid "QwikFix operates from Shell Service Station on the Nyeri-Nyahururu Road. The branch specialises in wheel-related services, batteries, tyre sales and car accessories, making it the go-to stop for drivers heading in and out of Nyeri."
+msgstr ""
+
+#: theme/page-templates/page-about.php:174
+msgid "With modern equipment and experienced staff, QwikFix delivers fast and accurate results. The convenient Shell Station location means you can refuel and service your vehicle in one stop."
+msgstr ""
+
+#: theme/page-templates/page-about.php:224
+msgid "Ready to Book a Service?"
+msgstr ""
+
+#: theme/page-templates/page-about.php:226
+msgid "Contact either branch directly or send us a message."
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:16
+msgid "AutoCare Express Nyeri | Mechanical Repairs, Engine Overhaul, Suspension & Shocks"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:17
+msgid "AutoCare Express — professional mechanical repairs, engine overhaul, suspension and shocks at Kingongo, Opposite GK Prison, Nyeri. Call 0733 204 672. Mon–Sat 8AM–5PM."
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:49
+#: theme/page-templates/page-qwik-fix.php:50
+msgid "Open Mon–Sat"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:56
+msgid "Express"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:57
+msgid "Nyeri"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:60
+msgid "Mechanical repairs, engine overhaul, suspension and shocks — professional care for your vehicle at Kingongo, Nyeri."
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:70
+msgid "Book a Service"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:105
+msgid "Why Choose AutoCare Express"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:111
+msgid "Trained Mechanics"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:111
+msgid "Skilled technicians experienced across all vehicle makes."
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:112
+msgid "Engine Specialists"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:112
+msgid "From minor repairs to full overhauls, we handle it all."
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:113
+msgid "Genuine Parts"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:113
+msgid "Quality components for lasting, reliable repairs."
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:114
+msgid "Honest Assessment"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:114
+msgid "Clear diagnosis before any work begins — no surprises."
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:136
+msgid "WhatsApp: 0733 204 672"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:156
+#: theme/page-templates/page-qwik-fix.php:154
+msgid "What We Do"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:161
+msgid "Expert mechanical care for all vehicle makes. We diagnose accurately and fix it right."
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:167
+msgid "Comprehensive mechanical repair service for all vehicle types and brands."
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:168
+msgid "Engine diagnostics"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:168
+msgid "Component replacement"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:168
+msgid "Cooling system repairs"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:168
+msgid "Electrical fault finding"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:169
+msgid "Full engine rebuilds and top-end overhauls to restore performance and longevity."
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:170
+msgid "Top-end overhaul"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:170
+msgid "Full engine rebuild"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:170
+msgid "Gasket replacement"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:170
+msgid "Timing belt service"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:171
+msgid "Full suspension inspection, diagnosis and component replacement for a smooth ride."
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:172
+msgid "Ball joint replacement"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:172
+msgid "Control arm service"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:172
+msgid "Steering linkage"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:172
+msgid "Bushing replacement"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:173
+msgid "Shock absorber diagnosis and replacement for safety, comfort and vehicle control."
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:174
+msgid "Shock absorber testing"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:174
+msgid "Front & rear replacement"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:174
+msgid "Strut replacement"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:174
+msgid "Ride height check"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:210
+#: theme/page-templates/page-qwik-fix.php:212
+msgid "Gallery"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:213
+#: theme/page-templates/page-qwik-fix.php:215
+msgid "Our Work"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:215
+msgid "Photos from the AutoCare Express workshop. Add images to "
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:230
+msgid "Visit AutoCare Express Today"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:241
+#: theme/page-templates/page-qwik-fix.php:71
+#: theme/page-templates/page-qwik-fix.php:243
+#, php-format
+msgid "Call: %s"
+msgstr ""
+
+#: theme/page-templates/page-auto-care-express.php:245
+#: theme/page-templates/page-qwik-fix.php:247
+msgid "Send a Message"
+msgstr ""
+
+#. Template Name of the theme
+#: theme/page-templates/page-coming-soon.php:634
+msgid "Coming Soon"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:631
+msgid "Auto Services"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:642
+msgid "We're building something new"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:646
+msgid "Almost"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:647
+msgid "Ready."
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:651
+msgid "Our new website is being tuned up for peak performance. While we're under the hood, our workshops are fully operational — give us a call or drop us a message."
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:656
+msgid "Countdown to launch"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:659
+msgid "Days"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:669
+msgid "Mins"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:674
+msgid "Secs"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:681
+msgid "Enter your email for launch updates"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:683
+msgid "Email address for launch notification"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:685
+msgid "Notify Me"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:691
+msgid "Build progress"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:693
+msgid "Build Progress"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:704
+msgid "Contact our branches"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:707
+#, php-format
+msgid "Call AutoCare Express: %s"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:721
+#, php-format
+msgid "Call QwikFix: %s"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:736
+msgid "Chat on WhatsApp: 0733 204 672"
+msgstr ""
+
+#: theme/page-templates/page-coming-soon.php:755
+msgid "All rights reserved"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Contact Page"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:16
+msgid "Contact Nezer Motors | AutoCare Express & QwikFix — Nyeri, Kenya"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:17
+msgid "Contact Nezer Motors in Nyeri. AutoCare Express: 0733 204 672 (Kingongo, Opp GK Prison). QwikFix: 0701 104 644 (Shell Station, Nyeri-Nyahururu Road). Email: info@nezermotors.com. Open Mon–Sat 8AM–5PM."
+msgstr ""
+
+#: theme/page-templates/page-contact.php:37
+#: theme/template-parts/layout/header-content.php:102
+#: theme/template-parts/layout/header-content.php:161
+msgid "Get In Touch"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:43
+msgid "Us"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:47
+msgid "Reach either branch directly or use the form below. We respond to all enquiries promptly."
+msgstr ""
+
+#: theme/page-templates/page-contact.php:132
+msgid "View AutoCare Services"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:147
+msgid "View QwikFix Services"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:180
+msgid "Address"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:224
+#: theme/page-templates/page-contact.php:228
+#, php-format
+msgid "Map for %s"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:252
+msgid "Send Us a Message"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:255
+msgid "Fill in the form and we will get back to you as soon as possible."
+msgstr ""
+
+#: theme/page-templates/page-contact.php:262
+msgid "Contact Nezer Motors"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:267
+msgid "Leave this blank"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:275
+msgid "Your Name"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:279
+msgid "John Kamau"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:285
+msgid "Email Address"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:289
+msgid "you@email.com"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:297
+msgid "Phone Number"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:300
+msgid "07XX XXX XXX"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:307
+msgid "Branch / Subject"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:312
+msgid "Select a branch or topic"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:314
+msgid "AutoCare Express — Mechanical, Engine, Suspension, Shocks"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:317
+msgid "QwikFix — Balancing, Alignment, Tyres, Batteries, Oil Change"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:320
+msgid "Products — Tyres, Batteries, Shocks, Lubricants, Accessories"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:323
+msgid "General Enquiry"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:330
+msgid "Vehicle (Optional)"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:333
+msgid "e.g. Toyota Corolla 2019, 1800cc"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:339
+msgid "Message"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:344
+msgid "Describe what service you need or ask us anything…"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:363
+msgid "Send Message"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:372
+msgid "or reach us directly"
+msgstr ""
+
+#: theme/page-templates/page-contact.php:385
+msgid "Chat on WhatsApp"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:15
+msgid "QwikFix Nyeri | Wheel Balancing, Alignment, Tyres, Batteries & Oil Change | Shell Station"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:16
+msgid "QwikFix at Shell Service Station, Nyeri-Nyahururu Road. Wheel balancing, alignment, oil change, batteries, tyre sales and car accessories. Call 0701 104 644. Open Mon–Sat 8AM–5PM."
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:55
+msgid "QwikFix at"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:57
+msgid "Shell"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:58
+msgid "Kingongo"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:75
+msgid "Book Service"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:103
+msgid "Why Choose QwikFix"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:109
+msgid "Modern Equipment"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:109
+msgid "Computerised alignment and balancing for precision results."
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:110
+msgid "Shell Station"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:110
+msgid "Conveniently located at Shell Kingongo on the Nyahururu Road."
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:111
+msgid "Wide Tyre Range"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:111
+msgid "Quality tyres for all vehicle sizes and categories in stock."
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:112
+msgid "Battery Supply"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:112
+msgid "Batteries tested and fitted for all vehicle types on-site."
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:131
+msgid "Services at a Glance"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:157
+msgid "QwikFix Services"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:159
+msgid "Fast, precise work using proper equipment at Shell Service Station, Nyeri-Nyahururu Road."
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:165
+msgid "Dynamic balancing to eliminate vibration and extend tyre life."
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:166
+msgid "All tyre sizes supported"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:166
+msgid "Static & dynamic balancing"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:166
+msgid "Weight placement accuracy"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:166
+msgid "Valve stem check"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:168
+msgid "Toe & camber correction"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:168
+msgid "Saloon & SUV alignment"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:168
+msgid "Post-alignment test drive"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:168
+msgid "Alignment report"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:170
+msgid "Mineral & synthetic oils"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:170
+msgid "Oil filter replacement"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:170
+msgid "Oil level optimisation"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:170
+msgid "Engine inspection"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:172
+msgid "Battery voltage testing"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:172
+msgid "Wide brand selection"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:172
+#: theme/page-templates/page-qwik-fix.php:174
+msgid "Professional fitting"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:172
+msgid "Old battery disposal"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:173
+msgid "Quality tyres supplied and professionally fitted for all vehicle types."
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:174
+msgid "Wide brand range"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:174
+msgid "All vehicle sizes"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:174
+msgid "Tyre pressure check"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:175
+msgid "A selection of quality car accessories available in-store."
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:176
+msgid "In-store browsing"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:176
+msgid "Quality brands"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:176
+msgid "Expert advice"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:176
+msgid "Competitive pricing"
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:217
+msgid "Photos from the QwikFix bay at Shell Kingongo. Add images to "
+msgstr ""
+
+#: theme/page-templates/page-qwik-fix.php:232
+msgid "Visit QwikFix Today"
+msgstr ""
+
+#: theme/search.php:25
+#: theme/template-parts/content/content-none.php:23
+msgid "Search results for:"
+msgstr ""
+
+#: theme/single.php:26
+msgid "Back"
+msgstr ""
+
+#: theme/single.php:35
+msgid " · by "
+msgstr ""
+
+#: theme/template-parts/content/content-excerpt.php:18
+#: theme/template-parts/content/content.php:18
+msgctxt "post"
+msgid "Featured"
+msgstr ""
+
+#: theme/template-parts/content/content-none.php:31
+msgid "Nothing Found"
+msgstr ""
+
+#: theme/template-parts/content/content-none.php:42
+msgid "Your site is set to show the most recent posts on your homepage, but you haven&rsquo;t published any posts."
+msgstr ""
+
+#. translators: 1: link to WP admin new post page.
+#: theme/template-parts/content/content-none.php:49
+msgid "Add or publish posts"
+msgstr ""
+
+#: theme/template-parts/content/content-none.php:59
+msgid "Your search generated no results. Please try a different search."
+msgstr ""
+
+#: theme/template-parts/content/content-none.php:68
+msgid "No content matched your request."
+msgstr ""
+
+#: theme/template-parts/content/content-page.php:33
+#: theme/template-parts/content/content-single.php:46
+#: theme/template-parts/content/content.php:36
+msgid "Pages:"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers.
+#: theme/template-parts/content/content-single.php:33
+#, php-format
+msgid "Continue reading<span class=\"sr-only\"> \"%s\"</span>"
+msgstr ""
+
+#: theme/template-parts/content/whatsapp-widget.php:12
+msgid "Hello, I would like to enquire about your services."
+msgstr ""
+
+#: theme/template-parts/content/whatsapp-widget.php:17
+msgid "Hello, I would like to enquire about AutoCare Express services."
+msgstr ""
+
+#: theme/template-parts/content/whatsapp-widget.php:19
+msgid "QuikFix"
+msgstr ""
+
+#: theme/template-parts/content/whatsapp-widget.php:20
+msgid "Hello, I would like to enquire about QuikFix services."
+msgstr ""
+
+#: theme/template-parts/content/whatsapp-widget.php:46
+msgid "Typically replies quickly"
+msgstr ""
+
+#: theme/template-parts/content/whatsapp-widget.php:49
+#: theme/template-parts/content/whatsapp-widget.php:82
+msgid "Close WhatsApp chat"
+msgstr ""
+
+#: theme/template-parts/content/whatsapp-widget.php:60
+msgid "Hi! Welcome to"
+msgstr ""
+
+#: theme/template-parts/content/whatsapp-widget.php:61
+msgid "How can we help you today?"
+msgstr ""
+
+#: theme/template-parts/content/whatsapp-widget.php:64
+msgid "Type your message..."
+msgstr ""
+
+#: theme/template-parts/content/whatsapp-widget.php:73
+msgid "Send on WhatsApp"
+msgstr ""
+
+#: theme/template-parts/content/whatsapp-widget.php:82
+msgid "Open WhatsApp chat"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:26
+msgid "Site footer"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:35
+msgid "Nezer Motors home"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:52
+msgid "Nyeri's trusted automotive group. Two branches, expert technicians, genuine parts and honest service."
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:73
+msgid "0733 204 672 (WhatsApp)"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:79
+msgid "Social media links"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:83
+msgid "Nezer Motors on Facebook"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:93
+msgid "QwikFix Shell Kingongo on Instagram"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:252
+msgid "Nezer Motors. All rights reserved."
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:255
+msgid "Footer navigation"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:272
+msgid "Sitemap"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:290
+msgid "Back to top"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:25
+msgid "Main navigation"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:33
+msgid "Nezer Motors — Home"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:70
+msgid "Colour theme"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:73
+msgid "System theme"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:74
+msgid "Use system theme"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:79
+msgid "Light mode"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:80
+msgid "Switch to light mode"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:89
+msgid "Dark mode"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:90
+msgid "Switch to dark mode"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:112
+msgid "Toggle colour theme"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:117
+msgid "System"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:124
+msgid "Open navigation menu"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:139
+msgid "Mobile navigation"
+msgstr ""
+
+#: theme/template-parts/layout/header-content.php:143
+msgid "Mobile navigation links"
+msgstr ""
+
+#: theme/theme.json
+msgctxt "Color name"
+msgid "Background"
+msgstr ""
+
+#: theme/theme.json
+msgctxt "Color name"
+msgid "Foreground"
+msgstr ""
+
+#: theme/theme.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr ""
+
+#: theme/theme.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr ""
+
+#: theme/theme.json
+msgctxt "Color name"
+msgid "Tertiary"
+msgstr ""

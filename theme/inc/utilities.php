@@ -93,7 +93,7 @@ function nm_products() : array {
 			'name'  => esc_html__( 'Tyres',       'nezer-motors' ),
 			'desc'  => esc_html__( 'Quality tyres for all vehicle types. Wide range of brands and sizes in stock at both branches.', 'nezer-motors' ),
 			'icon'  => '🔘',
-			'img'   => 'products/tyres.jpg',
+			'img'   => 'tyres.webp',
 			'alt'   => esc_attr__( 'Assorted car tyres on display', 'nezer-motors' ),
 			'color' => '#1e3a8a',
 		],
@@ -101,7 +101,7 @@ function nm_products() : array {
 			'name'  => esc_html__( 'Batteries',   'nezer-motors' ),
 			'desc'  => esc_html__( 'Reliable batteries for all vehicles. Testing and professional fitting included.', 'nezer-motors' ),
 			'icon'  => '⚡',
-			'img'   => 'products/batteries.jpg',
+			'img'   => 'batteries.webp',
 			'alt'   => esc_attr__( 'Car batteries ready for fitting', 'nezer-motors' ),
 			'color' => '#713f12',
 		],
@@ -109,7 +109,7 @@ function nm_products() : array {
 			'name'  => esc_html__( 'Shocks',      'nezer-motors' ),
 			'desc'  => esc_html__( 'Genuine shock absorbers to restore ride comfort and vehicle handling.', 'nezer-motors' ),
 			'icon'  => '🏎️',
-			'img'   => 'products/shocks.jpg',
+			'img'   => 'shocks.webp',
 			'alt'   => esc_attr__( 'Shock absorbers for cars', 'nezer-motors' ),
 			'color' => '#1e40af',
 		],
@@ -117,7 +117,7 @@ function nm_products() : array {
 			'name'  => esc_html__( 'Lubricants',  'nezer-motors' ),
 			'desc'  => esc_html__( 'Engine oils and lubricants from trusted brands for optimal vehicle performance.', 'nezer-motors' ),
 			'icon'  => '🛢️',
-			'img'   => 'products/lubricants.jpg',
+			'img'   => 'lubricants.webp',
 			'alt'   => esc_attr__( 'Engine oil and lubricant products', 'nezer-motors' ),
 			'color' => '#78350f',
 		],
@@ -125,7 +125,7 @@ function nm_products() : array {
 			'name'  => esc_html__( 'Accessories', 'nezer-motors' ),
 			'desc'  => esc_html__( 'A curated range of quality car accessories to enhance and personalise your vehicle.', 'nezer-motors' ),
 			'icon'  => '🛒',
-			'img'   => 'products/accessories.jpg',
+			'img'   => 'accessories.webp',
 			'alt'   => esc_attr__( 'Car accessories and add-ons', 'nezer-motors' ),
 			'color' => '#134e4a',
 		],
@@ -141,21 +141,26 @@ function nm_products() : array {
  *
  * @return array
  */
+/**
+ * Returns partner/brand list for the marquee strip.
+ *
+ * @return array
+ */
 function nm_partners() : array {
-	return [
-		[ 'name' => 'Shell',          'icon' => '⛽', 'alt' => esc_attr__( 'Shell fuel and lubricants', 'nezer-motors' ) ],
-		[ 'name' => 'Castrol',        'icon' => '🛢️', 'alt' => esc_attr__( 'Castrol engine oils',       'nezer-motors' ) ],
-		[ 'name' => 'Mobil',          'icon' => '🔋', 'alt' => esc_attr__( 'Mobil lubricants',          'nezer-motors' ) ],
-		[ 'name' => 'Total Energies', 'icon' => '⚡', 'alt' => esc_attr__( 'TotalEnergies products',   'nezer-motors' ) ],
-		[ 'name' => 'Michelin',       'icon' => '🔘', 'alt' => esc_attr__( 'Michelin tyres',           'nezer-motors' ) ],
-		[ 'name' => 'Bridgestone',    'icon' => '🔘', 'alt' => esc_attr__( 'Bridgestone tyres',        'nezer-motors' ) ],
-		[ 'name' => 'Goodyear',       'icon' => '🔘', 'alt' => esc_attr__( 'Goodyear tyres',           'nezer-motors' ) ],
-		[ 'name' => 'Bosch',          'icon' => '🔩', 'alt' => esc_attr__( 'Bosch automotive parts',   'nezer-motors' ) ],
-		[ 'name' => 'NGK',            'icon' => '🔌', 'alt' => esc_attr__( 'NGK spark plugs',          'nezer-motors' ) ],
-		[ 'name' => 'Toyota',         'icon' => '🚗', 'alt' => esc_attr__( 'Toyota vehicles',          'nezer-motors' ) ],
-		[ 'name' => 'Hyundai',        'icon' => '🚙', 'alt' => esc_attr__( 'Hyundai vehicles',         'nezer-motors' ) ],
-		[ 'name' => 'Nissan',         'icon' => '🚗', 'alt' => esc_attr__( 'Nissan vehicles',          'nezer-motors' ) ],
-	];
+    return [
+        [ 'name' => 'Shell',          'logo' => 'shell.png',          'alt' => esc_attr__( 'Shell fuel and lubricants',  'nezer-motors' ) ],
+        [ 'name' => 'Castrol',        'logo' => 'castrol.png',        'alt' => esc_attr__( 'Castrol engine oils',        'nezer-motors' ) ],
+        [ 'name' => 'Mobil',          'logo' => 'mobil.png',          'alt' => esc_attr__( 'Mobil lubricants',           'nezer-motors' ) ],
+        [ 'name' => 'Total Energies', 'logo' => 'total-energies.png', 'alt' => esc_attr__( 'TotalEnergies products',    'nezer-motors' ) ],
+        [ 'name' => 'Michelin',       'logo' => 'michelin.png',       'alt' => esc_attr__( 'Michelin tyres',            'nezer-motors' ) ],
+        [ 'name' => 'Bridgestone',    'logo' => 'bridgestone.png',    'alt' => esc_attr__( 'Bridgestone tyres',         'nezer-motors' ) ],
+        [ 'name' => 'Goodyear',       'logo' => 'goodyear.png',       'alt' => esc_attr__( 'Goodyear tyres',            'nezer-motors' ) ],
+        [ 'name' => 'Bosch',          'logo' => 'bosch.png',          'alt' => esc_attr__( 'Bosch automotive parts',    'nezer-motors' ) ],
+        [ 'name' => 'NGK',            'logo' => 'ngk.png',            'alt' => esc_attr__( 'NGK spark plugs',           'nezer-motors' ) ],
+        [ 'name' => 'Toyota',         'logo' => 'toyota.png',         'alt' => esc_attr__( 'Toyota vehicles',           'nezer-motors' ) ],
+        [ 'name' => 'Hyundai',        'logo' => 'hyundai.png',        'alt' => esc_attr__( 'Hyundai vehicles',          'nezer-motors' ) ],
+        [ 'name' => 'Nissan',         'logo' => 'nissan.png',         'alt' => esc_attr__( 'Nissan vehicles',           'nezer-motors' ) ],
+    ];
 }
 
 /* ============================================================
@@ -225,8 +230,8 @@ function nm_branch_info_card( string $key, string $context = 'card' ) : void {
 function nm_service_chip( string $service, string $branch = 'autocare' ) : void {
 	$is_ac = $branch === 'autocare';
 	$style = $is_ac
-		? 'background:rgba(30,64,175,0.2);border:1px solid rgba(59,130,246,0.3);color:#93c5fd;'
-		: 'background:rgba(220,38,38,0.2);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;';
+		? 'background:rgba(30,64,175,0.2);border:1px solid rgba(59,130,246,0.3);color:#0078ff;'
+		: 'background:rgba(220,38,38,0.2);border:1px solid rgba(239,68,68,0.3);color:#ff0000;';
 	printf(
 		'<span class="text-xs px-2.5 py-1 rounded-full font-sub font-700" style="%s">%s</span>',
 		esc_attr( $style ),
@@ -238,21 +243,33 @@ function nm_service_chip( string $service, string $branch = 'autocare' ) : void 
  * Renders the partners marquee strip.
  * Outputs two sets for infinite loop.
  */
+/**
+ * Renders the partners marquee strip.
+ * Outputs two sets for infinite loop.
+ */
+/**
+ * Renders the partners marquee strip.
+ * Outputs two sets for infinite loop.
+ */
 function nm_partners_strip() : void {
-	$partners = nm_partners();
-	// Output twice for seamless loop
-	$set = '';
-	foreach ( $partners as $p ) {
-		$set .= sprintf(
-			'<div class="flex-shrink-0 mx-5 px-5 py-2.5 rounded-full font-sub font-700 text-sm flex items-center gap-2 bg-white dark:bg-white/[0.06] text-gray-500 dark:text-white/55 border border-gray-200 dark:border-white/10" aria-label="%s"><span aria-hidden="true">%s</span><span>%s</span></div>',
-			esc_attr( $p['alt'] ),
-			esc_html( $p['icon'] ),
-			esc_html( $p['name'] )
-		);
-	}
-	echo '<div class="nm-marquee-track" role="list" aria-label="' . esc_attr__( 'Brand partners', 'nezer-motors' ) . '">';
-	echo $set . $set; // duplicate for infinite scroll
-	echo '</div>';
+    $partners = nm_partners();
+    $base_url = get_template_directory_uri() . '/assets/img/';
+
+    $set = '';
+    foreach ( $partners as $p ) {
+        $set .= sprintf(
+            '<div class="flex-shrink-0 mx-5 w-28 h-14 rounded-xl bg-white dark:bg-white/[0.06] border border-gray-200 dark:border-white/10 overflow-hidden" role="listitem" aria-label="%s">
+                <img src="%s" alt="%s" class="w-full h-full object-contain p-2" loading="lazy">
+            </div>',
+            esc_attr( $p['alt'] ),
+            esc_url( $base_url . $p['logo'] ),
+            esc_attr( $p['alt'] )
+        );
+    }
+
+    echo '<div class="nm-marquee-track" role="list" aria-label="' . esc_attr__( 'Brand partners', 'nezer-motors' ) . '">';
+    echo $set . $set;
+    echo '</div>';
 }
 
 /**
