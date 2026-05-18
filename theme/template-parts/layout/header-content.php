@@ -31,13 +31,11 @@ if ( ! is_page( 'coming-soon' ) ) {
             <!-- ── LOGO ── -->
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center gap-2 flex-shrink-0 group"
                 aria-label="<?php esc_attr_e( 'Nezer Motors — Home', 'nezer-motors' ); ?>">
-                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105"
-                    style="background:linear-gradient(135deg,#d4a017,#f0c040)" aria-hidden="true">
-                    <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"
-                        focusable="false">
-                        <path
-                            d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
-                    </svg>
+                <div class="w-9 h-9 rounded-lg bg-gold-400/10 dark:bg-gold-600/20 border border-gold-400 dark:border-gold-600/40 flex items-center justify-center transition-transform group-hover:scale-105"
+                    aria-hidden="true">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/favicon.png' ); ?>"
+                        alt="<?php echo esc_attr( 'Nezer Motors Logo', 'nezer-motors'); ?>"
+                        class="w-full h-full object-contain p-1" loading="lazy">
                 </div>
                 <div class="leading-none">
                     <span class="font-heading text-xl font-700 tracking-wide text-gray-900 dark:text-white">NEZER</span>

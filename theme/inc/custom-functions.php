@@ -112,19 +112,19 @@ add_action('after_switch_theme', 'nezer_motors_setup_settings');
 /* ============================================================
    6. COMING SOON MODE — redirect all non-admin users to a Coming Soon page
 ============================================================ */
-add_action( 'template_redirect', function () {
+// add_action( 'template_redirect', function () {
 
-    $coming_soon_active = true;
+//     $coming_soon_active = true;
 
-    if ( ! $coming_soon_active ) return;
-    if ( current_user_can( 'edit_posts' ) ) return;
-    if ( is_page( 'coming-soon' ) ) return;
-    if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || defined( 'REST_REQUEST' ) ) return;
+//     if ( ! $coming_soon_active ) return;
+//     if ( current_user_can( 'edit_posts' ) ) return;
+//     if ( is_page( 'coming-soon' ) ) return;
+//     if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || defined( 'REST_REQUEST' ) ) return;
 
-    wp_redirect( home_url( '/coming-soon/' ), 302 );
-    exit;
+//     wp_redirect( home_url( '/coming-soon/' ), 302 );
+//     exit;
 
-} );
+// } );
 
 /* ============================================================
    7. CORE PAGES CREATION — create essential pages with correct slugs, templates, and hierarchy
